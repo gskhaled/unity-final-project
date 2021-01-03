@@ -1,1 +1,2 @@
-# Official GitHub repository for Game Studio: ** U Left Us Dead ** for the the final Unity Project in the ACML course.
+# Official GitHub repository of Game Studio: U Left Us Dead. 
+# Made for the final Unity Project in the ACML course.
