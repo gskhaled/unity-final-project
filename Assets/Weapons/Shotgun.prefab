@@ -5092,8 +5092,12 @@ MonoBehaviour:
   damage: 10
   range: 100
   fireRate: 200
+  maxMagazine: 10
+  allAmmu: 130
+  reloadTime: 2
   FPSCam: {fileID: 0}
   muzzleFlash: {fileID: 5791886884482027022}
+  animator: {fileID: 0}
   impactEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   impactDuration: 0.2
   impactForce: 1

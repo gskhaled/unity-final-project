@@ -5005,7 +5005,7 @@ GameObject:
   - component: {fileID: 3340397809298454365}
   - component: {fileID: 3340397809295587197}
   - component: {fileID: 3340397809296684477}
-  - component: {fileID: 5099000354129341184}
+  - component: {fileID: 3738167632168072539}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -5077,7 +5077,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5099000354129341184
+--- !u!114 &3738167632168072539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5092,8 +5092,12 @@ MonoBehaviour:
   damage: 36
   range: 100
   fireRate: 300
+  maxMagazine: 15
+  allAmmu: Infinity
+  reloadTime: 2
   FPSCam: {fileID: 0}
   muzzleFlash: {fileID: 3340397808870599229}
+  animator: {fileID: 0}
   impactEffect: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   impactDuration: 0.2
   impactForce: 1
