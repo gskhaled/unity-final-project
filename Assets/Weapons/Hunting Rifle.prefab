@@ -5042,6 +5042,7 @@ GameObject:
   - component: {fileID: 2459485565099937636}
   - component: {fileID: 2459485565098839460}
   - component: {fileID: 1810891001755388135}
+  - component: {fileID: 3906546663403223747}
   m_Layer: 0
   m_Name: Hunting Rifle
   m_TagString: Untagged
@@ -5141,6 +5142,20 @@ MonoBehaviour:
   impactForce: 1
   shootingSound: {fileID: 5341788872371710905}
   reloadingSound: {fileID: 4663230081998754574}
+--- !u!64 &3906546663403223747
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2459485565096579940}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: d78fce1f586605a47ab057832f697a8d, type: 3}
 --- !u!1 &2940647668211200754
 GameObject:
   m_ObjectHideFlags: 0

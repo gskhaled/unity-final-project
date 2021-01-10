@@ -12,7 +12,10 @@ public class Molotov : MonoBehaviour
     private int damage = 25;
     private float delay = 1f;
     private bool exploded = false;
-
+    private void Start()
+    {
+        explosionEffect.Stop();
+    }
     private void OnCollisionStay(Collision collision)
     {
         if (!exploded && collision.gameObject.layer == 9)
@@ -20,6 +23,7 @@ public class Molotov : MonoBehaviour
             exploded = true;
             StartCoroutine(Explode());
         }
+  
     }
 
     IEnumerator Explode()

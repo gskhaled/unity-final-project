@@ -5006,6 +5006,7 @@ GameObject:
   - component: {fileID: 3340397809295587197}
   - component: {fileID: 3340397809296684477}
   - component: {fileID: 3738167632168072539}
+  - component: {fileID: -6494424498341641303}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -5105,6 +5106,20 @@ MonoBehaviour:
   impactForce: 1
   shootingSound: {fileID: 6910180604315526132}
   reloadingSound: {fileID: 7042795141539934938}
+--- !u!64 &-6494424498341641303
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340397809298680701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b3248db90896a6f46a0cdb09d671a88f, type: 3}
 --- !u!1 &3764931858241678656
 GameObject:
   m_ObjectHideFlags: 0

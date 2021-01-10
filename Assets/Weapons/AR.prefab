@@ -5042,6 +5042,7 @@ GameObject:
   - component: {fileID: 5278102156323721993}
   - component: {fileID: 5278102156324852169}
   - component: {fileID: 7111534131225642565}
+  - component: {fileID: 3453875261988094016}
   m_Layer: 0
   m_Name: AR
   m_TagString: Untagged
@@ -5141,6 +5142,20 @@ MonoBehaviour:
   impactForce: 1
   shootingSound: {fileID: 151951872145903238}
   reloadingSound: {fileID: 8914638070067289601}
+--- !u!64 &3453875261988094016
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278102156322656009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: fb98406df768fd347a74f32a4a7504cf, type: 3}
 --- !u!1 &5735253867067724942
 GameObject:
   m_ObjectHideFlags: 0

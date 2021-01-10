@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 5367568412442203036}
   - component: {fileID: 5367568412441104732}
   - component: {fileID: 5367568412102229012}
+  - component: {fileID: 4220610795720198622}
   m_Layer: 0
   m_Name: SMG
   m_TagString: Untagged
@@ -271,6 +272,20 @@ MonoBehaviour:
   impactForce: 1
   shootingSound: {fileID: 6050228777745972829}
   reloadingSound: {fileID: 292309655087791808}
+--- !u!64 &4220610795720198622
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367568412439105436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 7d0124d3bdb8cba4f834aae3a9962ddc, type: 3}
 --- !u!1 &5367568412679423042
 GameObject:
   m_ObjectHideFlags: 0
