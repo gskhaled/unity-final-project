@@ -15,10 +15,13 @@ public class Gun : MonoBehaviour
     public GameObject impactEffect;
     public float impactDuration = 0.2f;
     public float impactForce = 1f;
+    public AudioSource shootingSound;
+    public AudioSource reloadingSound;
 
     private float nextTimeToFire = 0f;
     private int currentAmmo = 0;
     private bool isReloading = false;
+    private float lastPlayed_shoot = 0f;
     void Start()
     {
         currentAmmo = maxMagazine;
@@ -54,6 +57,7 @@ public class Gun : MonoBehaviour
         if (allAmmu > 0)
         {
             isReloading = true;
+            reloadingSound.Play();
             //Debug.Log("Reloading.....");
             animator.SetBool("Reloading", true);
             yield return new WaitForSeconds(reloadTime - .25f);
@@ -73,6 +77,11 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
+        if(Time.time - lastPlayed_shoot >= .1f)
+        {
+            shootingSound.Play();
+            lastPlayed_shoot = Time.time;
+        }
         muzzleFlash.Play();
         currentAmmo--;
         RaycastHit hit;

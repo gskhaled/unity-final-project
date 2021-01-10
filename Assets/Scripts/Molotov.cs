@@ -6,25 +6,30 @@ public class Molotov : MonoBehaviour
 {
     public ParticleSystem explosionEffect;
     public float explosionRadius = 1f;
+    public AudioSource explosionSound;
 
     private int duration = 5;
     private int damage = 25;
     private float delay = 1f;
+    private bool exploded = false;
 
-    private bool hasExploded = false;
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        StartCoroutine(Explode());
+        if (!exploded && collision.gameObject.layer == 9)
+        {
+            exploded = true;
+            StartCoroutine(Explode());
+        }
     }
 
     IEnumerator Explode()
     {
-        hasExploded = true;
         explosionEffect.Play();
-        Collider[] nearBy = Physics.OverlapSphere(transform.position, explosionRadius);
+        explosionSound.Play();
         while(duration > 0)
         {
+            // Give nearby damage over time.
+            Collider[] nearBy = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (Collider obj in nearBy)
             {
                 Target infected = obj.GetComponent<Target>();
