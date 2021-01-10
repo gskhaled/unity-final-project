@@ -6,33 +6,53 @@ public class CollectingItems : MonoBehaviour
 {
     public Camera FPSCam;
     public float range = 2f;
-    public Dictionary<string, int> inventory;
-    public Dictionary<string, int> grenades;
-    public Dictionary<string, bool> weapons;
-
+    private Dictionary<string, int> inventory = new Dictionary<string, int>();
+    private Dictionary<string, int> bombs = new Dictionary<string, int>();
+    private Dictionary<string, bool> weapons = new Dictionary<string, bool>();
 
     // Start is called before the first frame update
     void Start()
     {
-        inventory= new Dictionary<string, int>();
         inventory.Add("Bile", 0);
         inventory.Add("Alcohol", 0);
         inventory.Add("Canister", 0);
         inventory.Add("GunPowder", 0);
         inventory.Add("Rag", 0);
         inventory.Add("Sugar", 0);
-        grenades = new Dictionary<string, int>();
-        grenades.Add("Molotov", 0);
-        grenades.Add("PipeBomb", 0);
-        grenades.Add("StunGrenade", 0);
-        grenades.Add("Health Pack", 0);
-        weapons = new Dictionary<string, bool>();
+        
+        bombs.Add("Molotov", 0);
+        bombs.Add("PipeBomb", 0);
+        bombs.Add("StunGrenade", 0);
+        bombs.Add("Health Pack", 0);
+        
         weapons.Add("AR", false);
         weapons.Add("Hunting Rifle", false);
         weapons.Add("Pistol", false);
         weapons.Add("Shotgun", false);
         weapons.Add("SMG", false);
+    }
+    public Dictionary<string, int> getInventory()
+    {
+        return inventory;
+    }
 
+    public Dictionary<string, int> getBombs()
+    {
+        return bombs;
+    }
+
+    public Dictionary<string, bool> getWeapons()
+    {
+        return weapons;
+    }
+
+    public void useBombs(string bombName)
+    {
+
+        if (bombs.ContainsKey(bombName))
+        {
+            bombs[bombName] = --bombs[bombName];
+        }
     }
 
     // Update is called once per frame
@@ -41,7 +61,7 @@ public class CollectingItems : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             Pickup();
-            }
+        }
     }
 
     void Pickup()
@@ -96,36 +116,36 @@ public class CollectingItems : MonoBehaviour
             {
                 if (tag.Equals("Usable Health Pack"))
                 {
-                    grenades["Health Pack"] = grenades["Health Pack"] + 1;
+                    bombs["Health Pack"] = bombs["Health Pack"] + 1;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Health Pack: " + grenades["Health Pack"]);
+                    Debug.Log("Health Pack: " + bombs["Health Pack"]);
                 }
                 else if (tag.Equals("Usable Molotov"))
                 {
-                    if (grenades["Molotov"] < 3)
+                    if (bombs["Molotov"] < 3)
                     {
-                        grenades["Molotov"] = grenades["Molotov"] + 1;
+                        bombs["Molotov"] = bombs["Molotov"] + 1;
                     }
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Molotov: " + grenades["Molotov"]);
+                    Debug.Log("Molotov: " + bombs["Molotov"]);
                 }
                 else if (tag.Equals("Usable Pipe Bomb"))
                 {
-                    if (grenades["PipeBomb"] < 2)
+                    if (bombs["PipeBomb"] < 2)
                     {
-                        grenades["PipeBomb"] = grenades["PipeBomb"] + 1;
+                        bombs["PipeBomb"] = bombs["PipeBomb"] + 1;
                     }
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("PipeBomb: " + grenades["PipeBomb"]);
+                    Debug.Log("PipeBomb: " + bombs["PipeBomb"]);
                 }
                 else if (tag.Equals("Usable Stun Grenade"))
                 {
-                    if (grenades["StunGrenade"] < 2)
+                    if (bombs["StunGrenade"] < 2)
                     {
-                        grenades["StunGrenade"] = grenades["StunGrenade"] + 1;
+                        bombs["StunGrenade"] = bombs["StunGrenade"] + 1;
                     }
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("StunGrenade: " + grenades["StunGrenade"]);
+                    Debug.Log("StunGrenade: " + bombs["StunGrenade"]);
                 }
             }
             else if (tag.Contains("Weapon"))
