@@ -262,7 +262,8 @@ MonoBehaviour:
   range: 100
   fireRate: 600
   maxMagazine: 50
-  allAmmu: 700
+  allAmmo: 0
+  MAXAmmo: 700
   reloadTime: 2
   FPSCam: {fileID: 0}
   muzzleFlash: {fileID: 5367568412760724123}
