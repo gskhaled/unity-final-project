@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3444,7 +3444,7 @@ MonoBehaviour:
   - type: 2
     bomb: {fileID: 6591353406054047498, guid: e34b4fa9958e5ba4d90b00e42fc33a82, type: 3}
   throwForce: 10
-  CollectingItemsScript: {fileID: 0}
+  CollectingItemsScript: {fileID: 1551668400}
 --- !u!1001 &127948200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57790,11 +57790,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.765
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 61.903
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_LocalRotation.x

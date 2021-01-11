@@ -77,4 +77,14 @@ public class WeaponSwitching : MonoBehaviour
             g.AddAmmunition();
         }
     }
+
+    public Gun getCurrentGun()
+    {
+        if(availableWeapons.Count > 0)
+        {
+            Gun g = transform.GetChild(availableWeapons[selectedWeapon]).gameObject.GetComponent<Gun>();
+            return g != null ? g : null;
+        }
+        return null;
+    }
 }
