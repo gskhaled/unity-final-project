@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 343842793185643905}
   m_Layer: 0
   m_Name: Health Pack
-  m_TagString: Usable Health Pack
+  m_TagString: Consumable Helath Pack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

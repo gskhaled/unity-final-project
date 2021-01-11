@@ -11,7 +11,6 @@ TagManager:
   - Collectable Rag
   - Collectable Sugar
   - Collectable Canister
-  - Usable Health Pack
   - Usable Molotov
   - Usable Pipe Bomb
   - Usable Stun Grenade
@@ -20,6 +19,8 @@ TagManager:
   - Weapon Pistol
   - Weapon Shotgun
   - Weapon SMG
+  - Consumable Helath Pack
+  - Consumable Ammo
   layers:
   - Default
   - TransparentFX

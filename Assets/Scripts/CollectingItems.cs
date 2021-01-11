@@ -9,7 +9,7 @@ public class CollectingItems : MonoBehaviour
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
     private Dictionary<string, int> bombs = new Dictionary<string, int>();
     private Dictionary<string, bool> weapons = new Dictionary<string, bool>();
-
+    public GameObject weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -114,13 +114,8 @@ public class CollectingItems : MonoBehaviour
             }
             else if (tag.Contains("Usable"))
             {
-                if (tag.Equals("Usable Health Pack"))
-                {
-                    bombs["Health Pack"] = bombs["Health Pack"] + 1;
-                    Destroy(hit.transform.gameObject);
-                    Debug.Log("Health Pack: " + bombs["Health Pack"]);
-                }
-                else if (tag.Equals("Usable Molotov"))
+               
+                if (tag.Equals("Usable Molotov"))
                 {
                     if (bombs["Molotov"] < 3)
                     {
@@ -180,6 +175,23 @@ public class CollectingItems : MonoBehaviour
                     Destroy(hit.transform.gameObject);
                     Debug.Log("Shotgun: " + weapons["Shotgun"]);
                 }
+            }else if (tag.Contains("Consumable"))
+            {
+                if (tag.Equals("Consumable Health Pack"))
+                {
+                    //Call method for Consuming Health Pack
+                    bombs["Health Pack"] = bombs["Health Pack"] + 1;
+                    Destroy(hit.transform.gameObject);
+                    Debug.Log("Health Pack: " + bombs["Health Pack"]);
+                }
+                else if (tag.Equals("Consumable Ammo"))
+                {
+                    if(weapon.GetComponent<WeaponSwitching>()!=null)
+                        weapon.GetComponent<WeaponSwitching>().AddAmmmunition();
+                    Destroy(hit.transform.gameObject);
+                    Debug.Log("Consumable Ammo: Filled");
+                }
+
             }
             else
             {

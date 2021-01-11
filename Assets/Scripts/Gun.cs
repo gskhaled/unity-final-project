@@ -19,6 +19,7 @@ public class Gun : MonoBehaviour
     public AudioSource shootingSound;
     public AudioSource reloadingSound;
 
+
     private float nextTimeToFire = 0f;
     private int currentAmmo = 0;
     private bool isReloading = false;
@@ -38,7 +39,7 @@ public class Gun : MonoBehaviour
         if (isReloading)
             return;
 
-        if(currentAmmo > 0)
+        if(currentAmmo > 0 || (currentAmmo <= 0 && allAmmo > 0))
         {
             if (allAmmo > 0 && (currentAmmo <= 0 || (Input.GetKeyDown(KeyCode.R) && currentAmmo != maxMagazine)))
             {
@@ -64,7 +65,8 @@ public class Gun : MonoBehaviour
             yield return new WaitForSeconds(reloadTime - .25f);
             animator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
-            int ammo = (int) allAmmo - maxMagazine;
+
+            int ammo = (int) allAmmo - maxMagazine + currentAmmo;
             if (ammo >= 0)
             {
                 currentAmmo = maxMagazine;
