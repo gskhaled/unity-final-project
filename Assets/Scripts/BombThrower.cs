@@ -81,4 +81,13 @@ public class BombThrower : MonoBehaviour
         CollectingItemsScript.useBombs(bombNames[currentBomb]);
         doIHaveBombs();
     }
+
+    public string getCurrentGrenade()
+    {
+        if(bombNames.Count > 0)
+        {
+            return bombNames[currentBomb];
+        }
+        return "Nothing";
+    }
 }
