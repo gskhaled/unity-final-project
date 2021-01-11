@@ -1,49 +1,80 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    public int selectedWeapon = 0;
-    void Start()
-    {
-        SelectWeapon();
-    }
+    public CollectingItems CollectingItemsScript;
+    
+    private List<int> availableWeapons = new List<int>(); // --> array of weapon indices
+    private int selectedWeapon = 0;
+    private bool weaponWasPickedUp = false;
 
     void Update()
     {
-        int previouslySelectedWeapon = selectedWeapon;
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (selectedWeapon >= transform.childCount - 1)
-                selectedWeapon = 0;
-            else
-                selectedWeapon++;
+            SwitchWeapon();
         }
-        if(Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            if (selectedWeapon <= 0f)
-                selectedWeapon = transform.childCount - 1;
-            else
-                selectedWeapon--;
-        }
-
-        if (previouslySelectedWeapon != selectedWeapon)
-            SelectWeapon();
     }
 
-    void SelectWeapon()
+    void SwitchWeapon()
     {
-        int i = 0;
-        foreach(Transform weapon in transform)
+        // Get the available weapons in the inventory
+        Dictionary<string, bool> weapons = CollectingItemsScript.getWeapons();
+        foreach (var item in weapons)
         {
-            if (i == selectedWeapon)
+            // If the weapon is picked up, add its index (as a child)
+            // to the list of available weapon indices.
+            if (item.Value)
             {
-                weapon.gameObject.SetActive(true);
+                weaponWasPickedUp = true;
+                availableWeapons.Add(getWeaponIndex(item.Key));
+            }
+        }
+
+        if (weaponWasPickedUp)
+        {
+            // Deactivate the current weapon
+            transform.GetChild(availableWeapons[selectedWeapon]).gameObject.SetActive(false);
+            // Change weapons in case you have more than 1
+            if (availableWeapons.Count == 1 || selectedWeapon > availableWeapons.Count - 1)
+            {
+                selectedWeapon = 0;
             }
             else
             {
-                weapon.gameObject.SetActive(false);
+                selectedWeapon++;
+            }
+            // Activate the newly selected weapon
+            transform.GetChild(availableWeapons[selectedWeapon]).gameObject.SetActive(true);
+        }
+    }
+
+    int getWeaponIndex(string name)
+    {
+        bool found = false;
+        int i = 0;
+        foreach (Transform weapon in transform)
+        {
+            if (name == weapon.gameObject.name)
+            {
+                found = true;
+                break;
             }
             i++;
+        }
+        if (found)
+            return i;
+        else
+            return -1;
+    }
+
+    public void AddAmmmunition()
+    {
+        Gun g = transform.GetChild(availableWeapons[selectedWeapon]).gameObject.GetComponent<Gun>();
+        if (g != null)
+        {
+            g.AddAmmunition();
         }
     }
 }

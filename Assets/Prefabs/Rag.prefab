@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3763948297724105099}
   - component: {fileID: 257796571033706030}
   - component: {fileID: 2627595108955450084}
+  - component: {fileID: -8498079549755438110}
   m_Layer: 0
   m_Name: Rag
-  m_TagString: Untagged
+  m_TagString: Collectable Rag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-8498079549755438110
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573383037508143921}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29225856, y: 0.11698628, z: 0.40253523}
+  m_Center: {x: 0.0009719059, y: -0.07550277, z: -0.004370451}
 --- !u!1 &5001862939195414135
 GameObject:
   m_ObjectHideFlags: 0

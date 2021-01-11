@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5784654795189895690}
   - component: {fileID: 7487484476474445231}
   - component: {fileID: 4615085982915639653}
+  - component: {fileID: 3430883135777757053}
   m_Layer: 0
   m_Name: Sugar
-  m_TagString: Untagged
+  m_TagString: Collectable Sugar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &3430883135777757053
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560874186883831984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.08370963
+  m_Center: {x: -0.0000000037252903, y: 0.000000003725291, z: 0.08372715}
 --- !u!1 &7228344712592874673
 GameObject:
   m_ObjectHideFlags: 0
