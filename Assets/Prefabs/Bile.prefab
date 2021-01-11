@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1771219941526055376}
   - component: {fileID: 3403446650645030517}
   - component: {fileID: 639387983088210623}
+  - component: {fileID: 614625924035377613}
   m_Layer: 0
-  m_Name: Acid
-  m_TagString: Untagged
+  m_Name: Bile
+  m_TagString: Collectable Bile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +86,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &614625924035377613
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431990249832051562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.003
+  m_Center: {x: -2.1235719e-10, y: 0.0000008164383, z: 0.002324096}
 --- !u!1 &3312894455324612728
 GameObject:
   m_ObjectHideFlags: 0

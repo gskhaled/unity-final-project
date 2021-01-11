@@ -7,7 +7,8 @@ public class Gun : MonoBehaviour
     public float range = 100f;
     public float fireRate = 1f;
     public int maxMagazine = 10;
-    public float allAmmu = Mathf.Infinity;
+    public float allAmmo = Mathf.Infinity;
+    public float MAXAmmo = Mathf.Infinity;
     public float reloadTime = 2f;
     public Camera FPSCam;
     public ParticleSystem muzzleFlash;
@@ -15,10 +16,14 @@ public class Gun : MonoBehaviour
     public GameObject impactEffect;
     public float impactDuration = 0.2f;
     public float impactForce = 1f;
+    public AudioSource shootingSound;
+    public AudioSource reloadingSound;
+
 
     private float nextTimeToFire = 0f;
     private int currentAmmo = 0;
     private bool isReloading = false;
+    private float lastPlayed_shoot = 0f;
     void Start()
     {
         currentAmmo = maxMagazine;
@@ -34,16 +39,16 @@ public class Gun : MonoBehaviour
         if (isReloading)
             return;
 
-        if(allAmmu > 0)
+        if(currentAmmo > 0 || (currentAmmo <= 0 && allAmmo > 0))
         {
-            if (currentAmmo <= 0 || (Input.GetKeyDown(KeyCode.R) && currentAmmo != maxMagazine))
+            if (allAmmo > 0 && (currentAmmo <= 0 || (Input.GetKeyDown(KeyCode.R) && currentAmmo != maxMagazine)))
             {
                 StartCoroutine(Reload());
                 return;
             }
             if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
             {
-                nextTimeToFire = Time.time + (1f / fireRate);
+                nextTimeToFire = Time.time + (60f / fireRate);
                 Shoot();
             }
         }
@@ -51,28 +56,35 @@ public class Gun : MonoBehaviour
 
     IEnumerator Reload()
     {
-        if (allAmmu > 0)
+        if (allAmmo > 0)
         {
             isReloading = true;
+            reloadingSound.Play();
             //Debug.Log("Reloading.....");
             animator.SetBool("Reloading", true);
             yield return new WaitForSeconds(reloadTime - .25f);
             animator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
-            int ammu = (int) allAmmu - maxMagazine;
-            if (ammu >= 0)
+
+            int ammo = (int) allAmmo - maxMagazine + currentAmmo;
+            if (ammo >= 0)
             {
                 currentAmmo = maxMagazine;
             }
             else
-                currentAmmo = (int) allAmmu;
-            allAmmu = ammu;
+                currentAmmo = (int) allAmmo;
+            allAmmo = ammo;
             isReloading = false;
         }
     }
 
     void Shoot()
     {
+        if(Time.time - lastPlayed_shoot >= .1f)
+        {
+            shootingSound.Play();
+            lastPlayed_shoot = Time.time;
+        }
         muzzleFlash.Play();
         currentAmmo--;
         RaycastHit hit;
@@ -90,5 +102,10 @@ public class Gun : MonoBehaviour
         }
         GameObject impactObj = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactObj, impactDuration);
+    }
+
+    public void AddAmmunition()
+    {
+        allAmmo = MAXAmmo;
     }
 }
