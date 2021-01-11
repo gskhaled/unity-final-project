@@ -23,6 +23,8 @@ public class Gun : MonoBehaviour
     private float nextTimeToFire = 0f;
     private int currentAmmo = 0;
     private bool isReloading = false;
+    private bool shooting = false;
+
     private float lastPlayed_shoot = 0f;
     void Start()
     {
@@ -48,8 +50,12 @@ public class Gun : MonoBehaviour
             }
             if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
             {
+                shooting = true;
                 nextTimeToFire = Time.time + (60f / fireRate);
                 Shoot();
+            }
+            else { 
+                shooting = false;
             }
         }
     }
@@ -107,5 +113,9 @@ public class Gun : MonoBehaviour
     public void AddAmmunition()
     {
         allAmmo = MAXAmmo;
+    }
+    public bool isShooting()
+    {
+        return shooting;
     }
 }
