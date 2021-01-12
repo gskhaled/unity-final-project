@@ -8,6 +8,8 @@ public class Laser : MonoBehaviour
     NavMeshAgent agent;
     LineRenderer lineRenderer;
     public Transform laserHit;
+    Vector3 fixedHit;
+    bool first = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,18 +17,48 @@ public class Laser : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (agent.hasPath && laserHit != null)
+        if (agent.gameObject.CompareTag("Charger"))
         {
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, laserHit.position);
-            lineRenderer.enabled = true;
+            if (agent.hasPath && laserHit != null)
+            {
+                if (first)
+                {
+                    fixedHit = laserHit.position;
+                    first = false;
+                }
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, fixedHit);
+                lineRenderer.enabled = true;
+            }
+            else
+            {
+                lineRenderer.enabled = false;
+                first = true;
+            }
+
         }
-        else lineRenderer.enabled = false;
+        else
+        {
+            if (agent.hasPath && laserHit != null)
+            {
+               
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, laserHit.position);
+                lineRenderer.enabled = true;
+            }
+            else
+            {
+                lineRenderer.enabled = false;
+              
+            }
+        }
+
 
     }
 }
