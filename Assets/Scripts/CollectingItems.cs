@@ -120,8 +120,9 @@ public class CollectingItems : MonoBehaviour
                     if (bombs["Molotov"] < 3)
                     {
                         bombs["Molotov"] = bombs["Molotov"] + 1;
+                        Destroy(hit.transform.gameObject);
+
                     }
-                    Destroy(hit.transform.gameObject);
                     Debug.Log("Molotov: " + bombs["Molotov"]);
                 }
                 else if (tag.Equals("Usable Pipe Bomb"))
@@ -129,8 +130,9 @@ public class CollectingItems : MonoBehaviour
                     if (bombs["PipeBomb"] < 2)
                     {
                         bombs["PipeBomb"] = bombs["PipeBomb"] + 1;
+                        Destroy(hit.transform.gameObject);
+
                     }
-                    Destroy(hit.transform.gameObject);
                     Debug.Log("PipeBomb: " + bombs["PipeBomb"]);
                 }
                 else if (tag.Equals("Usable Stun Grenade"))
@@ -138,8 +140,8 @@ public class CollectingItems : MonoBehaviour
                     if (bombs["StunGrenade"] < 2)
                     {
                         bombs["StunGrenade"] = bombs["StunGrenade"] + 1;
+                        Destroy(hit.transform.gameObject);
                     }
-                    Destroy(hit.transform.gameObject);
                     Debug.Log("StunGrenade: " + bombs["StunGrenade"]);
                 }
             }
@@ -177,7 +179,7 @@ public class CollectingItems : MonoBehaviour
                 }
             }else if (tag.Contains("Consumable"))
             {
-                if (tag.Equals("Consumable Health Pack"))
+                if (tag.Equals("Consumable Helath Pack"))
                 {
                     //Call method for Consuming Health Pack
                     bombs["Health Pack"] = bombs["Health Pack"] + 1;
