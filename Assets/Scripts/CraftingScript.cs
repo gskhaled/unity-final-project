@@ -18,6 +18,7 @@ public class CraftingScript : MonoBehaviour
     public Canvas craftingCanvas;
 
     public Camera UIcamera;
+    public Canvas HUDcanvas;
 
     public Button molotovCraft;
     public Button stunCraft;
@@ -225,12 +226,14 @@ public class CraftingScript : MonoBehaviour
                 break;
             case "HealthPack":
                 //myHealth += 50;
+                break;
         }
     }
 
     void openCrafting()
     {
         UIcamera.enabled = true;
+        HUDcanvas.enabled = false;
         craftingCanvas.enabled = true;
         Screen.lockCursor = false;
         Time.timeScale = 0;
@@ -238,6 +241,7 @@ public class CraftingScript : MonoBehaviour
 
     public void exitCreafting()
     {
+        HUDcanvas.enabled = true;
         UIcamera.enabled = false;
         craftingCanvas.enabled = false;
         Screen.lockCursor = true;
