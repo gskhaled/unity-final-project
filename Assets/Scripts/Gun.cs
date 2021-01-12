@@ -18,10 +18,9 @@ public class Gun : MonoBehaviour
     public float impactForce = 1f;
     public AudioSource shootingSound;
     public AudioSource reloadingSound;
-
+    public int currentAmmo = 0;
 
     private float nextTimeToFire = 0f;
-    private int currentAmmo = 0;
     private bool isReloading = false;
     private bool shooting = false;
 

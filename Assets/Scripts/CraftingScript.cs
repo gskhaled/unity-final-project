@@ -15,13 +15,18 @@ public class CraftingScript : MonoBehaviour
     public Text molotovAmountText;
     public Text pipeAmountText;
     public Text stunAmountText;
-    public Canvas pauseCanvas;
     public Canvas craftingCanvas;
+
+    public Camera UIcamera;
+    public Canvas HUDcanvas;
 
     public Button molotovCraft;
     public Button stunCraft;
     public Button pipeCraft;
     public Button healthCraft;
+
+    public GameObject[] rotate;
+    public GameObject[] rotate2;
 
     private Dictionary<string, int> MolotovCrafting = new Dictionary<string, int>();
     private Dictionary<string, int> StunCrafting = new Dictionary<string, int>();
@@ -46,6 +51,9 @@ public class CraftingScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+            openCrafting();
+
         if (craftingCanvas.isActiveAndEnabled)
         {
             Dictionary<string, int> inventory = CollectingItemsScript.getInventory();
@@ -74,6 +82,18 @@ public class CraftingScript : MonoBehaviour
             pipeCraft.interactable = CheckForCrafting("PipeBomb", inventory, grenades);
             healthCraft.interactable = CheckForCrafting("HealthPack", inventory, grenades);
         }
+        foreach(var item in rotate)
+        {
+            item.transform.Rotate(new Vector3(0, 0, 8), Space.Self);
+        }
+        foreach (var item in rotate2)
+        {
+            item.transform.Rotate(new Vector3(0, 8, 0), Space.Self);
+        }
+    }
+
+    void FixedUpdate()
+    {
     }
 
     void Collectables(Dictionary<string, int> inventory)
@@ -189,5 +209,42 @@ public class CraftingScript : MonoBehaviour
                 break;
         }
         return true;
+    }
+
+    public void addGrenades(string Name)
+    {
+        switch (Name)
+        {
+            case "Molotov":
+                //CollectingItemsScript.addBombs(Molotov);
+                break;
+            case "StunGrenade":
+                //CollectingItemsScript.addBombs(StunGrenade);
+                break;
+            case "PipeBomb":
+                //CollectingItemsScript.addBombs(PipeBomb);
+                break;
+            case "HealthPack":
+                //myHealth += 50;
+                break;
+        }
+    }
+
+    void openCrafting()
+    {
+        UIcamera.enabled = true;
+        HUDcanvas.enabled = false;
+        craftingCanvas.enabled = true;
+        Screen.lockCursor = false;
+        Time.timeScale = 0;
+    }
+
+    public void exitCreafting()
+    {
+        HUDcanvas.enabled = true;
+        UIcamera.enabled = false;
+        craftingCanvas.enabled = false;
+        Screen.lockCursor = true;
+        Time.timeScale = 1;
     }
 }
