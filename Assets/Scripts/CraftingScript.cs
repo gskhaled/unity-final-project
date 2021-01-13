@@ -80,7 +80,7 @@ public class CraftingScript : MonoBehaviour
             molotovCraft.interactable = CheckForCrafting("MolotovCocktail", inventory, grenades);
             stunCraft.interactable = CheckForCrafting("StunGrenade", inventory, grenades);
             pipeCraft.interactable = CheckForCrafting("PipeBomb", inventory, grenades);
-            healthCraft.interactable = CheckForCrafting("HealthPack", inventory, grenades);
+            healthCraft.interactable = CheckForCrafting("Health Pack", inventory, grenades);
         }
         foreach(var item in rotate)
         {
@@ -194,7 +194,7 @@ public class CraftingScript : MonoBehaviour
                 }
                 break;
 
-            case "HealthPack":
+            case "Health Pack":
                 foreach (var item in HealthCrafting)
                 {
                     foreach (var item2 in inventory)
@@ -213,19 +213,20 @@ public class CraftingScript : MonoBehaviour
 
     public void addGrenades(string Name)
     {
+        Debug.Log("Adding..... " + Name);
         switch (Name)
         {
             case "Molotov":
-                //CollectingItemsScript.addBombs(Molotov);
+                CollectingItemsScript.AddBomb("Molotov", null);
                 break;
             case "StunGrenade":
-                //CollectingItemsScript.addBombs(StunGrenade);
+                CollectingItemsScript.AddBomb("StunGrenade", null);
                 break;
             case "PipeBomb":
-                //CollectingItemsScript.addBombs(PipeBomb);
+                CollectingItemsScript.AddBomb("PipeBomb", null);
                 break;
-            case "HealthPack":
-                //myHealth += 50;
+            case "Health Pack":
+                CollectingItemsScript.AddBomb("Health Pack", null);
                 break;
         }
     }

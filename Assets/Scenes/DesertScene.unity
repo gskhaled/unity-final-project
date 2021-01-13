@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 800356373}
-  m_IndirectSpecularColor: {r: 0.18366885, g: 0.22913012, b: 0.30506545, a: 1}
+  m_IndirectSpecularColor: {r: 0.18366842, g: 0.22912961, b: 0.30506423, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -471,7 +471,7 @@ RectTransform:
   m_Children:
   - {fileID: 677148101}
   m_Father: {fileID: 0}
-  m_RootOrder: 86
+  m_RootOrder: 87
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4814,7 +4814,7 @@ PrefabInstance:
     - target: {fileID: 2459485565097070404, guid: f1ebb365794d15748b75e33ac2100e76,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2459485565097070404, guid: f1ebb365794d15748b75e33ac2100e76,
         type: 3}
@@ -23027,7 +23027,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 783357502}
         m_TargetAssemblyTypeName: CraftingScript, Assembly-CSharp
         m_MethodName: addGrenades
         m_Mode: 5
@@ -24232,7 +24232,7 @@ PrefabInstance:
     - target: {fileID: 3340397809298454365, guid: b942692f04a944440afb12a56755ab71,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3340397809298454365, guid: b942692f04a944440afb12a56755ab71,
         type: 3}
@@ -25657,7 +25657,7 @@ RectTransform:
   m_Children:
   - {fileID: 852951254}
   m_Father: {fileID: 0}
-  m_RootOrder: 84
+  m_RootOrder: 85
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29797,7 +29797,7 @@ PrefabInstance:
     - target: {fileID: 4299909043779986814, guid: ad5b1df5380a2ef41a3f77e41a7cd64e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 88
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 4299909043779986814, guid: ad5b1df5380a2ef41a3f77e41a7cd64e,
         type: 3}
@@ -40889,7 +40889,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 783357502}
         m_TargetAssemblyTypeName: CraftingScript, Assembly-CSharp
         m_MethodName: addGrenades
         m_Mode: 5
@@ -41964,7 +41964,7 @@ RectTransform:
   - {fileID: 1144082145}
   - {fileID: 2085614455}
   m_Father: {fileID: 0}
-  m_RootOrder: 82
+  m_RootOrder: 83
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -47238,7 +47238,7 @@ GameObject:
   - component: {fileID: 783357501}
   - component: {fileID: 783357500}
   m_Layer: 0
-  m_Name: ===Canvases===
+  m_Name: ====== CANVASES ======
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47352,7 +47352,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 80
+  m_RootOrder: 81
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784785059
 GameObject:
@@ -77944,7 +77944,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 87
+  m_RootOrder: 88
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1199708795
 PrefabInstance:
@@ -98602,7 +98602,7 @@ PrefabInstance:
     - target: {fileID: 6998258030583647838, guid: f7d77b4fc081432428b508863e781a02,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.15496
+      value: -21.21
       objectReference: {fileID: 0}
     - target: {fileID: 6998258030583647838, guid: f7d77b4fc081432428b508863e781a02,
         type: 3}
@@ -98612,7 +98612,7 @@ PrefabInstance:
     - target: {fileID: 6998258030583647838, guid: f7d77b4fc081432428b508863e781a02,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.965799
+      value: 5.98
       objectReference: {fileID: 0}
     - target: {fileID: 6998258030583647838, guid: f7d77b4fc081432428b508863e781a02,
         type: 3}
@@ -101907,7 +101907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 81
+  m_RootOrder: 82
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1516836125
 PrefabInstance:
@@ -106216,7 +106216,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1606962830}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 783357502}
+        m_TargetAssemblyTypeName: CraftingScript, Assembly-CSharp
+        m_MethodName: addGrenades
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PipeBomb
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1606962830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114348,7 +114360,7 @@ RectTransform:
   m_Children:
   - {fileID: 2137837482}
   m_Father: {fileID: 0}
-  m_RootOrder: 83
+  m_RootOrder: 84
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -125026,7 +125038,7 @@ Transform:
   - {fileID: 1554190505}
   - {fileID: 1806525085}
   m_Father: {fileID: 0}
-  m_RootOrder: 79
+  m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 0, y: 172.319, z: 0}
 --- !u!1 &1886542036
 GameObject:
@@ -127637,7 +127649,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1940456155}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 783357502}
+        m_TargetAssemblyTypeName: CraftingScript, Assembly-CSharp
+        m_MethodName: addGrenades
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HealthPack
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1940456155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133449,7 +133473,7 @@ RectTransform:
   - {fileID: 1848543903}
   - {fileID: 1675225566}
   m_Father: {fileID: 0}
-  m_RootOrder: 85
+  m_RootOrder: 86
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -134876,6 +134900,7 @@ MonoBehaviour:
   FPSCam: {fileID: 1259661798}
   range: 2
   weapon: {fileID: 2132913901}
+  startWithAPistol: 1
 --- !u!1 &2090956527
 GameObject:
   m_ObjectHideFlags: 0
@@ -136877,9 +136902,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 46270743}
   - {fileID: 300391238}
   - {fileID: 1677009824}
-  - {fileID: 46270743}
   - {fileID: 528719072}
   - {fileID: 1019912320}
   m_Father: {fileID: 1259661794}
@@ -137428,7 +137453,7 @@ PrefabInstance:
     - target: {fileID: 5278102156322427689, guid: e4b9c50ae373bfe418b13e9316aea10b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5278102156322427689, guid: e4b9c50ae373bfe418b13e9316aea10b,
         type: 3}

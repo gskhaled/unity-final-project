@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,11 @@ public class CollectingItems : MonoBehaviour
 {
     public Camera FPSCam;
     public float range = 2f;
+    public GameObject weapon;
+    public bool startWithAPistol = true;
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
     private Dictionary<string, int> bombs = new Dictionary<string, int>();
     private Dictionary<string, bool> weapons = new Dictionary<string, bool>();
-    public GameObject weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class CollectingItems : MonoBehaviour
         
         weapons.Add("AR", false);
         weapons.Add("Hunting Rifle", false);
-        weapons.Add("Pistol", false);
+        weapons.Add("Pistol", startWithAPistol);
         weapons.Add("Shotgun", false);
         weapons.Add("SMG", false);
     }
@@ -58,7 +60,7 @@ public class CollectingItems : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Pickup();
         }
@@ -117,31 +119,17 @@ public class CollectingItems : MonoBehaviour
                
                 if (tag.Equals("Usable Molotov"))
                 {
-                    if (bombs["Molotov"] < 3)
-                    {
-                        bombs["Molotov"] = bombs["Molotov"] + 1;
-                        Destroy(hit.transform.gameObject);
-
-                    }
+                    AddBomb("Molotov", hit.transform);
                     Debug.Log("Molotov: " + bombs["Molotov"]);
                 }
                 else if (tag.Equals("Usable Pipe Bomb"))
                 {
-                    if (bombs["PipeBomb"] < 2)
-                    {
-                        bombs["PipeBomb"] = bombs["PipeBomb"] + 1;
-                        Destroy(hit.transform.gameObject);
-
-                    }
+                    AddBomb("PipeBomb", hit.transform);
                     Debug.Log("PipeBomb: " + bombs["PipeBomb"]);
                 }
                 else if (tag.Equals("Usable Stun Grenade"))
                 {
-                    if (bombs["StunGrenade"] < 2)
-                    {
-                        bombs["StunGrenade"] = bombs["StunGrenade"] + 1;
-                        Destroy(hit.transform.gameObject);
-                    }
+                    AddBomb("StunGrenade", hit.transform);
                     Debug.Log("StunGrenade: " + bombs["StunGrenade"]);
                 }
             }
@@ -182,13 +170,12 @@ public class CollectingItems : MonoBehaviour
                 if (tag.Equals("Consumable Helath Pack"))
                 {
                     //Call method for Consuming Health Pack
-                    bombs["Health Pack"] = bombs["Health Pack"] + 1;
-                    Destroy(hit.transform.gameObject);
+                    AddBomb("Health Pack", hit.transform);
                     Debug.Log("Health Pack: " + bombs["Health Pack"]);
                 }
                 else if (tag.Equals("Consumable Ammo"))
                 {
-                    if(weapon.GetComponent<WeaponSwitching>()!=null)
+                    if(weapon.GetComponent<WeaponSwitching>() != null)
                         weapon.GetComponent<WeaponSwitching>().AddAmmmunition();
                     Destroy(hit.transform.gameObject);
                     Debug.Log("Consumable Ammo: Filled");
@@ -201,5 +188,90 @@ public class CollectingItems : MonoBehaviour
             }
         }
 
+    }
+
+    public void AddBomb(string name, Transform t)
+    {
+        try
+        {
+            if (name.Equals("Molotov") && bombs["Molotov"] < 3)
+            {
+                bombs["Molotov"] = bombs["Molotov"] + 1;
+                Debug.Log("Added Molotov: " + bombs["Molotov"]);
+                if (t != null)
+                    Destroy(t.gameObject);
+                else
+                    Recipe(name);
+            }
+            else if (name.Equals("PipeBomb") && bombs["PipeBomb"] < 2)
+            {
+                bombs["PipeBomb"] = bombs["PipeBomb"] + 1;
+                Debug.Log("Added PipeBomb: " + bombs["PipeBomb"]);
+                if (t != null)
+                    Destroy(t.gameObject);
+                else
+                    Recipe(name);
+            }
+            else if (name.Equals("StunGrenade") && bombs["StunGrenade"] < 2)
+            {
+                bombs["StunGrenade"] = bombs["StunGrenade"] + 1;
+                Debug.Log("Added StunGrenade: " + bombs["StunGrenade"]);
+                if (t != null)
+                    Destroy(t.gameObject);
+                else
+                    Recipe(name);
+            }
+            else if(name.Equals("Health Pack"))
+            {
+                bombs["Health Pack"] = bombs["Health Pack"] + 1;
+                Debug.Log("Added Health Pack: " + bombs["Health Pack"]);
+                if (t != null)
+                    Destroy(t.gameObject);
+                else
+                    Recipe(name);
+            }
+            else
+            {
+                Debug.Log("Item " + name + " cannot be abdded to the inventory.");
+            }
+        }
+        catch
+        {
+            Debug.Log("Error, item " + name + " cannot be abdded to the inventory.");
+        }
+    }
+
+    void Recipe(string name)
+    {
+        try
+        {
+            switch (name)
+            {
+                case ("Molotov"):
+                    inventory["Alcohol"] = inventory["Alcohol"] - 2;
+                    inventory["Rag"] = inventory["Rag"] - 2;
+                    break;
+                case ("StunGrenade"):
+                    inventory["GunPowder"] = inventory["GunPowder"] - 2;
+                    inventory["Sugar"] = inventory["Sugar"] - 1;
+                    break;
+                case ("PipeBomb"):
+                    inventory["Alcohol"] = inventory["Alcohol"] - 2;
+                    inventory["GunPowder"] = inventory["GunPowder"] - 1;
+                    inventory["Canister"] = inventory["Canister"] - 1;
+                    break;
+                case ("Health Pack"):
+                    inventory["Alcohol"] = inventory["Alcohol"] - 2;
+                    inventory["Rag"] = inventory["Rag"] - 2;
+                    break;
+                default:
+                    Debug.Log("Item " + name + " is not available in recipe.");
+                    break;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Got error while checking for recipe" + e.Message);
+        }
     }
 }
