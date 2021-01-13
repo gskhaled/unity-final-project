@@ -9,7 +9,7 @@ public class WeaponSwitching : MonoBehaviour
     private int selectedWeapon = 0;
     private bool weaponWasPickedUp = false;
 
-    private void Start()
+    void Start()
     {
         SwitchWeapon();
     }
@@ -33,6 +33,7 @@ public class WeaponSwitching : MonoBehaviour
             if (item.Value)
             {
                 weaponWasPickedUp = true;
+                Debug.Log(item.Key);
                 availableWeapons.Add(getWeaponIndex(item.Key));
             }
         }

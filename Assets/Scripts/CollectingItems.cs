@@ -13,7 +13,7 @@ public class CollectingItems : MonoBehaviour
     private Dictionary<string, int> bombs = new Dictionary<string, int>();
     private Dictionary<string, bool> weapons = new Dictionary<string, bool>();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         inventory.Add("Bile", 0);
         inventory.Add("Alcohol", 0);
