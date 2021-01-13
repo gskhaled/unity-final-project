@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class cameraMouseFollow : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 150f;
     public Transform playerBody;
-
+    
     float xRotation = 0F;
     // Start is called before the first frame update
     void Start()
