@@ -33,7 +33,6 @@ public class WeaponSwitching : MonoBehaviour
             if (item.Value)
             {
                 weaponWasPickedUp = true;
-                Debug.Log(item.Key);
                 availableWeapons.Add(getWeaponIndex(item.Key));
             }
         }
