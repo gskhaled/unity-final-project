@@ -5,6 +5,26 @@ TagManager:
   serializedVersion: 2
   tags:
   - Joel
+  - Normal
+  - Laser
+  - Tank
+  - Fire
+  - Collectable Bile
+  - Collectable Alcohol
+  - Collectable Gun Powder
+  - Collectable Rag
+  - Collectable Sugar
+  - Collectable Canister
+  - Usable Molotov
+  - Usable Pipe Bomb
+  - Usable Stun Grenade
+  - Weapon AR
+  - Weapon Hunting Rifle
+  - Weapon Pistol
+  - Weapon Shotgun
+  - Weapon SMG
+  - Consumable Helath Pack
+  - Consumable Ammo
   layers:
   - Default
   - TransparentFX
@@ -14,8 +34,8 @@ TagManager:
   - UI
   - 
   - 
+  - PostProcessing
   - Ground
-  - 
   - 
   - 
   - 
