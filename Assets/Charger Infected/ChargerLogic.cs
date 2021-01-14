@@ -251,7 +251,7 @@ public class ChargerLogic : MonoBehaviour
     public void Stun()
     {
         isStunned = true;
-        Invoke(nameof(StunEnded), 30f);
+        Invoke(nameof(StunEnded), 3f);
     }
 
     private void StunEnded()
