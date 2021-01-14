@@ -9,6 +9,8 @@ public class ChargerLogic : MonoBehaviour
     Transform oldPlayer;
     Animator animator;
     Laser laser;
+    AudioSource runClip;
+    AudioSource dieClip;
 
     //Patroling
     Vector3 walkPoint;
@@ -46,6 +48,8 @@ public class ChargerLogic : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Joel").transform;
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
+        runClip = transform.GetChild(2).GetComponent<AudioSource>();
+        dieClip = transform.GetChild(3).GetComponent<AudioSource>();
         // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
 
@@ -151,6 +155,8 @@ public class ChargerLogic : MonoBehaviour
 
     private void ChargeAtPlayer()
     {
+        if (!runClip.isPlaying)
+            runClip.PlayOneShot(runClip.clip);
         chargeEnded = false;
         animator.SetBool("walking", false);
         animator.SetBool("idle", false);
@@ -178,7 +184,10 @@ public class ChargerLogic : MonoBehaviour
         agent.SetDestination(transform.position);
         animator.SetBool("charging", false);
         animator.SetBool("walking", false);
-        animator.SetBool("idle", true);
+        if (pinningDown)
+           animator.SetTrigger("attacking");
+        else
+           animator.SetBool("idle", true);
         Invoke(nameof(ResetCharge), timeBetweenCharges);
     }
 
