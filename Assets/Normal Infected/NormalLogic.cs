@@ -9,7 +9,8 @@ public class NormalLogic : MonoBehaviour
     Transform player;
     Animator animator;
     Laser laser;
-   
+    AudioSource runClip;
+
     //Patroling
     Vector3 walkPoint;
     bool walkPointSet;
@@ -30,6 +31,8 @@ public class NormalLogic : MonoBehaviour
     bool isDistracted = false;
     bool isStunned = false;
 
+    
+
 
     //Health 
     int health = 50;
@@ -44,6 +47,7 @@ public class NormalLogic : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Joel").transform;
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
+        runClip = transform.GetChild(2).GetComponent<AudioSource>();
        // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
     }
@@ -58,7 +62,7 @@ public class NormalLogic : MonoBehaviour
     {
         if (!isDead)
         {
-            
+          
             if (!playerInSightRange && !playerInAttackRange && !isDistracted && !isHit )
                 {
                     if (walkPointSet) Patroling();
@@ -156,6 +160,8 @@ public class NormalLogic : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if(!runClip.isPlaying)
+           runClip.PlayOneShot(runClip.clip);
         animator.SetBool("walking", false);
         animator.SetBool("chasing", true);
         if (isStunned)
