@@ -82,9 +82,10 @@ public class playerMovement : MonoBehaviour
             //jump
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-            if (isGrounded)
+            if (!isGrounded)
             {
-
+                Vector3 moveH = new Vector3(0, -2f, 0);
+                controller.Move(moveH * Time.deltaTime);
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
