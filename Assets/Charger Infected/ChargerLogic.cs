@@ -52,6 +52,7 @@ public class ChargerLogic : MonoBehaviour
         dieClip = transform.GetChild(3).GetComponent<AudioSource>();
         // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
+        Stun();
 
     }
 
@@ -93,7 +94,7 @@ public class ChargerLogic : MonoBehaviour
 
 
             if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && chargeEnded) ChargeAtPlayer();
-            else if (!agent.hasPath && !chargeEnded && !checkedCharge && !isDistracted && !isHit ) CheckCharge();
+            else if (!agent.hasPath && !chargeEnded && !checkedCharge &&!pinningDown && !isDistracted && !isHit ) CheckCharge();
                 
 
         }
@@ -169,12 +170,11 @@ public class ChargerLogic : MonoBehaviour
 
         else
         {
-            agent.speed = 20f;
+            agent.speed = 10f;
             animator.speed = 1f;
         }
-        laser.laserHit = player;
-        agent.SetDestination(player.position);
-        
+       laser.laserHit = player;
+       agent.SetDestination(player.position);
 
     }
 
@@ -276,6 +276,7 @@ public class ChargerLogic : MonoBehaviour
         {
             Debug.Log("collided");
             pinningDown = true;
+            CheckCharge();
             /// PIN DOWN JOEL !!!
             /// APPLY 75 POINTS OF DAMAGE ON JOEL
            
