@@ -26,6 +26,8 @@ TagManager:
   - Consumable Helath Pack
   - Consumable Ammo
   - Charger
+  - Hunter
+  - Head
   layers:
   - Default
   - TransparentFX
