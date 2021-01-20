@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2030096787441300529}
   - component: {fileID: 8434426905372156826}
   - component: {fileID: 8801369899316945214}
+  - component: {fileID: 759832605321828146}
   m_Layer: 0
   m_Name: ExtraBuilding_B_snaps004
   m_TagString: Untagged
@@ -58,6 +59,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -69,6 +72,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -81,6 +85,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8801369899316945214
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -91,10 +96,26 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 98ce9f0131289404fa3b7c9e5e709eb9, type: 2}
+--- !u!208 &759832605321828146
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613531876311062294}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.6910001, y: 1.4350001, z: 1.1800001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.3010001, y: 1.4350001, z: -1.018}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2795775084047939413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,11 +123,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9135273314153920815}
     m_Modifications:
-    - target: {fileID: 5927873752519874114, guid: f9f8c720520cd4746ae16abb56ea5f79,
-        type: 3}
-      propertyPath: m_Name
-      value: Curtain_A
-      objectReference: {fileID: 0}
     - target: {fileID: 5927873752519445090, guid: f9f8c720520cd4746ae16abb56ea5f79,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -171,6 +187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.1208234
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927873752519874114, guid: f9f8c720520cd4746ae16abb56ea5f79,
+        type: 3}
+      propertyPath: m_Name
+      value: Curtain_A
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f8c720520cd4746ae16abb56ea5f79, type: 3}
@@ -262,11 +283,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9135273314153920815}
     m_Modifications:
-    - target: {fileID: 7311449982416925924, guid: f5716f0cf2959554f946def852b58000,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_G
-      objectReference: {fileID: 0}
     - target: {fileID: 7311449982416496836, guid: f5716f0cf2959554f946def852b58000,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -321,6 +337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311449982416925924, guid: f5716f0cf2959554f946def852b58000,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_G
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5716f0cf2959554f946def852b58000, type: 3}

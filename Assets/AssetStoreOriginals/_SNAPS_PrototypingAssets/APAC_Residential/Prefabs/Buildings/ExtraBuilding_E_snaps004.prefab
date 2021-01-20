@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4781070105950737515}
   - component: {fileID: 2558429213309347167}
   - component: {fileID: 3050205466754441898}
+  - component: {fileID: 4344919506040932017}
   m_Layer: 0
   m_Name: ExtraBuilding_E_snaps004
   m_TagString: Untagged
@@ -59,6 +60,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -70,6 +73,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -82,6 +86,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &3050205466754441898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95,6 +100,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3834279, y: 3.672902, z: 3.2980442}
   m_Center: {x: -0.98198974, y: 1.8418903, z: -1.4191136}
+--- !u!208 &4344919506040932017
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7523002498269289405}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5740001, y: 1.8360001, z: 2.0370002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.1550001, y: 1.8420001, z: -1.7090001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1651245366872472515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -357,11 +378,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7339496368496016658}
     m_Modifications:
-    - target: {fileID: 7311449982416925924, guid: f5716f0cf2959554f946def852b58000,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_G
-      objectReference: {fileID: 0}
     - target: {fileID: 7311449982416496836, guid: f5716f0cf2959554f946def852b58000,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -431,6 +447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.72000027
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311449982416925924, guid: f5716f0cf2959554f946def852b58000,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_G
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5716f0cf2959554f946def852b58000, type: 3}

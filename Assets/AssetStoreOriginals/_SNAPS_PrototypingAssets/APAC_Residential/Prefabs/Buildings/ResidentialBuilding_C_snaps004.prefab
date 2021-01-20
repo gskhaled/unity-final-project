@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6862761623276610639}
   - component: {fileID: 3648987284460497064}
   - component: {fileID: 8615076664511084197}
+  - component: {fileID: 2732504430152030679}
   m_Layer: 0
   m_Name: ResidentialBuilding_C_snaps004
   m_TagString: Untagged
@@ -147,6 +148,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -162,6 +165,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -174,6 +178,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8615076664511084197
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -184,10 +189,26 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 0e09f6650ad23124883387aac6024388, type: 2}
+--- !u!208 &2732504430152030679
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815251867950064346}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.7200003, y: 3.9240003, z: 8.314}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 4.4560003, y: 3.9240003, z: -7.9750004}
+  m_TimeToStationary: 0.5
 --- !u!1001 &4886490100151458966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -270,11 +291,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -329,6 +345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -510,11 +531,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -569,6 +585,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -745,11 +766,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004 (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -820,6 +836,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7500005
       objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004 (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
 --- !u!4 &9028635362909856203 stripped
@@ -835,11 +856,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 3256480974863363194, guid: c027b725d986e2947a6b6086ee6e5cc0,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_Wood_Frame_07_Snaps004 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 3256480974863331418, guid: c027b725d986e2947a6b6086ee6e5cc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -894,6 +910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256480974863363194, guid: c027b725d986e2947a6b6086ee6e5cc0,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_Wood_Frame_07_Snaps004 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c027b725d986e2947a6b6086ee6e5cc0, type: 3}
@@ -985,11 +1006,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4776080957142046847, guid: f9636d7dc17b49e4d977ddf6f724f21c,
-        type: 3}
-      propertyPath: m_Name
-      value: ExtraBuilding_C_Snaps004
-      objectReference: {fileID: 0}
     - target: {fileID: 258359642605565774, guid: f9636d7dc17b49e4d977ddf6f724f21c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1060,6 +1076,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4776080957142046847, guid: f9636d7dc17b49e4d977ddf6f724f21c,
+        type: 3}
+      propertyPath: m_Name
+      value: ExtraBuilding_C_Snaps004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9636d7dc17b49e4d977ddf6f724f21c, type: 3}
 --- !u!4 &6491131344265596851 stripped
@@ -1075,11 +1096,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 5927873752519874114, guid: f9f8c720520cd4746ae16abb56ea5f79,
-        type: 3}
-      propertyPath: m_Name
-      value: Curtain_A_Snaps004 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5927873752519445090, guid: f9f8c720520cd4746ae16abb56ea5f79,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1134,6 +1150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927873752519874114, guid: f9f8c720520cd4746ae16abb56ea5f79,
+        type: 3}
+      propertyPath: m_Name
+      value: Curtain_A_Snaps004 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f8c720520cd4746ae16abb56ea5f79, type: 3}
@@ -1315,11 +1336,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (23)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1374,6 +1390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (23)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -1555,11 +1576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1625,6 +1641,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.9824134
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (8)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307161287544515 stripped
@@ -1640,11 +1661,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (20)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1700,6 +1716,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (20)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307161318544544 stripped
@@ -1715,11 +1736,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004 (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1789,6 +1805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004 (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
@@ -1880,11 +1901,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (26)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1950,6 +1966,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.9964022
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (26)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307161355571615 stripped
@@ -1965,11 +1986,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (22)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2030,6 +2046,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.01
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (22)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307161382299092 stripped
@@ -2045,11 +2066,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004 (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2120,6 +2136,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7500004
       objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004 (8)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
 --- !u!4 &9028635362460748893 stripped
@@ -2135,11 +2156,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004 (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2210,6 +2226,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7500004
       objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004 (7)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
 --- !u!4 &9028635362666891064 stripped
@@ -2225,11 +2246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 5381951206114946734, guid: f911aa7a4a0cd4940b107ff224de453c,
-        type: 3}
-      propertyPath: m_Name
-      value: Door_Fence_A_Snaps004 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5381951206114521742, guid: f911aa7a4a0cd4940b107ff224de453c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2285,6 +2301,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5381951206114946734, guid: f911aa7a4a0cd4940b107ff224de453c,
+        type: 3}
+      propertyPath: m_Name
+      value: Door_Fence_A_Snaps004 (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f911aa7a4a0cd4940b107ff224de453c, type: 3}
 --- !u!4 &1382685566629446655 stripped
@@ -2300,11 +2321,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 3256480974863363194, guid: c027b725d986e2947a6b6086ee6e5cc0,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_Wood_Frame_07_Snaps004
-      objectReference: {fileID: 0}
     - target: {fileID: 3256480974863331418, guid: c027b725d986e2947a6b6086ee6e5cc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2360,6 +2376,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3256480974863363194, guid: c027b725d986e2947a6b6086ee6e5cc0,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_Wood_Frame_07_Snaps004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c027b725d986e2947a6b6086ee6e5cc0, type: 3}
 --- !u!4 &8408670309553956196 stripped
@@ -2375,11 +2396,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 1756398070644737960, guid: afa8169f1626c164396115563a90f42f,
-        type: 3}
-      propertyPath: m_Name
-      value: Door_A_Snaps004 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 1756398070644448136, guid: afa8169f1626c164396115563a90f42f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2434,6 +2450,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756398070644737960, guid: afa8169f1626c164396115563a90f42f,
+        type: 3}
+      propertyPath: m_Name
+      value: Door_A_Snaps004 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa8169f1626c164396115563a90f42f, type: 3}
@@ -2600,11 +2621,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (25)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2665,6 +2681,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.851
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (25)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307162154784525 stripped
@@ -2680,11 +2701,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2744,6 +2760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.909
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -2915,11 +2936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2984,6 +3000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.98517036
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -3165,11 +3186,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (11)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3224,6 +3240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -3405,11 +3426,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (19)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3475,6 +3491,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.995
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (19)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307162067595775 stripped
@@ -3490,11 +3511,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (12)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3549,6 +3565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -4075,11 +4096,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 5927873752519874114, guid: f9f8c720520cd4746ae16abb56ea5f79,
-        type: 3}
-      propertyPath: m_Name
-      value: Curtain_A_Snaps004
-      objectReference: {fileID: 0}
     - target: {fileID: 5927873752519445090, guid: f9f8c720520cd4746ae16abb56ea5f79,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4135,6 +4151,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5927873752519874114, guid: f9f8c720520cd4746ae16abb56ea5f79,
+        type: 3}
+      propertyPath: m_Name
+      value: Curtain_A_Snaps004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f8c720520cd4746ae16abb56ea5f79, type: 3}
 --- !u!4 &848023547740850575 stripped
@@ -4150,11 +4171,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (16)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4210,6 +4226,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (16)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307161679625695 stripped
@@ -4225,11 +4246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (17)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4285,6 +4301,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (17)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307161673402803 stripped
@@ -4300,11 +4321,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4365,6 +4381,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.909
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307161711590075 stripped
@@ -4380,11 +4401,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (21)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4439,6 +4455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (21)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -4540,11 +4561,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4615,6 +4631,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
 --- !u!4 &9028635361708536789 stripped
@@ -4630,11 +4651,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 5381951206114946734, guid: f911aa7a4a0cd4940b107ff224de453c,
-        type: 3}
-      propertyPath: m_Name
-      value: Door_Fence_A_Snaps004
-      objectReference: {fileID: 0}
     - target: {fileID: 5381951206114521742, guid: f911aa7a4a0cd4940b107ff224de453c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4689,6 +4705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381951206114946734, guid: f911aa7a4a0cd4940b107ff224de453c,
+        type: 3}
+      propertyPath: m_Name
+      value: Door_Fence_A_Snaps004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f911aa7a4a0cd4940b107ff224de453c, type: 3}
@@ -4795,11 +4816,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4864,6 +4880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.9941818
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -5045,11 +5066,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004 (10)
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5120,6 +5136,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7665
       objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004 (10)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
 --- !u!4 &9028635361431014710 stripped
@@ -5135,11 +5156,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 1756398070644737960, guid: afa8169f1626c164396115563a90f42f,
-        type: 3}
-      propertyPath: m_Name
-      value: Door_A_Snaps004
-      objectReference: {fileID: 0}
     - target: {fileID: 1756398070644448136, guid: afa8169f1626c164396115563a90f42f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5195,6 +5211,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1756398070644737960, guid: afa8169f1626c164396115563a90f42f,
+        type: 3}
+      propertyPath: m_Name
+      value: Door_A_Snaps004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa8169f1626c164396115563a90f42f, type: 3}
 --- !u!4 &4746578039640488894 stripped
@@ -5210,11 +5231,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (27)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5279,6 +5295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.9845886
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (27)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -5370,11 +5391,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5444,6 +5460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.762
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
@@ -5805,11 +5826,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_F_Snaps004 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 2651750672276979855, guid: 1ce03bd7ec4551446a30f86e93ab8175,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5880,6 +5896,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7500005
       objectReference: {fileID: 0}
+    - target: {fileID: 2651750672277347503, guid: 1ce03bd7ec4551446a30f86e93ab8175,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_F_Snaps004 (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce03bd7ec4551446a30f86e93ab8175, type: 3}
 --- !u!4 &9028635362285589357 stripped
@@ -5895,11 +5916,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5954,6 +5970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -6460,11 +6481,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (18)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6525,6 +6541,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.851
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (18)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307160932199550 stripped
@@ -6540,11 +6561,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6605,6 +6621,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.909
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307160920124178 stripped
@@ -6620,11 +6641,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6679,6 +6695,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -6935,11 +6956,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (28)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7004,6 +7020,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.98756915
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (28)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -7265,11 +7286,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (24)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7325,6 +7341,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (24)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
 --- !u!4 &2076307160665239299 stripped
@@ -7340,11 +7361,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
-        type: 3}
-      propertyPath: m_Name
-      value: Windows_C_Snaps004 (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 4994570558225074959, guid: 6e450cdaa124c1f4cb05773321267be3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7399,6 +7415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994570558225438511, guid: 6e450cdaa124c1f4cb05773321267be3,
+        type: 3}
+      propertyPath: m_Name
+      value: Windows_C_Snaps004 (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e450cdaa124c1f4cb05773321267be3, type: 3}
@@ -7580,11 +7601,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7676769207333616887}
     m_Modifications:
-    - target: {fileID: 4776080957142046847, guid: f9636d7dc17b49e4d977ddf6f724f21c,
-        type: 3}
-      propertyPath: m_Name
-      value: ExtraBuilding_C_Snaps004 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 258359642605565774, guid: f9636d7dc17b49e4d977ddf6f724f21c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7654,6 +7670,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776080957142046847, guid: f9636d7dc17b49e4d977ddf6f724f21c,
+        type: 3}
+      propertyPath: m_Name
+      value: ExtraBuilding_C_Snaps004 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9636d7dc17b49e4d977ddf6f724f21c, type: 3}
