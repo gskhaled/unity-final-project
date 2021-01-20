@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -69,22 +68,24 @@ public class TankLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (Vector3.Distance(player.position, transform.position) <= sightRange && isInFront())
+            if (isInLineOfSight() && isInFront() && !isDistracted)
             {
-                //transform.LookAt(player.position);
-                Vector3 distVector = player.position - transform.position;
-                distVector.y = 0;
-                Quaternion angle = Quaternion.LookRotation(distVector);
-                transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
+               
+                    Vector3 distVector = player.position - transform.position;
+                    distVector.y = 0;
+                    Quaternion angle = Quaternion.LookRotation(distVector);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
 
-                playerInSightRange = true;
+                    playerInSightRange = true;
 
-                if (Vector3.Distance(player.position, transform.position) <= attackRange)
-                {
-                    playerInAttackRange = true;
-                }
-                else
-                    playerInAttackRange = false;
+
+                    if (Vector3.Distance(player.position, transform.position) <= attackRange)
+                    {
+                        playerInAttackRange = true;
+                    }
+                    else
+                        playerInAttackRange = false;
+                
             }
             else
                 playerInAttackRange = false;
@@ -227,16 +228,14 @@ public class TankLogic : MonoBehaviour
             isHit = true;
             agent.SetDestination(transform.position);
             animator.SetTrigger("damage");
-            StartCoroutine("DamageEnded");
+            Invoke(nameof(DamageEnded), 1f);
 
         }
 
     }
 
-    private IEnumerator DamageEnded()
+    private void DamageEnded()
     {
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-            yield return null;
         isHit = false;
         playerInSightRange = true;
     }
