@@ -68,7 +68,7 @@ public class TankLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (isInLineOfSight() && isInFront())
+            if (isInLineOfSight() && isInFront() && !isDistracted)
             {
                
                     Vector3 distVector = player.position - transform.position;
