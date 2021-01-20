@@ -25,7 +25,7 @@ public class Laser : MonoBehaviour
     {
         if (agent.gameObject.CompareTag("Charger"))
         {
-            if (agent.hasPath && laserHit != null)
+            if ( laserHit != null)
             {
                 if (first)
                 {
@@ -45,7 +45,7 @@ public class Laser : MonoBehaviour
         }
         else
         {
-            if (agent.hasPath && laserHit != null)
+            if ( laserHit != null)
             {
                
                 lineRenderer.SetPosition(0, transform.position);
