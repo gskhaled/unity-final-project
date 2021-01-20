@@ -26,9 +26,8 @@ public class ChargerLogic : MonoBehaviour
 
     //States
     float sightRange = 10f;
-    float attackRange = 2f;
     float firingRange = 20f;
-    bool playerInSightRange, playerInAttackRange, playerIsFiring;
+    bool playerInSightRange, playerIsFiring;
     bool isDead = false;
     bool isHit = false;
     bool isDistracted = false;
@@ -76,7 +75,7 @@ public class ChargerLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (isInLineOfSight() && isInFront() && chargeEnded)
+            if (isInLineOfSight() && isInFront() && chargeEnded && !isDistracted)
             {
                 
                         Vector3 distVector = player.position - transform.position;
