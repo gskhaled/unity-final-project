@@ -72,7 +72,7 @@ public class NormalLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (isInLineOfSight() && isInFront())
+            if (isInLineOfSight() && isInFront() && !isDistracted)
             {
                     Vector3 distVector = player.position - transform.position;
                     distVector.y = 0;
@@ -92,7 +92,6 @@ public class NormalLogic : MonoBehaviour
             else
                 playerInAttackRange = false;
 
-           
 
             /*  if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
                   playerIsFiring = true;
