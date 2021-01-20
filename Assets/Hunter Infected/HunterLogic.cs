@@ -58,7 +58,6 @@ public class HunterLogic : MonoBehaviour
         // dieClip = transform.GetChild(3).GetComponent<AudioSource>();
         // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
-        Invoke(nameof(Die), 20f);
      }
 
     private void Awake()
