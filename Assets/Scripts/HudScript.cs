@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HudScript : MonoBehaviour
 {
+    public playerHealth healthAndRageScript;
     public Scrollbar healthBar;
     public Material healthBarMaterial;
     public Text healthText;
@@ -123,6 +124,7 @@ public class HudScript : MonoBehaviour
 
     void health()
     {
+        myHealth = healthAndRageScript.healthValue();
         healthText.text = "" + myHealth;
         healthBar.size = (float)myHealth / 300;
         if (healthBar.size <= 0.35)
@@ -135,6 +137,7 @@ public class HudScript : MonoBehaviour
 
     void Rage()
     {
+        myRage = healthAndRageScript.rageMeterNumber();
         rageText.text = "" + myRage;
         rageBar.size = (float)myRage / 100;
         if (rageBar.size == 1)
