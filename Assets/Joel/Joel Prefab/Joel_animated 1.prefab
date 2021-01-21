@@ -1860,6 +1860,19 @@ Transform:
   m_Father: {fileID: 7299039725874149585}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7870696337735880160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060304253393973427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3d53191c7f1a4459884c98b046b396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 8399204871386440037}
 --- !u!1 &7060304253832586236
 GameObject:
   m_ObjectHideFlags: 0
@@ -3989,19 +4002,6 @@ Transform:
   m_Father: {fileID: 3946562830171410162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7870696337735880160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7060304253393973427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3d53191c7f1a4459884c98b046b396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: {fileID: 8399204871386440037}
 --- !u!1 &8907420430764790166
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,7 +4198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FPSCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7870696338104038034}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4b9c50ae373bfe418b13e9316aea10b, type: 3}
 --- !u!4 &5308794876211533840 stripped
@@ -4288,7 +4288,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FPSCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7870696338104038034}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b942692f04a944440afb12a56755ab71, type: 3}
 --- !u!4 &2511042670063592134 stripped
@@ -4308,7 +4308,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FPSCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7870696338104038034}
     - target: {fileID: 1810891001755388135, guid: f1ebb365794d15748b75e33ac2100e76,
         type: 3}
       propertyPath: animator
@@ -4398,7 +4398,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FPSCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7870696338104038034}
     - target: {fileID: 5791886884329025932, guid: 2d3d5458521982a45834a86a0f875ebe,
         type: 3}
       propertyPath: animator
@@ -4488,7 +4488,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FPSCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7870696338104038034}
     - target: {fileID: 5367568412102229012, guid: 14e99c674305960478d4ccaa3dfc02a5,
         type: 3}
       propertyPath: animator
