@@ -9,7 +9,8 @@ public class NormalLogic : MonoBehaviour
     Transform player;
     Animator animator;
     Laser laser;
-   
+    AudioSource runClip;
+
     //Patroling
     Vector3 walkPoint;
     bool walkPointSet;
@@ -30,6 +31,8 @@ public class NormalLogic : MonoBehaviour
     bool isDistracted = false;
     bool isStunned = false;
 
+    
+
 
     //Health 
     int health = 50;
@@ -44,6 +47,7 @@ public class NormalLogic : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Joel").transform;
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
+        runClip = transform.GetChild(2).GetComponent<AudioSource>();
        // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
     }
@@ -58,7 +62,7 @@ public class NormalLogic : MonoBehaviour
     {
         if (!isDead)
         {
-            
+          
             if (!playerInSightRange && !playerInAttackRange && !isDistracted && !isHit )
                 {
                     if (walkPointSet) Patroling();
@@ -68,27 +72,26 @@ public class NormalLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (Vector3.Distance(player.position, transform.position) <= sightRange && isInFront())
+            if (isInLineOfSight() && isInFront() && !isDistracted)
             {
-                //transform.LookAt(player.position);
-                Vector3 distVector = player.position - transform.position;
-                distVector.y = 0;
-                Quaternion angle = Quaternion.LookRotation(distVector);
-                transform.rotation = Quaternion.Slerp(transform.rotation,angle, Time.deltaTime * agent.speed);
+                    Vector3 distVector = player.position - transform.position;
+                    distVector.y = 0;
+                    Quaternion angle = Quaternion.LookRotation(distVector);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
 
-                playerInSightRange = true;
+                    playerInSightRange = true;
 
-                if (Vector3.Distance(player.position, transform.position) <= attackRange)
-                {
-                    playerInAttackRange = true;
-                }
-                else
-                    playerInAttackRange = false;
+                    if (Vector3.Distance(player.position, transform.position) <= attackRange)
+                    {
+                        playerInAttackRange = true;
+                    }
+                    else
+                        playerInAttackRange = false;
+                
             }
             else
                 playerInAttackRange = false;
 
-           
 
             /*  if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
                   playerIsFiring = true;
@@ -156,6 +159,8 @@ public class NormalLogic : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if(!runClip.isPlaying)
+           runClip.PlayOneShot(runClip.clip);
         animator.SetBool("walking", false);
         animator.SetBool("chasing", true);
         if (isStunned)
@@ -226,16 +231,14 @@ public class NormalLogic : MonoBehaviour
             isHit = true;
             agent.SetDestination(transform.position);
             animator.SetTrigger("damage");
-            StartCoroutine("DamageEnded");
+            Invoke(nameof(DamageEnded), 2f);
 
         }
        
     }    
    
-    private IEnumerator DamageEnded()
+    private void DamageEnded()
     {
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-            yield return null;
         isHit = false;
         playerInSightRange = true;
     }

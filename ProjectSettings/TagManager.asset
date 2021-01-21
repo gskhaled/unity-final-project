@@ -25,6 +25,10 @@ TagManager:
   - Weapon SMG
   - Consumable Helath Pack
   - Consumable Ammo
+  - Charger
+  - Hunter
+  - Head
+  - TENSE MUSIC
   layers:
   - Default
   - TransparentFX

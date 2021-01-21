@@ -26,15 +26,54 @@ public class PipeBomb : MonoBehaviour
     {
         // Distract nearby infected
         Collider[] nearBy = Physics.OverlapSphere(transform.position, explosionRadius);
-        /*foreach (Collider obj in nearBy)
+        foreach (Collider obj in nearBy)
         {
-            Infected infected = obj.GetComponent<Infected>();
-            if (infected != null)
+            string tag = obj.tag;
+            Debug.Log(tag);
+            switch (tag)
             {
-                infected.Distract(transform.position);
+                case "Normal":
+                    {
+                        NormalLogic target = obj.GetComponent<NormalLogic>();
+                        if (target != null)
+                        {
+                            target.Distract(transform);
+                        }
+                        break;
+                    }
+                case "Charger":
+                    {
+                        ChargerLogic target = obj.GetComponent<ChargerLogic>();
+                        if (target != null)
+                        {
+                            target.Distract(transform);
+                        }
+                        break;
+                    }
+                case "Tank":
+                    {
+                        TankLogic target = obj.GetComponent<TankLogic>();
+                        if (target != null)
+                        {
+                            target.Distract(transform);
+                        }
+                        break;
+                    }
+                case "Hunter":
+                    {
+                        HunterLogic target = obj.GetComponent<HunterLogic>();
+                        if (target != null)
+                        {
+                            target.Distract(transform);
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
             }
-        }*/
-
+        }
         // Play explosion sounds for duration time
         while (duration > 0)
         {

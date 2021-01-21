@@ -26,6 +26,9 @@ public class BombThrower : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         if (Input.GetMouseButtonDown(1) && bombNames.Count != 0)
         {
             ThrowBomb();
