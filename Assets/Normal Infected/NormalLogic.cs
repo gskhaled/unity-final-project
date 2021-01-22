@@ -141,7 +141,6 @@ public class NormalLogic : MonoBehaviour
     private void Patroling()
     {
         animator.speed = 1f;
-        animator.SetBool("chasing", false);
         animator.SetBool("walking", true);
         laser.laserHit = null;
         agent.speed = 0.5f;
