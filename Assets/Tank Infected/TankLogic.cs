@@ -10,7 +10,8 @@ public class TankLogic : MonoBehaviour
     Laser laser;
     AudioSource runClip;
     AudioSource dieClip;
-
+    playerHealth healthComponent;
+    WeaponSwitching weaponHolder;
     //Patroling
     Vector3 walkPoint;
     bool walkPointSet;
@@ -43,7 +44,10 @@ public class TankLogic : MonoBehaviour
         randomDirection = Random.Range(0, 2);
         attackRange = randomDirection == 0 ? 1.5f : 1.7f;
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
         runClip = transform.GetChild(3).GetComponent<AudioSource>();
@@ -55,7 +59,10 @@ public class TankLogic : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
     }
 
     private void Update()
@@ -97,10 +104,14 @@ public class TankLogic : MonoBehaviour
 
 
 
-            /*  if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                  playerIsFiring = true;
-              else
-                  playerIsFiring = false;*/
+            if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+            {
+                Gun currWeapon = weaponHolder.getCurrentGun();
+                if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                    playerIsFiring = true;
+            }
+            else
+                playerIsFiring = false;
 
 
             if (((playerInSightRange && !playerInAttackRange) || playerIsFiring) && !isDistracted && !isHit) ChasePlayer();
@@ -207,7 +218,7 @@ public class TankLogic : MonoBehaviour
 
             alreadyAttacked = true;
             // CALL A METHOD TO APPLY DAMAGE TO JOEL !!!
-            // playerScript.applyDamage(30);
+            healthComponent.applyDamage(30);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 
