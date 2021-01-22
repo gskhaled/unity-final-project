@@ -54,8 +54,8 @@ public class HunterLogic : MonoBehaviour
         head = GameObject.FindGameObjectWithTag("Head").transform;
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
-        //leapClip = transform.GetChild(2).GetComponent<AudioSource>();
-        // dieClip = transform.GetChild(3).GetComponent<AudioSource>();
+        leapClip = transform.GetChild(2).GetComponent<AudioSource>();
+        dieClip = transform.GetChild(3).GetComponent<AudioSource>();
         // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
      }
@@ -186,10 +186,9 @@ public class HunterLogic : MonoBehaviour
 
     private void StartLeap(Transform leapPos)
     {
-        //if (!runClip.isPlaying)
-        //  runClip.PlayOneShot(runClip.clip);
         if (firstTime)
         {
+           
             agent.SetDestination(transform.position);
             animator.SetBool("walking", false);
             animator.SetBool("leaping", true);
@@ -215,6 +214,8 @@ public class HunterLogic : MonoBehaviour
     }
     private void LeapAttack(Transform leapPos)
     {
+        if(!leapClip.isPlaying)
+            leapClip.PlayOneShot(leapClip.clip);
         transform.LookAt(leapPos);
         Vector3 center = (agent.transform.position + leapPos.position) * 0.5f;
         center -= Vector3.up;
@@ -324,6 +325,7 @@ public class HunterLogic : MonoBehaviour
 
     private void Die()
     {
+        dieClip.PlayOneShot(dieClip.clip);
         isDead = true;
         animator.speed = 1f;
         CancelInvoke(nameof(ApplyDamage));

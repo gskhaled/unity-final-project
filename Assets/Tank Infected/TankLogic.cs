@@ -8,6 +8,8 @@ public class TankLogic : MonoBehaviour
     Transform player;
     Animator animator;
     Laser laser;
+    AudioSource runClip;
+    AudioSource dieClip;
 
     //Patroling
     Vector3 walkPoint;
@@ -44,6 +46,8 @@ public class TankLogic : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Joel").transform;
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
+        runClip = transform.GetChild(3).GetComponent<AudioSource>();
+        dieClip = transform.GetChild(4).GetComponent<AudioSource>();
         // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
     }
@@ -81,6 +85,7 @@ public class TankLogic : MonoBehaviour
 
                     if (Vector3.Distance(player.position, transform.position) <= attackRange)
                     {
+                    agent.SetDestination(transform.position);
                         playerInAttackRange = true;
                     }
                     else
@@ -158,6 +163,9 @@ public class TankLogic : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if (!runClip.isPlaying)
+            runClip.PlayOneShot(runClip.clip);
+
         animator.SetBool("walking", false);
         animator.SetBool("chasing", true);
         if (isStunned)
@@ -273,7 +281,8 @@ public class TankLogic : MonoBehaviour
     }
 
     private void Die()
-    {
+    {   
+        dieClip.PlayOneShot(dieClip.clip);
         isDead = true;
         animator.speed = 1f;
         agent.SetDestination(transform.position);
