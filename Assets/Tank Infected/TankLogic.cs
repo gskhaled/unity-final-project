@@ -81,6 +81,7 @@ public class TankLogic : MonoBehaviour
 
                     if (Vector3.Distance(player.position, transform.position) <= attackRange)
                     {
+                    agent.SetDestination(transform.position);
                         playerInAttackRange = true;
                     }
                     else
