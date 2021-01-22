@@ -7,6 +7,9 @@ public class ChargerLogic : MonoBehaviour
     NavMeshAgent agent;
     Transform player;
     Transform oldPlayer;
+    playerHealth healthComponent;
+    WeaponSwitching weaponHolder;
+
     Animator animator;
     Laser laser;
     AudioSource runClip;
@@ -44,7 +47,11 @@ public class ChargerLogic : MonoBehaviour
     {
         randomDirection = Random.Range(0, 2);
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
+
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
         runClip = transform.GetChild(2).GetComponent<AudioSource>();
@@ -56,7 +63,9 @@ public class ChargerLogic : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
     }
 
     private void Update()
@@ -85,9 +94,10 @@ public class ChargerLogic : MonoBehaviour
             }
             else playerInSightRange = false;
 
-            /*  if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                  playerIsFiring = true;
-              else
+            Gun currWeapon = weaponHolder.getCurrentGun();
+            if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                playerIsFiring = true;
+  /*          else
                   playerIsFiring = false;*/
 
 
@@ -200,7 +210,10 @@ public class ChargerLogic : MonoBehaviour
         if (Vector3.Distance(player.position, transform.position) <= attackRange)
         {
             ///PIN DOWN JOEL !!! 
-            /// APPLY DAMAGE ON JOEL 
+            healthComponent.pinDown();
+            /// APPLY DAMAGE ON JOEL
+            healthComponent.applyDamage(75);
+
             if (walkPointSet) Patroling();
             else SearchWalkPoint();
 

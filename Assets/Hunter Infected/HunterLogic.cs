@@ -14,6 +14,8 @@ public class HunterLogic : MonoBehaviour
     Laser laser;
     AudioSource leapClip;
     AudioSource dieClip;
+    playerHealth healthComponent;
+    WeaponSwitching weaponHolder;
 
     //Patroling
     Vector3 walkPoint;
@@ -50,7 +52,10 @@ public class HunterLogic : MonoBehaviour
         randomDirection = Random.Range(0, 2);
         agent = GetComponent<NavMeshAgent>();
         rb = transform.gameObject.GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
         head = GameObject.FindGameObjectWithTag("Head").transform;
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
@@ -63,7 +68,10 @@ public class HunterLogic : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
         head = GameObject.FindGameObjectWithTag("Head").transform;
     }
 
@@ -104,10 +112,14 @@ public class HunterLogic : MonoBehaviour
             }
 
 
-            /*  if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                  playerIsFiring = true;
-              else
-                  playerIsFiring = false;*/
+            if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+            {
+                Gun currWeapon = weaponHolder.getCurrentGun();
+                if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                    playerIsFiring = true;
+            }
+            else
+                playerIsFiring = false;
 
             if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !collided)
             {
@@ -337,9 +349,11 @@ public class HunterLogic : MonoBehaviour
 
     private void ApplyDamage()
     {
-        
-       ///Apply damage on Joel here !!!   
-        
+
+        ///Apply damage on Joel here !!!
+        healthComponent.applyDamage(10);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -350,6 +364,8 @@ public class HunterLogic : MonoBehaviour
             isLeaping = false;
             firstTime = true;
             //PIN DOWN JOEL !!!
+            healthComponent.pinDown();
+
             InvokeRepeating(nameof(ApplyDamage), 0, 1);
             AttackPlayer();
         }
