@@ -8,6 +8,7 @@ public class NormalLogic : MonoBehaviour
     NavMeshAgent agent;
     Transform player;
     playerHealth healthComponent;
+    WeaponSwitching weaponHolder;
     Animator animator;
     Laser laser;
     AudioSource runClip;
@@ -48,6 +49,7 @@ public class NormalLogic : MonoBehaviour
         GameObject joel = GameObject.FindGameObjectWithTag("Joel");
         player = joel.transform;
         healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
         runClip = transform.GetChild(2).GetComponent<AudioSource>();
@@ -98,10 +100,14 @@ public class NormalLogic : MonoBehaviour
                 playerInAttackRange = false;
 
 
-            /*  if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                  playerIsFiring = true;
-              else
-                  playerIsFiring = false;*/
+            if (Vector3.Distance(player.position, transform.position) <= firingRange)
+            {
+                Gun currWeapon = weaponHolder.getCurrentGun();
+                if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                    playerIsFiring = true;
+                else
+                    playerIsFiring = false;
+            }
 
 
             if (((playerInSightRange && !playerInAttackRange) || playerIsFiring) && !isDistracted && !isHit) ChasePlayer();

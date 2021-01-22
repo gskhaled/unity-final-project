@@ -47538,6 +47538,7 @@ MonoBehaviour:
   BombThrowerScript: {fileID: 1349986221}
   BombName: {fileID: 257051778}
   pauseCanvas: {fileID: 5121511}
+  gameOverCanvas: {fileID: 1671915462}
   levelName: {fileID: 1358549873}
   rageBar: {fileID: 187209426}
   rageText: {fileID: 1294310825}
@@ -76095,7 +76096,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.68e-43, y: 1.39e-43, z: 0, w: -2.8579044}
+  m_BoundingSphereOverride: {x: 0, y: 7.8e-44, z: 7.592e-42, w: 1.04e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -128254,7 +128255,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1942708404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 783357500}
+        m_TargetAssemblyTypeName: HudScript, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1942708404
 MonoBehaviour:
   m_ObjectHideFlags: 0
