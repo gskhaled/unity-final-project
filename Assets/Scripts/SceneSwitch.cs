@@ -8,7 +8,7 @@ public class SceneSwitch : MonoBehaviour
     public void GoToLevel1()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Scenes/OfficeScene_test");
+        SceneManager.LoadScene("Scenes/OfficeScene");
     }
 
     public void GoToLevel2()

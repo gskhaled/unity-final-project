@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HudScript : MonoBehaviour
@@ -15,6 +16,7 @@ public class HudScript : MonoBehaviour
     public BombThrower BombThrowerScript;
     public Text BombName;
     public Canvas pauseCanvas;
+    public Canvas gameOverCanvas;
     public Text levelName;
 
     public Scrollbar rageBar;
@@ -133,6 +135,8 @@ public class HudScript : MonoBehaviour
         }
         else
             healthBarMaterial.color = new Color(0, 1, 0, 1);
+        if (myHealth <= 0)
+            GameOver();
     }
 
     void Rage()
@@ -159,6 +163,14 @@ public class HudScript : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    void GameOver()
+    {
+        gameOverCanvas.enabled = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+    }
+
     public void ResumeGame()
     {
         pauseCanvas.enabled = false;
@@ -166,9 +178,9 @@ public class HudScript : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void TimeScale0()
+    public void RestartLevel()
     {
-        Time.timeScale = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
-
 }
