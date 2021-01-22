@@ -235,8 +235,11 @@ public class CraftingScript : MonoBehaviour
     {
         UIcamera.enabled = true;
         HUDcanvas.enabled = false;
-        craftingCanvas.enabled = true;
-        Screen.lockCursor = false;
+        // craftingCanvas.enabled = true;
+        craftingCanvas.gameObject.SetActive(true);
+        // Screen.lockCursor = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0;
     }
 
@@ -244,8 +247,11 @@ public class CraftingScript : MonoBehaviour
     {
         HUDcanvas.enabled = true;
         UIcamera.enabled = false;
-        craftingCanvas.enabled = false;
-        Screen.lockCursor = true;
+        // craftingCanvas.enabled = false;
+        craftingCanvas.gameObject.SetActive(false);
+        // Screen.lockCursor = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1;
     }
 }

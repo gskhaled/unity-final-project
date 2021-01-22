@@ -7,6 +7,7 @@ public class NormalLogic : MonoBehaviour
 {
     NavMeshAgent agent;
     Transform player;
+    playerHealth healthComponent;
     Animator animator;
     Laser laser;
     AudioSource runClip;
@@ -44,7 +45,9 @@ public class NormalLogic : MonoBehaviour
     {
         randomDirection = Random.Range(0, 2);
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
         runClip = transform.GetChild(2).GetComponent<AudioSource>();
@@ -55,7 +58,9 @@ public class NormalLogic : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
     }
 
     private void Update()
@@ -209,6 +214,7 @@ public class NormalLogic : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Normal Attack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
         {
             // CALL A METHOD TO APPLY DAMAGE TO JOEL !!!
+            healthComponent.applyDamage((int)(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * animator.speed * 5));
             // playerScript.applyDamage(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * animator.speed * 5);
             Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * animator.speed * 5);
         }

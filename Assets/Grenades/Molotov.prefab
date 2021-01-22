@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 6679313980836997027}
-  explosionRadius: 1
+  explosionRadius: 3
   explosionSound: {fileID: 8547341976051752432}
 --- !u!1 &526805545107004386
 GameObject:
