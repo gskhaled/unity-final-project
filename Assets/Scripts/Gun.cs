@@ -53,7 +53,7 @@ public class Gun : MonoBehaviour
             }
             if (!isShotgun) // Shotgun is semi automatic!
             {
-                if (Input.GetButton("Fire1"))
+                if (Input.GetKey(KeyCode.Mouse0))
                 {
                     shooting = true;
 
@@ -70,7 +70,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     shooting = true;
 

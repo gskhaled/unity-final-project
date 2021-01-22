@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8275623771992709374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8275623771992709360}
+  - component: {fileID: 8275623771992709375}
+  m_Layer: 0
+  m_Name: CHEATS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8275623771992709360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275623771992709374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 85.547455, y: -66.916016, z: 0.37968826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8275623771992709375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275623771992709374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96d2c300d0df1043a46c636a0dfd97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalInfected: {fileID: 8026685747005238001, guid: c3ca878d7815f1c4a94be26b4ccd86d6,
+    type: 3}
+  specialInfected1: {fileID: 3522311532758060163, guid: d22555ec3bb39614d9a4d3d6907a3184,
+    type: 3}
+  specialInfected2: {fileID: 3404135466262097906, guid: 60991d74872ef5546827fd062a4ad7d6,
+    type: 3}
+  specialInfected3: {fileID: 2507008755189550982, guid: 562cac13cb4230e4796421783507531c,
+    type: 3}
+  specialInfected4: {fileID: 0}
+  player: {fileID: 0}
+  FPSCam: {fileID: 0}
+  healthPack: {fileID: 4119243502562695973, guid: 7d797d7afba3bdb4e9f32c41d3cd7a79,
+    type: 3}
+  ammoPack: {fileID: 8119442617262339441, guid: 52af2cc748ce91145afac5e860fdc161,
+    type: 3}
+  spawningRange: 10
+  hordeCount: 20
+  currentSceneIndex: 0

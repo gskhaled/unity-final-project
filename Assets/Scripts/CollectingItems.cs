@@ -192,6 +192,12 @@ public class CollectingItems : MonoBehaviour
 
     public void AddBomb(string name, Transform t)
     {
+        bool cheating = false;
+        if (name.Contains("cheat"))
+        {
+            name = name.Split()[0];
+            cheating = true;
+        }
         try
         {
             if (name.Equals("Molotov") && bombs["Molotov"] < 3)
@@ -201,7 +207,8 @@ public class CollectingItems : MonoBehaviour
                 if (t != null)
                     Destroy(t.gameObject);
                 else
-                    Recipe(name);
+                    if (!cheating)
+                        Recipe(name);
             }
             else if (name.Equals("PipeBomb") && bombs["PipeBomb"] < 2)
             {
@@ -210,7 +217,8 @@ public class CollectingItems : MonoBehaviour
                 if (t != null)
                     Destroy(t.gameObject);
                 else
-                    Recipe(name);
+                    if (!cheating)
+                        Recipe(name);
             }
             else if (name.Equals("StunGrenade") && bombs["StunGrenade"] < 2)
             {
@@ -219,7 +227,8 @@ public class CollectingItems : MonoBehaviour
                 if (t != null)
                     Destroy(t.gameObject);
                 else
-                    Recipe(name);
+                    if (!cheating)
+                        Recipe(name);
             }
             else if(name.Equals("Health Pack"))
             {
@@ -228,7 +237,8 @@ public class CollectingItems : MonoBehaviour
                 if (t != null)
                     Destroy(t.gameObject);
                 else
-                    Recipe(name);
+                    if (!cheating)
+                        Recipe(name);
             }
             else
             {
