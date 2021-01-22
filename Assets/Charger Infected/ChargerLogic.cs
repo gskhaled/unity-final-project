@@ -15,24 +15,24 @@ public class ChargerLogic : MonoBehaviour
     //Patroling
     Vector3 walkPoint;
     bool walkPointSet;
-    float walkPointTranslation = 7f;
+    float walkPointTranslation = 5f;
     int randomDirection;
 
     //Charging
-    bool chargeEnded = true;
-    bool checkedCharge = false;
-    bool pinningDown = false;
+    bool isCharging = false;
+    bool firstTime = true;
     float timeBetweenCharges = 5f;
+
 
     //States
     float sightRange = 10f;
     float firingRange = 20f;
+    float attackRange = 1f;
     bool playerInSightRange, playerIsFiring;
     bool isDead = false;
     bool isHit = false;
     bool isDistracted = false;
     bool isStunned = false;
-
 
     //Health 
     int health = 600;
@@ -51,8 +51,6 @@ public class ChargerLogic : MonoBehaviour
         dieClip = transform.GetChild(3).GetComponent<AudioSource>();
         // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
-        Stun();
-
     }
 
     private void Awake()
@@ -65,8 +63,8 @@ public class ChargerLogic : MonoBehaviour
     {
         if (!isDead)
         {
-            
-            if (!playerInSightRange  && !isDistracted && !isHit && chargeEnded)
+
+            if (!playerInSightRange && !isDistracted && !isHit && !isCharging)
             {
                 if (walkPointSet) Patroling();
                 else SearchWalkPoint();
@@ -75,14 +73,15 @@ public class ChargerLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (isInLineOfSight() && isInFront() && chargeEnded && !isDistracted)
+            if (isInLineOfSight() && isInFront() && !isDistracted && !isCharging)
             {
-                
-                        Vector3 distVector = player.position - transform.position;
-                        distVector.y = 0;
-                        Quaternion angle = Quaternion.LookRotation(distVector);
-                        transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
-                        playerInSightRange = true;
+
+                Vector3 distVector = player.position - transform.position;
+                distVector.y = 0;
+                Quaternion angle = Quaternion.LookRotation(distVector);
+                transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
+                playerInSightRange = true;
+
             }
             else playerInSightRange = false;
 
@@ -92,12 +91,22 @@ public class ChargerLogic : MonoBehaviour
                   playerIsFiring = false;*/
 
 
-            if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && chargeEnded) ChargeAtPlayer();
-            else if (!agent.hasPath && !chargeEnded && !checkedCharge &&!pinningDown && !isDistracted && !isHit ) CheckCharge();
-                
+            if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !isCharging) ChargeAtPlayer();
+            else if (!agent.hasPath && !isDistracted && !isHit && isCharging) CheckCharge();
+            else if (!agent.hasPath && isDistracted) StayIdle();
+               
+      
 
         }
 
+    }
+
+    private void StayIdle()
+    {
+        animator.speed = 1f;
+        animator.SetBool("charging", false);
+        animator.SetBool("walking", false);
+        animator.SetBool("idle", true);
 
     }
 
@@ -157,7 +166,8 @@ public class ChargerLogic : MonoBehaviour
     {
         if (!runClip.isPlaying)
             runClip.PlayOneShot(runClip.clip);
-        chargeEnded = false;
+
+        isCharging = true;
         animator.SetBool("walking", false);
         animator.SetBool("idle", false);
         animator.SetBool("charging", true);
@@ -179,25 +189,39 @@ public class ChargerLogic : MonoBehaviour
 
     private void CheckCharge()
     {
-        checkedCharge = true;
+        laser.laserHit = null;
         agent.SetDestination(transform.position);
-        animator.SetBool("charging", false);
-        animator.SetBool("walking", false);
-        if (pinningDown)
-           animator.SetTrigger("attacking");
+        if (firstTime)
+        {
+            firstTime = false;
+            Invoke(nameof(ResetCharge), timeBetweenCharges);
+        }
+
+        if (Vector3.Distance(player.position, transform.position) <= attackRange)
+        {
+            ///PIN DOWN JOEL !!! 
+            /// APPLY DAMAGE ON JOEL 
+            if (walkPointSet) Patroling();
+            else SearchWalkPoint();
+
+        }
         else
-           animator.SetBool("idle", true);
-        Invoke(nameof(ResetCharge), timeBetweenCharges);
+        {
+            StayIdle();
+        }
+      
     }
 
     private void ResetCharge()
     {
-        chargeEnded = true;
-        checkedCharge = false;
-        pinningDown = false;
+        isCharging = false;
+        firstTime = true;
     }
-    public void TakeDamage(int damage)
+
+
+    public void TakeDamage()
     {
+        int damage = 10;
         animator.speed = 1f;
         animator.SetBool("walking", false);
         animator.SetBool("charging", false);
@@ -228,15 +252,15 @@ public class ChargerLogic : MonoBehaviour
 
     public void Distract(Transform pipe)
     {
-        animator.speed = 1.5f;
-        agent.speed = 3f;
+        agent.speed = 10f;
+        animator.speed = 1f;
         isDistracted = true;
         animator.SetBool("walking", false);
         animator.SetBool("idle", false);
         animator.SetBool("charging", true);
         agent.SetDestination(pipe.position);
         laser.laserHit = pipe;
-        Invoke(nameof(DistractionEnded), 4f);
+        
     }
 
     private void DistractionEnded()
@@ -245,6 +269,7 @@ public class ChargerLogic : MonoBehaviour
         animator.SetBool("charging", false);
         isDistracted = false;
         laser.laserHit = null;
+        Invoke(nameof(DistractionEnded), 4f);
     }
 
     public void Stun()
@@ -260,6 +285,7 @@ public class ChargerLogic : MonoBehaviour
 
     private void Die()
     {
+        dieClip.PlayOneShot(dieClip.clip);
         isDead = true;
         animator.speed = 1f;
         agent.SetDestination(transform.position);
@@ -268,25 +294,12 @@ public class ChargerLogic : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
        
-        if (other.gameObject.CompareTag("Joel") && !pinningDown && !isDead && !isHit)
-        {
-            Debug.Log("collided");
-            pinningDown = true;
-            CheckCharge();
-            /// PIN DOWN JOEL !!!
-            /// APPLY 75 POINTS OF DAMAGE ON JOEL
-           
-        }
-
-        
            
     }
 
   
 
-}
+
 
 
