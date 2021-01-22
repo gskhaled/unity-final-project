@@ -30,7 +30,7 @@ public class TankLogic : MonoBehaviour
     bool isHit = false;
     bool isDistracted = false;
     bool isStunned = false;
-
+    
 
     //Health 
     int health = 1000;
@@ -41,7 +41,7 @@ public class TankLogic : MonoBehaviour
     private void Start()
     {
         randomDirection = Random.Range(0, 2);
-        attackRange = randomDirection == 0 ? 0.8f : 1.5f;
+        attackRange = randomDirection == 0 ? 1.5f : 1.7f;
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Joel").transform;
         animator = GetComponent<Animator>();
