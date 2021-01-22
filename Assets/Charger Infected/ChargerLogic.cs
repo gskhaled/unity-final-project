@@ -77,7 +77,7 @@ public class ChargerLogic : MonoBehaviour
             {
 
                 Vector3 distVector = player.position - transform.position;
-                distVector.y = 0;
+            //    distVector.y = 0;
                 Quaternion angle = Quaternion.LookRotation(distVector);
                 transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
                 playerInSightRange = true;

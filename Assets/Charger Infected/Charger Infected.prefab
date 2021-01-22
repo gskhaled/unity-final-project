@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 3404135466262097909}
   - component: {fileID: 4634965889392857781}
   m_Layer: 0
-  m_Name: Charger Infected 1
+  m_Name: Charger Infected
   m_TagString: Charger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,7 +788,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3404135466262097906}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 2.5
+  m_Radius: 1.28
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -797,9 +797,9 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 7.46
+  m_Height: 6.98
   m_BaseOffset: -0.18
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!54 &3404135466262097911
 Rigidbody:

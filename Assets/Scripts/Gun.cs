@@ -50,11 +50,15 @@ public class Gun : MonoBehaviour
                 StartCoroutine(Reload());
                 return;
             }
-            if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+            if (Input.GetButton("Fire1"))
             {
                 shooting = true;
-                nextTimeToFire = Time.time + (60f / fireRate);
-                Shoot();
+
+                if (Time.time >= nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + (60f / fireRate);
+                    Shoot();
+                }
             }
             else { 
                 shooting = false;
