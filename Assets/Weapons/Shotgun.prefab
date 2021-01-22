@@ -5220,7 +5220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e24d821e2b6504da54fe822af84043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  isShotgun: 1
+  damage: 250
   range: 100
   fireRate: 200
   maxMagazine: 10
@@ -5235,6 +5236,7 @@ MonoBehaviour:
   impactForce: 1
   shootingSound: {fileID: 631215152939783351}
   reloadingSound: {fileID: 7854749522084212747}
+  currentAmmo: 0
 --- !u!64 &2549716200111949739
 MeshCollider:
   m_ObjectHideFlags: 0
