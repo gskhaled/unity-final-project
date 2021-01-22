@@ -1,14 +1,19 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CompanionGun : MonoBehaviour
 {
+    public List<GameObject> currHitObjects = new List<GameObject>();
+
     public float sphereRadius;
     public float maxDistance;
     public LayerMask layerMask;
 
     private Vector3 origin;
     private Vector3 direction;
+
+    private float currentHitDistance;
 
     public float damage = 0f;
     public float range = 100f;
@@ -38,11 +43,37 @@ public class CompanionGun : MonoBehaviour
     }
     void Update()
     {
-       
+        origin = transform.position;
+        direction = transform.forward;
+        /*RaycastHit hit;
+
+        if(Physics.SphereCast(origin,sphereRadius,direction,out hit, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal))
+        {
+            currentHitObject = hit.transform.gameObject;
+            currentHitDistance = hit.distance;
+        }
+        else
+        {
+            currentHitDistance = maxDistance;
+            currentHitObject = null;
+        }*/
+        currentHitDistance = maxDistance;
+        currHitObjects.Clear();
+        RaycastHit[] hits = Physics.SphereCastAll(origin, sphereRadius, direction, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
+        foreach (RaycastHit hit in hits)
+        {
+            currHitObjects.Add(hit.transform.gameObject);
+            currentHitDistance = hit.distance;
+        }
     }
 
 
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(origin, origin + direction * currentHitDistance);
+        Gizmos.DrawWireSphere(origin + direction * currentHitDistance, sphereRadius);
+    }
 
 
 
