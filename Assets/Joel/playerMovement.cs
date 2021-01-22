@@ -428,7 +428,7 @@ public class playerMovement : MonoBehaviour
 
             //distance to check
 
-            if (dist < 2f)
+            if (dist < 10f)
 
             {
 
