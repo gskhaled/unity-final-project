@@ -2323,7 +2323,7 @@ GameObject:
   - component: {fileID: 7229859608347689599}
   - component: {fileID: 7535919465944284979}
   m_Layer: 0
-  m_Name: Tank Infected 1
+  m_Name: Tank Infected
   m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2415,7 +2415,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!120 &7229859608347689596
 LineRenderer:
