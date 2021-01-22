@@ -9,7 +9,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 
 {
-    float jumpVal = 0;
+
     bool walkingSoundBool = false;
 
     bool runningSoundBool = false;
@@ -24,10 +24,10 @@ public class playerMovement : MonoBehaviour
 
     public AudioSource audioSource;
 
-    //public AudioClip walking;
+    public AudioClip walking;
 
-    //public AudioClip running;
-    //public AudioClip alert;
+    public AudioClip running;
+    public AudioClip alert;
 
 
 
@@ -203,31 +203,17 @@ public class playerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
 
             {
+
                 animator.SetBool("jump", true);
-            }
-            if (Input.GetKey(KeyCode.Space))
-            {
-                if (jumpVal < 35f)
-                {
-                    Vector3 moveH = new Vector3(0, 4f, 0);
-                    jumpVal += moveH.y;
-                    controller.Move(moveH * Time.deltaTime);
-                }
 
-                if (animator.GetCurrentAnimatorStateInfo(2).IsName("jump"))
-
-                {
-                    animator.SetBool("jump", false);
-                }
             }
-            
+
             if (Input.GetKeyUp(KeyCode.Space))
 
             {
-                jumpVal = 0;
+
                 animator.SetBool("jump", false);
-                
-                
+
             }
 
         }
@@ -235,7 +221,7 @@ public class playerMovement : MonoBehaviour
 
 
         //Dead
-/*
+
         if (Input.GetKeyDown(KeyCode.L))
 
         {
@@ -244,7 +230,7 @@ public class playerMovement : MonoBehaviour
 
 
 
-        }*/
+        }
 
 
 
@@ -320,6 +306,16 @@ public class playerMovement : MonoBehaviour
             animator.SetBool("toss", false);
 
         }
+
+
+
+
+
+
+
+
+
+
 
         infectedAheadCheck();
 
@@ -399,9 +395,8 @@ public class playerMovement : MonoBehaviour
 
         {
 
-            AudioClip infectedAlert = GameObject.Find("infectedAlert").GetComponent<AudioSource>().clip;
-
-            this.audioSource.PlayOneShot(infectedAlert);
+            
+            this.audioSource.PlayOneShot(alert);
 
             Debug.Log(" INFECTRED ALERTTTT");
 
@@ -473,10 +468,8 @@ public class playerMovement : MonoBehaviour
                 if (!walkingSoundBool)
 
                 {
-                    AudioClip walkingClip = GameObject.Find("walkingSound").GetComponent<AudioSource>().clip;
-
                     Debug.Log("walkingsound");
-                    this.GetComponent<AudioSource>().clip = walkingClip;
+                    this.GetComponent<AudioSource>().clip = walking;
                     this.GetComponent<AudioSource>().loop = true;
                     this.GetComponent<AudioSource>().Play();
                     walkingSoundBool = true;
@@ -488,11 +481,9 @@ public class playerMovement : MonoBehaviour
         {
             if (!runningSoundBool)
             {
-                AudioClip runningClip = GameObject.Find("runningSound").GetComponent<AudioSource>().clip;
-
                 walkingSoundBool = false;
                 Debug.Log("runningsound");
-                this.GetComponent<AudioSource>().clip = runningClip;
+                this.GetComponent<AudioSource>().clip = running;
                 this.GetComponent<AudioSource>().loop = true;
                 this.GetComponent<AudioSource>().Play();
                 runningSoundBool = true;
@@ -513,7 +504,6 @@ public class playerMovement : MonoBehaviour
             if (walkingSoundBool)
 
             {
-                
 
                 Debug.Log("stopping walking sound");
 

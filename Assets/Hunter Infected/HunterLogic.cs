@@ -279,7 +279,6 @@ public class HunterLogic : MonoBehaviour
         {
             isDead = true;
             Die();
-            healthComponent.pinDownCancel();
         }
         else
         {
@@ -365,7 +364,7 @@ public class HunterLogic : MonoBehaviour
             isLeaping = false;
             firstTime = true;
             //PIN DOWN JOEL !!!
-            healthComponent.pinDownHold();
+            healthComponent.pinDown();
 
             InvokeRepeating(nameof(ApplyDamage), 0, 1);
             AttackPlayer();

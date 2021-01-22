@@ -12,13 +12,13 @@ public class playerHealth : MonoBehaviour
 
 {
 
-    //public AudioClip hitSound;
+    public AudioClip hitSound;
 
-    //public AudioClip rageSound;
+    public AudioClip rageSound;
 
-    //public AudioClip dyingSound;
+    public AudioClip dyingSound;
 
-    //public AudioClip companionFire;
+    public AudioClip companionFire;
 
 
 
@@ -48,7 +48,7 @@ public class playerHealth : MonoBehaviour
 
     private bool dead = false;
 
-    bool pinHold = false;
+
 
 
 
@@ -112,7 +112,7 @@ public class playerHealth : MonoBehaviour
 
             }
 
-            if ((animator.GetCurrentAnimatorStateInfo(3).IsName("pin_Down")) && !pinHold)
+            if (animator.GetCurrentAnimatorStateInfo(3).IsName("pin_Down"))
 
             {
 
@@ -133,8 +133,6 @@ public class playerHealth : MonoBehaviour
                 animator.SetBool("dead", true);
 
                 dead = true;
-
-                AudioClip dyingSound = GameObject.Find("dyingSound").GetComponent<AudioSource>().clip;
 
                 this.GetComponent<AudioSource>().PlayOneShot(dyingSound);
 
@@ -163,7 +161,6 @@ public class playerHealth : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
 
             {
-                AudioClip companionFire = GameObject.Find("fireOrder").GetComponent<AudioSource>().clip;
 
                 this.GetComponent<AudioSource>().PlayOneShot(companionFire);
 
@@ -205,7 +202,7 @@ public class playerHealth : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
 
-        {/*
+        {
 
             if (hit.gameObject.tag == "coll")
 
@@ -248,7 +245,7 @@ public class playerHealth : MonoBehaviour
                 Destroy(hit.gameObject);
 
             }
-*/
+
         }
 
 
@@ -334,7 +331,6 @@ public class playerHealth : MonoBehaviour
             if (!raging)
 
             {
-                AudioClip rageSound = GameObject.Find("rageSound").GetComponent<AudioSource>().clip;
 
                 this.GetComponent<AudioSource>().PlayOneShot(rageSound);
 
@@ -411,7 +407,6 @@ public class playerHealth : MonoBehaviour
                 rageMeter = 0;
 
                 collText.GetComponent<Text>().text = "RAGINGGG!!";
-                AudioClip rageSound = GameObject.Find("rageSound").GetComponent<AudioSource>().clip;
 
                 this.GetComponent<AudioSource>().PlayOneShot(rageSound);
 
@@ -458,7 +453,6 @@ public class playerHealth : MonoBehaviour
         if (!animator.GetCurrentAnimatorStateInfo(1).IsName("dodging"))
 
         {
-            AudioClip hitSound = GameObject.Find("hitSound").GetComponent<AudioSource>().clip;
 
             this.GetComponent<AudioSource>().PlayOneShot(hitSound);
 
@@ -517,22 +511,11 @@ public class playerHealth : MonoBehaviour
     public void pinDown()
 
     {
-        animator.SetBool("pinned", true);
-    }
-    public void pinDownHold()
 
-    {
         animator.SetBool("pinned", true);
-        pinHold = true;
+
     }
-    public void pinDownCancel()
-    {
-        pinHold = false;
-    }
-    public bool isPinned()
-    {
-        return pinHold;
-    }
+
     public void increaseHealth(int add)
 
     {
