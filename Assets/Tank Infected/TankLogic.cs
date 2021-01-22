@@ -37,7 +37,7 @@ public class TankLogic : MonoBehaviour
 
     //Joel 
     GameObject playerScript;
-
+        
     private void Start()
     {
         randomDirection = Random.Range(0, 2);
