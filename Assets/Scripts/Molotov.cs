@@ -36,10 +36,58 @@ public class Molotov : MonoBehaviour
             Collider[] nearBy = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (Collider obj in nearBy)
             {
-                Target infected = obj.GetComponent<Target>();
-                if (infected != null)
+                string tag = obj.tag;
+                switch (tag)
                 {
-                    infected.TakeDamage(damage);
+                    case "Target":
+                        {
+                            Target target = obj.GetComponent<Target>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            break;
+                        }
+                    case "Normal":
+                        {
+                            NormalLogic target = obj.GetComponent<NormalLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            break;
+                        }
+                    case "Charger":
+                        {
+                            ChargerLogic target = obj.GetComponent<ChargerLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            break;
+                        }
+                    case "Tank":
+                        {
+                            TankLogic target = obj.GetComponent<TankLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            break;
+                        }
+                    case "Hunter":
+                        {
+                            HunterLogic target = obj.GetComponent<HunterLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
                 }
             }
             yield return new WaitForSeconds(delay);

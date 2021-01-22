@@ -9,6 +9,11 @@ public class WeaponSwitching : MonoBehaviour
     private int selectedWeapon = 0;
     private bool weaponWasPickedUp = false;
 
+    void Start()
+    {
+        SwitchWeapon();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))

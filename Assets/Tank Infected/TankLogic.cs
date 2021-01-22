@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +8,10 @@ public class TankLogic : MonoBehaviour
     Transform player;
     Animator animator;
     Laser laser;
-
+    AudioSource runClip;
+    AudioSource dieClip;
+    playerHealth healthComponent;
+    WeaponSwitching weaponHolder;
     //Patroling
     Vector3 walkPoint;
     bool walkPointSet;
@@ -29,22 +31,27 @@ public class TankLogic : MonoBehaviour
     bool isHit = false;
     bool isDistracted = false;
     bool isStunned = false;
-
+    
 
     //Health 
     int health = 1000;
 
     //Joel 
     GameObject playerScript;
-
+        
     private void Start()
     {
         randomDirection = Random.Range(0, 2);
-        attackRange = randomDirection == 0 ? 0.8f : 1.5f;
+        attackRange = randomDirection == 0 ? 1.5f : 1.7f;
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
+        runClip = transform.GetChild(3).GetComponent<AudioSource>();
+        dieClip = transform.GetChild(4).GetComponent<AudioSource>();
         // playerScript = GameObject.FindGameObjectWithTag("Joel").GetComponent<playerHealth>();
         SearchWalkPoint();
     }
@@ -52,7 +59,10 @@ public class TankLogic : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
     }
 
     private void Update()
@@ -69,32 +79,39 @@ public class TankLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (Vector3.Distance(player.position, transform.position) <= sightRange && isInFront())
+            if (isInLineOfSight() && isInFront() && !isDistracted)
             {
-                //transform.LookAt(player.position);
-                Vector3 distVector = player.position - transform.position;
-                distVector.y = 0;
-                Quaternion angle = Quaternion.LookRotation(distVector);
-                transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
+               
+                    Vector3 distVector = player.position - transform.position;
+                    distVector.y = 0;
+                    Quaternion angle = Quaternion.LookRotation(distVector);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, angle, Time.deltaTime * agent.speed);
 
-                playerInSightRange = true;
+                    playerInSightRange = true;
 
-                if (Vector3.Distance(player.position, transform.position) <= attackRange)
-                {
-                    playerInAttackRange = true;
-                }
-                else
-                    playerInAttackRange = false;
+
+                    if (Vector3.Distance(player.position, transform.position) <= attackRange)
+                    {
+                    agent.SetDestination(transform.position);
+                        playerInAttackRange = true;
+                    }
+                    else
+                        playerInAttackRange = false;
+                
             }
             else
                 playerInAttackRange = false;
 
 
 
-            /*  if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                  playerIsFiring = true;
-              else
-                  playerIsFiring = false;*/
+            if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+            {
+                Gun currWeapon = weaponHolder.getCurrentGun();
+                if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                    playerIsFiring = true;
+            }
+            else
+                playerIsFiring = false;
 
 
             if (((playerInSightRange && !playerInAttackRange) || playerIsFiring) && !isDistracted && !isHit) ChasePlayer();
@@ -157,6 +174,9 @@ public class TankLogic : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if (!runClip.isPlaying)
+            runClip.PlayOneShot(runClip.clip);
+
         animator.SetBool("walking", false);
         animator.SetBool("chasing", true);
         if (isStunned)
@@ -198,7 +218,7 @@ public class TankLogic : MonoBehaviour
 
             alreadyAttacked = true;
             // CALL A METHOD TO APPLY DAMAGE TO JOEL !!!
-            // playerScript.applyDamage(30);
+            healthComponent.applyDamage(30);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 
@@ -227,16 +247,14 @@ public class TankLogic : MonoBehaviour
             isHit = true;
             agent.SetDestination(transform.position);
             animator.SetTrigger("damage");
-            StartCoroutine("DamageEnded");
+            Invoke(nameof(DamageEnded), 1f);
 
         }
 
     }
 
-    private IEnumerator DamageEnded()
+    private void DamageEnded()
     {
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-            yield return null;
         isHit = false;
         playerInSightRange = true;
     }
@@ -274,7 +292,8 @@ public class TankLogic : MonoBehaviour
     }
 
     private void Die()
-    {
+    {   
+        dieClip.PlayOneShot(dieClip.clip);
         isDead = true;
         animator.speed = 1f;
         agent.SetDestination(transform.position);

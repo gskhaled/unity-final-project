@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 6591353407804067174}
-  explosionRadius: 1
+  explosionRadius: 3
   explosionSound: {fileID: 8241651276152626458}
 --- !u!136 &8271022814113783345
 CapsuleCollider:

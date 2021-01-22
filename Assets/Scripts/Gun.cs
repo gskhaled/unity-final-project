@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public bool isShotgun = false;
     public float damage = 0f;
     public float range = 100f;
     public float fireRate = 1f;
@@ -37,6 +38,9 @@ public class Gun : MonoBehaviour
     }
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         if (isReloading)
             return;
 
@@ -47,14 +51,39 @@ public class Gun : MonoBehaviour
                 StartCoroutine(Reload());
                 return;
             }
-            if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+            if (!isShotgun) // Shotgun is semi automatic!
             {
-                shooting = true;
-                nextTimeToFire = Time.time + (60f / fireRate);
-                Shoot();
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    shooting = true;
+
+                    if (Time.time >= nextTimeToFire)
+                    {
+                        nextTimeToFire = Time.time + (60f / fireRate);
+                        Shoot();
+                    }
+                }
+                else
+                {
+                    shooting = false;
+                }
             }
-            else { 
-                shooting = false;
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    shooting = true;
+
+                    if (Time.time >= nextTimeToFire)
+                    {
+                        nextTimeToFire = Time.time + (60f / fireRate);
+                        Shoot();
+                    }
+                }
+                else
+                {
+                    shooting = false;
+                }
             }
         }
     }
@@ -92,21 +121,182 @@ public class Gun : MonoBehaviour
         }
         muzzleFlash.Play();
         currentAmmo--;
-        RaycastHit hit;
-        if (Physics.Raycast(FPSCam.transform.position, FPSCam.transform.forward, out hit, range))
+        if (!isShotgun)
         {
-            Target target = hit.transform.GetComponent<Target>();
-            if(target != null)
+            RaycastHit hit;
+            if (Physics.Raycast(FPSCam.transform.position, FPSCam.transform.forward, out hit, range))
             {
-                target.TakeDamage(damage);
+                GameObject obj = hit.transform.gameObject;
+                string tag = obj.tag;
+                switch (tag)
+                {
+                    case "Target":
+                        {
+                            Target target = obj.GetComponent<Target>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
+                    case "Normal":
+                        {
+                            NormalLogic target = obj.GetComponent<NormalLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
+                    case "Charger":
+                        {
+                            ChargerLogic target = obj.GetComponent<ChargerLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
+                    case "Tank":
+                        {
+                            TankLogic target = obj.GetComponent<TankLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
+                    case "Hunter":
+                        {
+                            HunterLogic target = obj.GetComponent<HunterLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
             }
-            if(hit.rigidbody != null)
+            GameObject impactObj = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactObj, impactDuration);
+        }
+        else
+        {
+            int pellets = 10;
+            float maxDeviation = 5f;
+
+            for (int i = 0; i < pellets; i++)
             {
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                Vector3 deviation3D = Random.insideUnitCircle * maxDeviation;
+                Quaternion rot = Quaternion.LookRotation(Vector3.forward * range + deviation3D);
+                Vector3 forwardVector = FPSCam.transform.rotation * rot * Vector3.forward;
+
+                RaycastHit hit;
+                if (Physics.Raycast(FPSCam.transform.position, forwardVector, out hit, range))
+                {
+                    GameObject obj = hit.transform.gameObject;
+                    string tag = obj.tag;
+                    switch (tag)
+                    {
+                        case "Target":
+                            {
+                                Target target = obj.GetComponent<Target>();
+                                if (target != null)
+                                {
+                                    target.TakeDamage((int)damage / pellets);
+                                }
+                                if (target.GetComponent<Rigidbody>() != null)
+                                {
+                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                                }
+                                break;
+                            }
+                        case "Normal":
+                            {
+                                NormalLogic target = obj.GetComponent<NormalLogic>();
+                                if (target != null)
+                                {
+                                    target.TakeDamage((int)damage / pellets);
+                                }
+                                if (target.GetComponent<Rigidbody>() != null)
+                                {
+                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                                }
+                                break;
+                            }
+                        case "Charger":
+                            {
+                                ChargerLogic target = obj.GetComponent<ChargerLogic>();
+                                if (target != null)
+                                {
+                                    target.TakeDamage((int)damage / pellets);
+                                }
+                                if (target.GetComponent<Rigidbody>() != null)
+                                {
+                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                                }
+                                break;
+                            }
+                        case "Tank":
+                            {
+                                TankLogic target = obj.GetComponent<TankLogic>();
+                                if (target != null)
+                                {
+                                    target.TakeDamage((int)damage / pellets);
+                                }
+                                if (target.GetComponent<Rigidbody>() != null)
+                                {
+                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                                }
+                                break;
+                            }
+                        case "Hunter":
+                            {
+                                HunterLogic target = obj.GetComponent<HunterLogic>();
+                                if (target != null)
+                                {
+                                    target.TakeDamage((int)damage / pellets);
+                                }
+                                if (target.GetComponent<Rigidbody>() != null)
+                                {
+                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                                }
+                                break;
+                            }
+                        default:
+                            {
+                                break;
+                            }
+                    }
+                }
+                GameObject impactObj = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impactObj, impactDuration);
             }
         }
-        GameObject impactObj = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-        Destroy(impactObj, impactDuration);
     }
 
     public void AddAmmunition()

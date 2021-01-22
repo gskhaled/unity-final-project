@@ -5128,7 +5128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 6989477942484945923}
-  explosionRadius: 1
+  explosionRadius: 3
   explosionSound: {fileID: 2545523936704915859}
 --- !u!54 &7645918789927369565
 Rigidbody:

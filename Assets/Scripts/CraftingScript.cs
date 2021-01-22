@@ -80,7 +80,7 @@ public class CraftingScript : MonoBehaviour
             molotovCraft.interactable = CheckForCrafting("MolotovCocktail", inventory, grenades);
             stunCraft.interactable = CheckForCrafting("StunGrenade", inventory, grenades);
             pipeCraft.interactable = CheckForCrafting("PipeBomb", inventory, grenades);
-            healthCraft.interactable = CheckForCrafting("HealthPack", inventory, grenades);
+            healthCraft.interactable = CheckForCrafting("Health Pack", inventory, grenades);
         }
         foreach(var item in rotate)
         {
@@ -194,7 +194,7 @@ public class CraftingScript : MonoBehaviour
                 }
                 break;
 
-            case "HealthPack":
+            case "Health Pack":
                 foreach (var item in HealthCrafting)
                 {
                     foreach (var item2 in inventory)
@@ -213,19 +213,20 @@ public class CraftingScript : MonoBehaviour
 
     public void addGrenades(string Name)
     {
+        Debug.Log("Adding..... " + Name);
         switch (Name)
         {
             case "Molotov":
-                //CollectingItemsScript.addBombs(Molotov);
+                CollectingItemsScript.AddBomb("Molotov", null);
                 break;
             case "StunGrenade":
-                //CollectingItemsScript.addBombs(StunGrenade);
+                CollectingItemsScript.AddBomb("StunGrenade", null);
                 break;
             case "PipeBomb":
-                //CollectingItemsScript.addBombs(PipeBomb);
+                CollectingItemsScript.AddBomb("PipeBomb", null);
                 break;
-            case "HealthPack":
-                //myHealth += 50;
+            case "Health Pack":
+                CollectingItemsScript.AddBomb("Health Pack", null);
                 break;
         }
     }
@@ -234,8 +235,11 @@ public class CraftingScript : MonoBehaviour
     {
         UIcamera.enabled = true;
         HUDcanvas.enabled = false;
-        craftingCanvas.enabled = true;
-        Screen.lockCursor = false;
+        // craftingCanvas.enabled = true;
+        craftingCanvas.gameObject.SetActive(true);
+        // Screen.lockCursor = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0;
     }
 
@@ -243,8 +247,11 @@ public class CraftingScript : MonoBehaviour
     {
         HUDcanvas.enabled = true;
         UIcamera.enabled = false;
-        craftingCanvas.enabled = false;
-        Screen.lockCursor = true;
+        // craftingCanvas.enabled = false;
+        craftingCanvas.gameObject.SetActive(false);
+        // Screen.lockCursor = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1;
     }
 }

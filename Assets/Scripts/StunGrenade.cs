@@ -28,13 +28,52 @@ public class StunGrenade : MonoBehaviour
         Collider[] nearBy = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider obj in nearBy)
         {
-            /*Infected infected = obj.GetComponent<Infected>();
-            if (infected != null)
+            string tag = obj.tag;
+            Debug.Log(tag);
+            switch (tag)
             {
-                //infected.Stun();
-            }*/
+                case "Normal":
+                    {
+                        NormalLogic target = obj.GetComponent<NormalLogic>();
+                        if (target != null)
+                        {
+                            target.Stun();
+                        }
+                        break;
+                    }
+                case "Charger":
+                    {
+                        ChargerLogic target = obj.GetComponent<ChargerLogic>();
+                        if (target != null)
+                        {
+                            target.Stun();
+                        }
+                        break;
+                    }
+                case "Tank":
+                    {
+                        TankLogic target = obj.GetComponent<TankLogic>();
+                        if (target != null)
+                        {
+                            target.Stun();
+                        }
+                        break;
+                    }
+                case "Hunter":
+                    {
+                        HunterLogic target = obj.GetComponent<HunterLogic>();
+                        if (target != null)
+                        {
+                            target.Stun();
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
-
         // Destroy after duration time
         yield return new WaitForSeconds(duration);
         Destroy(gameObject);
