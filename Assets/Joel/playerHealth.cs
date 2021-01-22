@@ -12,13 +12,13 @@ public class playerHealth : MonoBehaviour
 
 {
 
-    public AudioClip hitSound;
+    public AudioSource hitSound;
 
-    public AudioClip rageSound;
+    public AudioSource rageSound;
 
-    public AudioClip dyingSound;
+    public AudioSource dyingSound;
 
-    public AudioClip companionFire;
+    public AudioSource companionFire;
 
 
 
@@ -48,7 +48,7 @@ public class playerHealth : MonoBehaviour
 
     private bool dead = false;
 
-
+    bool pinHold = false;
 
 
 
@@ -112,7 +112,7 @@ public class playerHealth : MonoBehaviour
 
             }
 
-            if (animator.GetCurrentAnimatorStateInfo(3).IsName("pin_Down"))
+            if ((animator.GetCurrentAnimatorStateInfo(3).IsName("pin_Down")) && !pinHold)
 
             {
 
@@ -131,10 +131,13 @@ public class playerHealth : MonoBehaviour
             {
 
                 animator.SetBool("dead", true);
-
+                dyingSound.enabled = true;
                 dead = true;
+                dyingSound.PlayOneShot(dyingSound.clip);
 
-                this.GetComponent<AudioSource>().PlayOneShot(dyingSound);
+                //AudioClip dyingSound = GameObject.Find("dyingSound").GetComponent<AudioSource>().clip;
+
+                //this.GetComponent<AudioSource>().PlayOneShot(dyingSound);
 
             }
 
@@ -161,8 +164,11 @@ public class playerHealth : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
 
             {
+                //AudioClip companionFire = GameObject.Find("fireOrder").GetComponent<AudioSource>().clip;
+                companionFire.enabled = true;
+                companionFire.PlayOneShot(companionFire.clip);
 
-                this.GetComponent<AudioSource>().PlayOneShot(companionFire);
+                //this.GetComponent<AudioSource>().PlayOneShot(companionFire);
 
             }
 
@@ -202,7 +208,7 @@ public class playerHealth : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
 
-        {
+        {/*
 
             if (hit.gameObject.tag == "coll")
 
@@ -245,7 +251,7 @@ public class playerHealth : MonoBehaviour
                 Destroy(hit.gameObject);
 
             }
-
+*/
         }
 
 
@@ -331,8 +337,11 @@ public class playerHealth : MonoBehaviour
             if (!raging)
 
             {
+                rageSound.enabled = true;
+               // AudioClip rageSound = GameObject.Find("rageSound").GetComponent<AudioSource>().clip;
+                rageSound.PlayOneShot(rageSound.clip);
 
-                this.GetComponent<AudioSource>().PlayOneShot(rageSound);
+               // this.GetComponent<AudioSource>().PlayOneShot(rageSound);
 
                 this.GetComponent<playerMovement>().speed = 2f * this.GetComponent<playerMovement>().speed;
 
@@ -407,8 +416,11 @@ public class playerHealth : MonoBehaviour
                 rageMeter = 0;
 
                 collText.GetComponent<Text>().text = "RAGINGGG!!";
+                rageSound.enabled = true;
+                rageSound.PlayOneShot(rageSound.clip);
+                /*AudioClip rageSound = GameObject.Find("rageSound").GetComponent<AudioSource>().clip;
 
-                this.GetComponent<AudioSource>().PlayOneShot(rageSound);
+                this.GetComponent<AudioSource>().PlayOneShot(rageSound);*/
 
             }
 
@@ -453,8 +465,10 @@ public class playerHealth : MonoBehaviour
         if (!animator.GetCurrentAnimatorStateInfo(1).IsName("dodging"))
 
         {
+            hitSound.enabled = true;
+            hitSound.PlayOneShot(hitSound.clip);
 
-            this.GetComponent<AudioSource>().PlayOneShot(hitSound);
+            //this.GetComponent<AudioSource>().PlayOneShot(hitSound);
 
             health -= damage;
 
@@ -511,11 +525,22 @@ public class playerHealth : MonoBehaviour
     public void pinDown()
 
     {
-
         animator.SetBool("pinned", true);
-
     }
+    public void pinDownHold()
 
+    {
+        animator.SetBool("pinned", true);
+        pinHold = true;
+    }
+    public void pinDownCancel()
+    {
+        pinHold = false;
+    }
+    public bool isPinned()
+    {
+        return pinHold;
+    }
     public void increaseHealth(int add)
 
     {
