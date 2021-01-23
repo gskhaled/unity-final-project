@@ -284,7 +284,7 @@ public class playerHealth : MonoBehaviour
 
 
 
-        if (lastRageAddition-Time.time <= 3)
+        if (Time.time - lastRageAddition <= 3)
 
         {
 
