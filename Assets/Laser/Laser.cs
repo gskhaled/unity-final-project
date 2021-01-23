@@ -23,7 +23,7 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (agent.gameObject.CompareTag("Charger"))
+        if (agent.gameObject.CompareTag("Charger") || agent.gameObject.CompareTag("Spitter"))
         {
             if ( laserHit != null)
             {
