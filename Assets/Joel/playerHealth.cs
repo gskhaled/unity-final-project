@@ -147,7 +147,7 @@ public class playerHealth : MonoBehaviour
 
             //testing
 
-            if (Input.GetKeyDown(KeyCode.Alpha9))
+/*            if (Input.GetKeyDown(KeyCode.Alpha9))
 
             {
 
@@ -155,12 +155,21 @@ public class playerHealth : MonoBehaviour
 
                 //playPickup();
 
-            }
+            }*/
 
 
 
             //Dodging
 
+            bool moving = ( (Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.RightArrow)));
+
+            if (Input.GetKeyDown(KeyCode.LeftControl) && moving)
+            {
+                animator.SetBool("dodge", true);
+            }
+
+
+            //fireOrder
             if (Input.GetKeyDown(KeyCode.Q))
 
             {

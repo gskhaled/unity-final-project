@@ -10,6 +10,8 @@ public class playerMovement : MonoBehaviour
 
 {
     float jumpVal = 0;
+    bool falling = true;
+
     bool walkingSoundBool = false;
 
     bool runningSoundBool = false;
@@ -44,7 +46,7 @@ public class playerMovement : MonoBehaviour
 
     public Transform groundCheck;
 
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.1f;
 
     public LayerMask groundMask;
 
@@ -188,44 +190,56 @@ public class playerMovement : MonoBehaviour
             //jump
 
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            //Debug.Log("grounded: " + isGrounded);
 
 
-
-            if (!isGrounded)
+            if (!isGrounded && falling)
 
             {
 
                 Vector3 moveH = new Vector3(0, -2f, 0);
 
                 controller.Move(moveH * Time.deltaTime);
-
+                 
             }
-
+            if (jumpVal > 0 && falling)
+                jumpVal += -2*Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Space))
 
             {
-                animator.SetBool("jump", true);
-            }
-            if (Input.GetKey(KeyCode.Space))
-            {
-                if (jumpVal < 35f)
+                
+                if(jumpVal <= 0)
                 {
-                    Vector3 moveH = new Vector3(0, 4f, 0);
-                    jumpVal += moveH.y;
-                    controller.Move(moveH * Time.deltaTime);
-                }
-
-                if (animator.GetCurrentAnimatorStateInfo(2).IsName("jump"))
-
-                {
-                    animator.SetBool("jump", false);
+                    falling = false;
+                    animator.SetBool("jump", true);
                 }
             }
+           // Debug.Log(jumpVal);
+           // if (Input.GetKey(KeyCode.Space))
+            //{
+                if (!falling)
+                {
 
-            if (Input.GetKeyUp(KeyCode.Space))
+                    if (jumpVal < 0.5f)
+                    {
+                        Vector3 moveH = new Vector3(0, 2f, 0);
+                        jumpVal+=moveH.y*Time.deltaTime;
+                        controller.Move(moveH * Time.deltaTime);
+                    }
+
+                    if (animator.GetCurrentAnimatorStateInfo(2).IsName("jump"))
+
+                    {
+                        animator.SetBool("jump", false);
+                    }
+                }
+            //}
+            //Debug.Log("Falling: " + falling);   
+            if (jumpVal >= 0.5f)
 
             {
-                jumpVal = 0;
+                falling = true;
+                //jumpVal = 0;
                 animator.SetBool("jump", false);
 
 
@@ -406,7 +420,7 @@ public class playerMovement : MonoBehaviour
 
             this.audioSource.PlayOneShot(infectedAlert);*/
 
-            Debug.Log(" INFECTRED ALERTTTT");
+           // Debug.Log(" INFECTRED ALERTTTT");
 
         }
 
@@ -479,7 +493,7 @@ public class playerMovement : MonoBehaviour
                     
                     //AudioClip walkingClip = GameObject.Find("walkingSound").GetComponent<AudioSource>().clip;
 
-                    Debug.Log("walkingsound");
+                 //   Debug.Log("walkingsound");
                     //this.GetComponent<AudioSource>().clip = walkingClip;
                     // this.GetComponent<AudioSource>().loop = true;
                     walking.enabled = true;
@@ -498,7 +512,7 @@ public class playerMovement : MonoBehaviour
                 //AudioClip runningClip = GameObject.Find("runningSound").GetComponent<AudioSource>().clip;
                 walkingSoundBool = false;
                 running.enabled = true;
-                Debug.Log("runningsound");
+               // Debug.Log("runningsound");
                 /*                this.GetComponent<AudioSource>().clip = runningClip;
                                 this.GetComponent<AudioSource>().loop = true;
                                 this.GetComponent<AudioSource>().Play();*/
@@ -526,7 +540,7 @@ public class playerMovement : MonoBehaviour
 
                 walking.enabled = false;
 
-                Debug.Log("stopping walking sound");
+               // Debug.Log("stopping walking sound");
                 walking.loop = false;
                 walking.Stop();
 /*                this.GetComponent<AudioSource>().clip = null;
@@ -547,7 +561,7 @@ public class playerMovement : MonoBehaviour
 
             {
                 running.enabled = false;
-                Debug.Log("stopping running sound");
+               // Debug.Log("stopping running sound");
 
                 /*                this.GetComponent<AudioSource>().clip = null;
 

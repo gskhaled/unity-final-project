@@ -2532,11 +2532,11 @@ MonoBehaviour:
   controller: {fileID: 7870696337364857640}
   speed: 2
   animator: {fileID: 7870696337364857642}
-  groundCheck: {fileID: 7870696336468527873}
+  groundCheck: {fileID: 4991089141260273669}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!114 &7870696337364857636
 MonoBehaviour:
   m_ObjectHideFlags: 0
