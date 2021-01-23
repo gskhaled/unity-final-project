@@ -84,6 +84,15 @@ public class Molotov : MonoBehaviour
                             }
                             break;
                         }
+                    case "Spitter":
+                        {
+                            SpitterLogic target = obj.GetComponent<SpitterLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            break;
+                        }
                     default:
                         {
                             break;

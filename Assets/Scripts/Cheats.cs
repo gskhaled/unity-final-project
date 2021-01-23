@@ -93,7 +93,7 @@ public class Cheats : MonoBehaviour
                 ChargerLogic[] specialInfected1 = FindObjectsOfType<ChargerLogic>();
                 HunterLogic[] specialInfected2 = FindObjectsOfType<HunterLogic>();
                 TankLogic[] specialInfected3 = FindObjectsOfType<TankLogic>();
-                // SpitterLogic[] specialInfected4 = FindObjectsOfType<SpitterLogic>();
+                SpitterLogic[] specialInfected4 = FindObjectsOfType<SpitterLogic>();
                 for(int i = 0; i < normalInfected.Length; i++)
                 {
                     Destroy(normalInfected[i].gameObject);
@@ -110,10 +110,10 @@ public class Cheats : MonoBehaviour
                 {
                     Destroy(specialInfected3[i].gameObject);
                 }
-                /*for (int i = 0; i < specialInfected4.Length; i++)
+                for (int i = 0; i < specialInfected4.Length; i++)
                 {
                     Destroy(specialInfected4[i].gameObject);
-                }*/
+                }
             }
             if (Input.GetKeyDown(KeyCode.KeypadPeriod))
             {
@@ -121,7 +121,7 @@ public class Cheats : MonoBehaviour
                 ChargerLogic[] specialInfected1 = FindObjectsOfType<ChargerLogic>();
                 HunterLogic[] specialInfected2 = FindObjectsOfType<HunterLogic>();
                 TankLogic[] specialInfected3 = FindObjectsOfType<TankLogic>();
-                // SpitterLogic[] specialInfected4 = FindObjectsOfType<SpitterLogic>();
+                SpitterLogic[] specialInfected4 = FindObjectsOfType<SpitterLogic>();
                 for (int i = 0; i < normalInfected.Length; i++)
                 {
                     normalInfected[i].TakeDamage(10);
@@ -138,10 +138,10 @@ public class Cheats : MonoBehaviour
                 {
                     specialInfected3[i].TakeDamage(10);
                 }
-                /*for (int i = 0; i < specialInfected4.Length; i++)
+                for (int i = 0; i < specialInfected4.Length; i++)
                 {
                     specialInfected4[i].TakeDamage(10);
-                }*/
+                }
             }
             if (Input.GetKeyDown(KeyCode.Keypad6))
             {

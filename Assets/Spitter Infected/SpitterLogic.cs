@@ -5,10 +5,15 @@ using UnityEngine.AI;
 
 public class SpitterLogic : MonoBehaviour
 {
+    public GameObject bile;
+
     NavMeshAgent agent;
     Transform player;
+    WeaponSwitching weaponHolder;
+    playerHealth healthComponent;
     public Vector3 spitPosition;
     public GameObject acidBall;
+
     Animator animator;
     Laser laser;
     AudioSource spitClip;
@@ -43,6 +48,8 @@ public class SpitterLogic : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         GameObject joel = GameObject.FindGameObjectWithTag("Joel");
         player = joel.transform;
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
+        healthComponent = joel.GetComponent<playerHealth>();
         animator = GetComponent<Animator>();
         laser = GetComponent<Laser>();
         spitClip = transform.GetChild(4).GetComponent<AudioSource>();
@@ -56,6 +63,9 @@ public class SpitterLogic : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         GameObject joel = GameObject.FindGameObjectWithTag("Joel");
         player = joel.transform;
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
+        healthComponent = joel.GetComponent<playerHealth>();
+
     }
 
     private void Update()
@@ -85,6 +95,11 @@ public class SpitterLogic : MonoBehaviour
             else
                 playerInSightRange = false;
 
+            Gun currWeapon = weaponHolder.getCurrentGun();
+            if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                playerIsFiring = true;
+            else
+                playerIsFiring = false;
 
 
             if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !isSpitting && !waiting) SpitOnPlayer();
@@ -196,8 +211,9 @@ public class SpitterLogic : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            isDead = true;
             Die();
+            isDead = true;
+
         }
         else
         {
@@ -249,13 +265,19 @@ public class SpitterLogic : MonoBehaviour
 
     private void Die()
     {
-        dieClip.PlayOneShot(dieClip.clip);
-        isDead = true;
-        animator.speed = 1f;
-        agent.SetDestination(transform.position);
-        animator.SetTrigger("dying");
-        //CALL A METHOD TO INSTANTIATE BILE !!!
-
+        if (!isDead)
+        {
+            dieClip.PlayOneShot(dieClip.clip);
+            isDead = true;
+            animator.speed = 1f;
+            agent.SetDestination(transform.position);
+            animator.SetTrigger("dying");
+            //CALL A METHOD TO INSTANTIATE BILE !!!
+            Destroy(gameObject, 4);
+            GameObject instan = Instantiate(bile, transform);
+            instan.transform.SetParent(null);
+            healthComponent.rageMeterAdd(50);
+        }
     }
 
 }

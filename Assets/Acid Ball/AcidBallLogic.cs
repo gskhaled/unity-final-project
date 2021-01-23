@@ -8,6 +8,8 @@ public class AcidBallLogic : MonoBehaviour
     Vector3 spitPos;
     Rigidbody rb;
     Transform player;
+    playerHealth healthComponent;
+    WeaponSwitching weaponHolder;
     Vector3 spitDir;
     Vector3 scaleChange;
     public LayerMask ground;
@@ -19,7 +21,10 @@ public class AcidBallLogic : MonoBehaviour
     {
         spitPos = GameObject.FindGameObjectWithTag("Spitter").GetComponent<SpitterLogic>().spitPosition;
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Joel").transform;
+        GameObject joel = GameObject.FindGameObjectWithTag("Joel");
+        player = joel.transform;
+        healthComponent = joel.GetComponent<playerHealth>();
+        weaponHolder = player.GetComponentInChildren<WeaponSwitching>();
         scaleChange = new Vector3(0.5f, 0f, 0.5f);
         StartSpit();
     }
@@ -73,6 +78,7 @@ public class AcidBallLogic : MonoBehaviour
     private void ApplyDamage()
     {
         /// APPLY 20 POINTS OF DAMAGE ON JOEL HERE !!!
+        healthComponent.applyDamage(20);
     }
     private void OnTriggerEnter(Collider other)
     {

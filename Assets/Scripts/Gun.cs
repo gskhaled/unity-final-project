@@ -203,6 +203,19 @@ public class Gun : MonoBehaviour
                             }
                             break;
                         }
+                    case "Spitter":
+                        {
+                            SpitterLogic target = obj.GetComponent<SpitterLogic>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
                     default:
                         {
                             break;
@@ -285,6 +298,19 @@ public class Gun : MonoBehaviour
                         case "Hunter":
                             {
                                 HunterLogic target = obj.GetComponent<HunterLogic>();
+                                if (target != null)
+                                {
+                                    target.TakeDamage((int)damage / pellets);
+                                }
+                                if (target.GetComponent<Rigidbody>() != null)
+                                {
+                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                                }
+                                break;
+                            }
+                        case "Spitter":
+                            {
+                                SpitterLogic target = obj.GetComponent<SpitterLogic>();
                                 if (target != null)
                                 {
                                     target.TakeDamage((int)damage / pellets);

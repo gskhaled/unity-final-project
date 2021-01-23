@@ -51,7 +51,8 @@ MonoBehaviour:
     type: 3}
   specialInfected3: {fileID: 2507008755189550982, guid: 562cac13cb4230e4796421783507531c,
     type: 3}
-  specialInfected4: {fileID: 0}
+  specialInfected4: {fileID: 232161957062562159, guid: 55e8ee86773f92647a16a1f92731715a,
+    type: 3}
   player: {fileID: 0}
   FPSCam: {fileID: 0}
   healthPack: {fileID: 4119243502562695973, guid: 7d797d7afba3bdb4e9f32c41d3cd7a79,

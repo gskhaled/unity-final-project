@@ -158,7 +158,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 232161957062562159}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -169,7 +169,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!54 &1151135622864301115
 Rigidbody:
@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6774a69f07423439829315df00b95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bile: {fileID: 1431990249832051562, guid: 70ccda0fb9f15954a8f3cfc2b9a82330, type: 3}
   spitPosition: {x: 0, y: 0, z: 0}
   acidBall: {fileID: 870813527393008394, guid: 84427f92a6b23624e913a9d940127586, type: 3}
 --- !u!95 &1151135622864301111

@@ -68,6 +68,15 @@ public class StunGrenade : MonoBehaviour
                         }
                         break;
                     }
+                case "Spitter":
+                    {
+                        SpitterLogic target = obj.GetComponent<SpitterLogic>();
+                        if (target != null)
+                        {
+                            target.Stun();
+                        }
+                        break;
+                    }
                 default:
                     {
                         break;
