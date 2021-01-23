@@ -91,7 +91,7 @@ public class HunterLogic : MonoBehaviour
 
             //Check for sight, attack, and firing ranges
 
-            if (isInLineOfSight() && isInFront() && !isDistracted)
+            if (isInLineOfSight(player,sightRange) && isInFront(player) && !isDistracted)
             {
                 Vector3 distVector = player.position - transform.position;
                 distVector.y = 0;
@@ -114,17 +114,19 @@ public class HunterLogic : MonoBehaviour
             }
 
 
-            if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-            {
-                Gun currWeapon = weaponHolder.getCurrentGun();
-                if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                    playerIsFiring = true;
-            }
-            else
-                playerIsFiring = false;
+            //if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+            //{
+            Gun currWeapon = weaponHolder.getCurrentGun();
+            if (isInLineOfSight(player,firingRange)&& isInFront(player) && currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                playerIsFiring = true;
+        //}
+        //else
+         //   playerIsFiring = false;
 
-            if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !collided)
+        if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !collided)
             {
+                if (playerIsFiring)
+                    playerIsFiring = false;
                 if (firstTime)
                 {
                     isLeaping = true;
@@ -147,22 +149,33 @@ public class HunterLogic : MonoBehaviour
 
     }
 
-    private bool isInFront()
+    private bool isInFront(Transform other)
     {
-        Vector3 playerDirection = transform.position - player.position;
+        Vector3 playerDirection = transform.position - other.position;
         float angle = Vector3.Angle(transform.forward, playerDirection);
         if (Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270) return true;
         return false;
     }
 
-    private bool isInLineOfSight()
+    private bool isInLineOfSight(Transform other, float range)
     {
         RaycastHit hit;
         Vector3 direction = player.position - transform.position;
-        if (Physics.Raycast(transform.position, direction, out hit, sightRange))
+        if (range != -1) 
         {
-            if (hit.transform == player)
-                return true;
+            if (Physics.Raycast(transform.position, direction, out hit, sightRange))
+            {
+                if (hit.transform == player)
+                    return true;
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(transform.position, direction, out hit))
+            {
+                if (hit.transform == other)
+                    return true;
+            }
         }
         return false;
 
@@ -311,11 +324,18 @@ public class HunterLogic : MonoBehaviour
 
     public void Distract(Transform pipe)
     {
-        distractPos = pipe;
-        animator.speed = 1f;
-        timer = 0f;
-        isDistracted = true;
-        Invoke(nameof(DistractionEnded), 4f);
+        if (isInFront(pipe) && isInLineOfSight(pipe, -1))
+        {
+            distractPos = pipe;
+            animator.speed = 1f;
+            timer = 0f;
+            isDistracted = true;
+            Invoke(nameof(DistractionEnded), 4f);
+        }
+        else
+        {
+            DistractionEnded();
+        }
     }
     
     private void DistractionEnded()
