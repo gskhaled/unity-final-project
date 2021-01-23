@@ -289,12 +289,15 @@ public class NormalLogic : MonoBehaviour
 
     private void Die()
     {
-        isDead = true;
-        animator.speed = 1f;
-        agent.SetDestination(transform.position);
-        animator.SetTrigger("dying");
-        Destroy(gameObject, 2);
-        healthComponent.rageMeterAdd(10);
+        if (!isDead)
+        {
+            isDead = true;
+            animator.speed = 1f;
+            agent.SetDestination(transform.position);
+            animator.SetTrigger("dying");
+            Destroy(gameObject, 2);
+            healthComponent.rageMeterAdd(10);
+        }
     }
 
 }

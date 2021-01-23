@@ -327,7 +327,7 @@ public class playerHealth : MonoBehaviour
         {
 
             raging = false;
-
+            rageAvailable = false;
             this.GetComponent<playerMovement>().speed = this.GetComponent<playerMovement>().speed / 2f;
 
             ragingMeterTimer = 0;
