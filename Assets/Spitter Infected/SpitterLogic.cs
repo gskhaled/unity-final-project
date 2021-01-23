@@ -188,9 +188,8 @@ public class SpitterLogic : MonoBehaviour
         waiting = false;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        int damage = 10;
         animator.speed = 1f;
         animator.SetBool("walking", false);
 
