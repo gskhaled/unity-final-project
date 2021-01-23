@@ -31,7 +31,7 @@ public class playerMovement : MonoBehaviour
     public AudioSource running;
     public AudioSource alert;
 
-
+    public playerHealth healthComponent;
 
 
     public CharacterController controller;
@@ -64,6 +64,7 @@ public class playerMovement : MonoBehaviour
         speed = 2f;
 
         walkingSoundBool = false;
+        healthComponent = gameObject.GetComponent<playerHealth>();
 
     }
 
@@ -77,7 +78,7 @@ public class playerMovement : MonoBehaviour
 
 
 
-        if (!animator.GetCurrentAnimatorStateInfo(3).IsName("dying"))
+        if (!animator.GetCurrentAnimatorStateInfo(3).IsName("dying") && !healthComponent.isPinned())
 
         {
 
@@ -448,7 +449,6 @@ public class playerMovement : MonoBehaviour
 
                 return true;
 
-                break;
 
             }
 
