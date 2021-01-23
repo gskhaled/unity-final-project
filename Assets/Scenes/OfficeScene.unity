@@ -39766,7 +39766,7 @@ MonoBehaviour:
   BombThrowerScript: {fileID: 144344004}
   BombName: {fileID: 150646271}
   pauseCanvas: {fileID: 802105460}
-  gameOverCanvas: {fileID: 0}
+  gameOverCanvas: {fileID: 1944817772}
   levelName: {fileID: 711877258}
   rageBar: {fileID: 351338574}
   rageText: {fileID: 22699847}
