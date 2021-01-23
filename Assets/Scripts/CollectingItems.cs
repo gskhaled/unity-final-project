@@ -8,6 +8,7 @@ public class CollectingItems : MonoBehaviour
     public Camera FPSCam;
     public float range = 2f;
     public GameObject weapon;
+    public AudioSource ammoPickupSound;
     public bool startWithAPistol = true;
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
     private Dictionary<string, int> bombs = new Dictionary<string, int>();
@@ -178,6 +179,7 @@ public class CollectingItems : MonoBehaviour
                     if(weapon.GetComponent<WeaponSwitching>() != null)
                         weapon.GetComponent<WeaponSwitching>().AddAmmmunition();
                     Destroy(hit.transform.gameObject);
+                    ammoPickupSound.Play();
                     Debug.Log("Consumable Ammo: Filled");
                 }
 

@@ -5,12 +5,14 @@ public class WeaponSwitching : MonoBehaviour
 {
     public CollectingItems CollectingItemsScript;
     
+    private AudioSource switchingWeaponsSound;
     private List<int> availableWeapons = new List<int>(); // --> array of weapon indices
     private int selectedWeapon = 0;
     private bool weaponWasPickedUp = false;
 
     void Start()
     {
+        switchingWeaponsSound = GetComponent<AudioSource>();
         SwitchWeapon();
     }
 
@@ -51,6 +53,7 @@ public class WeaponSwitching : MonoBehaviour
                 selectedWeapon++;
             }
             // Activate the newly selected weapon
+            switchingWeaponsSound.Play();
             transform.GetChild(availableWeapons[selectedWeapon]).gameObject.SetActive(true);
         }
     }
