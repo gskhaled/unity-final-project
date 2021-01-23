@@ -46,6 +46,9 @@ public class Gun : MonoBehaviour
         if (isReloading)
             return;
 
+        if (player.isPinned())
+            return;
+
         if(currentAmmo > 0 || (currentAmmo <= 0 && allAmmo > 0))
         {
             if (allAmmo > 0 && (currentAmmo <= 0 || (Input.GetKeyDown(KeyCode.R) && currentAmmo != maxMagazine)))
