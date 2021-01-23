@@ -339,15 +339,19 @@ public class HunterLogic : MonoBehaviour
 
     private void Die()
     {
-        dieClip.PlayOneShot(dieClip.clip);
-        isDead = true;
-        animator.speed = 1f;
-        CancelInvoke(nameof(ApplyDamage));
-        agent.SetDestination(transform.position);
-        animator.SetTrigger("dying");
-        //CALL A METHOD TO INSTANTIATE BILE !!!
-        Destroy(gameObject, 2);
-        Instantiate(bile, transform);
+        if (!isDead)
+        {
+            dieClip.PlayOneShot(dieClip.clip);
+            isDead = true;
+            animator.speed = 1f;
+            CancelInvoke(nameof(ApplyDamage));
+            agent.SetDestination(transform.position);
+            animator.SetTrigger("dying");
+            //CALL A METHOD TO INSTANTIATE BILE !!!
+            Destroy(gameObject, 2);
+            GameObject instan = Instantiate(bile, transform);
+            instan.transform.SetParent(null);
+        }
     }
 
     private void ApplyDamage()

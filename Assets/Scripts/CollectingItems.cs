@@ -26,7 +26,7 @@ public class CollectingItems : MonoBehaviour
         bombs.Add("Molotov", 0);
         bombs.Add("PipeBomb", 0);
         bombs.Add("StunGrenade", 0);
-        bombs.Add("Health Pack", 0);
+        //bombs.Add("Health Pack", 0);
         
         weapons.Add("AR", false);
         weapons.Add("Hunting Rifle", false);
@@ -171,8 +171,10 @@ public class CollectingItems : MonoBehaviour
                 if (tag.Equals("Consumable Helath Pack"))
                 {
                     //Call method for Consuming Health Pack
-                    AddBomb("Health Pack", hit.transform);
-                    Debug.Log("Health Pack: " + bombs["Health Pack"]);
+                    gameObject.GetComponent<playerHealth>().increaseHealth(50);
+                    //AddBomb("Health Pack", hit.transform);
+                    //Debug.Log("Health Pack");
+                    Destroy(hit.transform.gameObject);
                 }
                 else if (tag.Equals("Consumable Ammo"))
                 {
