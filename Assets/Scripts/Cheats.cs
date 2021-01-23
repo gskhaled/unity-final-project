@@ -169,6 +169,17 @@ public class Cheats : MonoBehaviour
             {
                 weaponHolder.getCurrentGun().AddAmmunition();
             }
+            if (Input.GetKeyDown(KeyCode.KeypadDivide))
+            {
+                if (currentSceneIndex < 3)
+                    SceneManager.LoadScene(++currentSceneIndex);
+                else
+                {
+                    SceneManager.LoadScene(0);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+            }
         }
     }
 }
