@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class ChargerLogic : MonoBehaviour
 {
+    public GameObject bile;
+
     NavMeshAgent agent;
     Transform player;
     Transform oldPlayer;
@@ -303,7 +305,8 @@ public class ChargerLogic : MonoBehaviour
         agent.SetDestination(transform.position);
         animator.SetTrigger("dying");
         //CALL A METHOD TO INSTANTIATE BILE !!!
-
+        Destroy(gameObject, 2);
+        Instantiate(bile, transform);
     }
 
        

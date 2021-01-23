@@ -292,8 +292,7 @@ public class NormalLogic : MonoBehaviour
         animator.speed = 1f;
         agent.SetDestination(transform.position);
         animator.SetTrigger("dying");
-        //CALL A METHOD TO INSTANTIATE BILE !!!
-
+        Destroy(gameObject, 2);
     }
 
 }

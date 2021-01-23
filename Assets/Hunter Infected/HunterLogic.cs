@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class HunterLogic : MonoBehaviour
 {
+    public GameObject bile;
+
     NavMeshAgent agent;
     Transform player;
     Transform head;
@@ -344,7 +346,8 @@ public class HunterLogic : MonoBehaviour
         agent.SetDestination(transform.position);
         animator.SetTrigger("dying");
         //CALL A METHOD TO INSTANTIATE BILE !!!
-
+        Destroy(gameObject, 2);
+        Instantiate(bile, transform);
     }
 
     private void ApplyDamage()
