@@ -368,6 +368,8 @@ public class HunterLogic : MonoBehaviour
             CancelInvoke(nameof(ApplyDamage));
             agent.SetDestination(transform.position);
             animator.SetTrigger("dying");
+            if(healthComponent.isPinned())
+                healthComponent.pinDownCancel();
             //CALL A METHOD TO INSTANTIATE BILE !!!
             Destroy(gameObject, 2);
             GameObject instan = Instantiate(bile, transform);
