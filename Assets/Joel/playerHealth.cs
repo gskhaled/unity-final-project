@@ -161,9 +161,9 @@ public class playerHealth : MonoBehaviour
 
             //Dodging
 
-            bool moving = ( (Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.RightArrow)));
+            bool moving = ( (Input.GetAxis("Vertical")!=0) || (Input.GetAxis("Horizontal")!=0) );
 
-            if (Input.GetKeyDown(KeyCode.LeftControl) && moving)
+            if (Input.GetKeyDown(KeyCode.LeftControl)&&moving )
             {
                 animator.SetBool("dodge", true);
             }
