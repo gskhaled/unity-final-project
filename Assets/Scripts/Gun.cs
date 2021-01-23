@@ -24,11 +24,13 @@ public class Gun : MonoBehaviour
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
     private bool shooting = false;
+    private playerHealth player;
 
     private float lastPlayed_shoot = 0f;
     void Start()
     {
         currentAmmo = maxMagazine;
+        player = FindObjectOfType<playerHealth>();
     }
 
     private void OnEnable()
@@ -60,7 +62,10 @@ public class Gun : MonoBehaviour
                     if (Time.time >= nextTimeToFire)
                     {
                         nextTimeToFire = Time.time + (60f / fireRate);
-                        Shoot();
+                        if (player.isRaging())
+                            Shoot(damage * 2);
+                        else
+                            Shoot(damage);
                     }
                 }
                 else
@@ -77,7 +82,10 @@ public class Gun : MonoBehaviour
                     if (Time.time >= nextTimeToFire)
                     {
                         nextTimeToFire = Time.time + (60f / fireRate);
-                        Shoot();
+                        if (player.isRaging())
+                            Shoot(damage * 2);
+                        else
+                            Shoot(damage);
                     }
                 }
                 else
@@ -112,7 +120,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void Shoot(float damage)
     {
         if(Time.time - lastPlayed_shoot >= .1f)
         {
