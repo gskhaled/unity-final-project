@@ -12,11 +12,15 @@ public class CompanionGun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public AudioSource shootingSound;
 
+    public int killedSoFar = 0;
+
     private Vector3 origin;
     private Vector3 direction;
     private float currentHitDistance;
     private bool shooting = false;
     private float lastPlayed_shoot = 0f;
+    private int maxClips = 3;
+    private int clips = 1;
 
     void Update()
     {
@@ -48,6 +52,7 @@ public class CompanionGun : MonoBehaviour
                 {
                     if (infected.GetComponent<HunterLogic>() != null)
                     {
+                        
                         Shoot();
                         break;
                     }
@@ -62,8 +67,21 @@ public class CompanionGun : MonoBehaviour
                 currentHitDistance = hit.distance;
             }
         }
-            
-        
+
+        if(killedSoFar == 10)
+        {
+            if(clips<maxClips)
+            clips += 1;
+
+            killedSoFar = 0;
+
+        }
+
+        //cheat
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            clips += 1;
+        }
         
     }
 
@@ -77,6 +95,7 @@ public class CompanionGun : MonoBehaviour
 
     void Shoot()
     {
+
         if (Time.time - lastPlayed_shoot >= 1f)
         {
             shootingSound.Play();
