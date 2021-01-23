@@ -243,8 +243,9 @@ public class ChargerLogic : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            isDead = true;
             Die();
+            isDead = true;
+
         }
         else
         {
