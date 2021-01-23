@@ -42,8 +42,9 @@ public class CompanionGun : MonoBehaviour
                 if (hit.transform.gameObject.GetComponent<NormalLogic>() != null ||
                    hit.transform.gameObject.GetComponent<HunterLogic>() != null ||
                    hit.transform.gameObject.GetComponent<ChargerLogic>() != null ||
-                   hit.transform.gameObject.GetComponent<TankLogic>() != null ||
-                   hit.transform.gameObject.name == "Cube")
+                   hit.transform.gameObject.GetComponent<TankLogic>() != null 
+/*                   || hit.transform.gameObject.name == "Cube"*/
+                   )
                 {
                     currHitObjects.Add(hit.transform.gameObject);
                 }
@@ -52,15 +53,16 @@ public class CompanionGun : MonoBehaviour
                 {
                     if (infected.GetComponent<HunterLogic>() != null)
                     {
+                        //infected.GetComponent<HunterLogic>().TakeDamage();
                         
                         Shoot();
                         break;
                     }
-                    if (infected.name == "Cube")
+/*                    if (infected.name == "Cube")
                     {
                         Shoot();
                         break;
-                    }
+                    }*/
 
                 }
 
