@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus Scene.unity
     guid: 66e2e56e11c6c6848b6a5cf440fd50f5
   - enabled: 1
-    path: Assets/Scenes/OfficeScene.unity
-    guid: 2194fe559202da244a6cc0ad8cbc636d
+    path: Assets/Scenes/DesertScene.unity
+    guid: e92002682482ad94eadc456f706aece8
   - enabled: 1
     path: Assets/Scenes/ResidentialScene.unity
     guid: 9b8d46638610f934d9ba582b18f33573
   - enabled: 1
-    path: Assets/Scenes/DesertScene.unity
-    guid: e92002682482ad94eadc456f706aece8
+    path: Assets/Scenes/OfficeScene.unity
+    guid: 2194fe559202da244a6cc0ad8cbc636d
   m_configObjects: {}

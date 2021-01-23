@@ -8,7 +8,7 @@ public class SceneSwitch : MonoBehaviour
     public void GoToLevel1()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Scenes/OfficeScene"); // rescue level
+        SceneManager.LoadScene(1); // rescue level
     }
 
     public void GoToLevel2()
@@ -23,7 +23,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoMainMenuScene()
     {
-        SceneManager.LoadScene("Scenes/Menus Scene");
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class audioScrollers : MonoBehaviour
+public class AudioScroller : MonoBehaviour
 {
     public AudioMixer masterMixer;
 
