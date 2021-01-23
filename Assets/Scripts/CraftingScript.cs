@@ -225,7 +225,7 @@ public class CraftingScript : MonoBehaviour
             case "PipeBomb":
                 CollectingItemsScript.AddBomb("PipeBomb", null);
                 break;
-            case "Health Pack":
+            case "HealthPack":
                 CollectingItemsScript.AddBomb("Health Pack", null);
                 break;
         }

@@ -170,11 +170,7 @@ public class CollectingItems : MonoBehaviour
             {
                 if (tag.Equals("Consumable Helath Pack"))
                 {
-                    //Call method for Consuming Health Pack
-                    gameObject.GetComponent<playerHealth>().increaseHealth(50);
-                    //AddBomb("Health Pack", hit.transform);
-                    //Debug.Log("Health Pack");
-                    Destroy(hit.transform.gameObject);
+                    AddBomb("Health Pack", hit.transform);
                 }
                 else if (tag.Equals("Consumable Ammo"))
                 {
@@ -236,8 +232,9 @@ public class CollectingItems : MonoBehaviour
             }
             else if(name.Equals("Health Pack"))
             {
-                bombs["Health Pack"] = bombs["Health Pack"] + 1;
-                Debug.Log("Added Health Pack: " + bombs["Health Pack"]);
+                // Call method for Consuming Health Pack
+                gameObject.GetComponent<playerHealth>().increaseHealth(50);
+                Debug.Log("Added and consumed Health Pack");
                 if (t != null)
                     Destroy(t.gameObject);
                 else
