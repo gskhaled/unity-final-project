@@ -159,7 +159,9 @@ public class HudScript : MonoBehaviour
     void PauseGame()
     {
         pauseCanvas.enabled = true;
-        Screen.lockCursor = false;  
+        // Screen.lockCursor = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0;
     }
 
@@ -174,7 +176,9 @@ public class HudScript : MonoBehaviour
     public void ResumeGame()
     {
         pauseCanvas.enabled = false;
-        Screen.lockCursor = true;
+        // Screen.lockCursor = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         Time.timeScale = 1;
     }
 

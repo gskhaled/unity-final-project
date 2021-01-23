@@ -293,6 +293,7 @@ public class NormalLogic : MonoBehaviour
         agent.SetDestination(transform.position);
         animator.SetTrigger("dying");
         Destroy(gameObject, 2);
+        healthComponent.rageMeterAdd(10);
     }
 
 }

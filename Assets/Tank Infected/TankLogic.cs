@@ -306,6 +306,7 @@ public class TankLogic : MonoBehaviour
             Destroy(gameObject, 2);
             GameObject instan = Instantiate(bile, transform);
             instan.transform.SetParent(null);
+            healthComponent.rageMeterAdd(50);
         }
     }
 
