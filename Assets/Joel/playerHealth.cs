@@ -31,6 +31,7 @@ public class playerHealth : MonoBehaviour
 
 
 
+    float lastRageAddition;
 
     int health;
 
@@ -283,7 +284,7 @@ public class playerHealth : MonoBehaviour
 
 
 
-        if (meterSeconds < 3)
+        if (lastRageAddition-Time.time <= 3)
 
         {
 
@@ -492,7 +493,7 @@ public class playerHealth : MonoBehaviour
     public void rageMeterAdd(int points)
 
     {
-
+        lastRageAddition = Time.time;
         rageMeter += points;
 
         collText.GetComponent<Text>().text = "rageMeter:" + rageMeter;
