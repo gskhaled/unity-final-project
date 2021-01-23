@@ -133,8 +133,9 @@ public class playerHealth : MonoBehaviour
 
                 animator.SetBool("dead", true);
                 dyingSound.enabled = true;
+                if (!dead)
+                    dyingSound.Play();
                 dead = true;
-                dyingSound.PlayOneShot(dyingSound.clip);
 
                 //AudioClip dyingSound = GameObject.Find("dyingSound").GetComponent<AudioSource>().clip;
 

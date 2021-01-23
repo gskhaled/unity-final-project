@@ -75509,8 +75509,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 4, y: -33.8}
+  m_SizeDelta: {x: 300.00458, y: 67.719864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123668805
 MonoBehaviour:
@@ -76606,7 +76606,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 4.1086e-41, z: 0, w: 4.8125}
+  m_BoundingSphereOverride: {x: 0, y: 1.0885e-41, z: 0, w: 20.75}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -95920,8 +95920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20.000025}
-  m_SizeDelta: {x: 160, y: 40}
+  m_AnchoredPosition: {x: -0.00012207, y: -33.86}
+  m_SizeDelta: {x: 300.00433, y: 67.71966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1358549873
 MonoBehaviour:
@@ -137845,6 +137845,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runEveryXSeconds: 15
   nextLevelCanvas: {fileID: 427154273}
+  sceneText: {fileID: 1358549873}
+  resuceLevelTime: 0
 --- !u!4 &2128421785
 Transform:
   m_ObjectHideFlags: 0

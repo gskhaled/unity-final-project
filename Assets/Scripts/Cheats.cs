@@ -180,6 +180,10 @@ public class Cheats : MonoBehaviour
                     Cursor.visible = true;
                 }
             }
+            if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+            {
+                FindObjectOfType<Manager>().PauseTimer();
+            }
         }
     }
 }
