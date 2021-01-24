@@ -9,6 +9,8 @@ public class Manager : MonoBehaviour
     // public Canvas creditsCanvas;
     public Text sceneText;
     public float resuceLevelTime;
+    public GameObject Ellie;
+    public GameObject Louis;
 
     private int currentSceneIndex;
     private int bikeCount = 0;
@@ -20,6 +22,10 @@ public class Manager : MonoBehaviour
     private bool companionRescued = false;
     private void Start()
     {
+        if (PlayerPrefs.GetString("Companion").Equals("Ellie"))
+            Destroy(Louis);
+        if (PlayerPrefs.GetString("Companion").Equals("Louis"))
+            Destroy(Ellie);
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         isDead = false;
         player = FindObjectOfType<playerHealth>();

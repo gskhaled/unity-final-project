@@ -1154,7 +1154,7 @@ PrefabInstance:
     - target: {fileID: 4533900392670075345, guid: 7f89233c7e508428aaea48587e109b98,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4533900392670268075, guid: 7f89233c7e508428aaea48587e109b98,
         type: 3}
@@ -1229,7 +1229,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 22864004}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 22864008}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
@@ -1244,6 +1244,12 @@ AudioSource:
 --- !u!198 &22864007 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6039683775637769315, guid: 7f89233c7e508428aaea48587e109b98,
+    type: 3}
+  m_PrefabInstance: {fileID: 22864004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &22864008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4533900392670075345, guid: 7f89233c7e508428aaea48587e109b98,
     type: 3}
   m_PrefabInstance: {fileID: 22864004}
   m_PrefabAsset: {fileID: 0}
@@ -26375,7 +26381,9 @@ MonoBehaviour:
   runEveryXSeconds: 0
   nextLevelCanvas: {fileID: 265944295}
   sceneText: {fileID: 711877258}
-  resuceLevelTime: 300
+  resuceLevelTime: 450
+  Ellie: {fileID: 593705016}
+  Louis: {fileID: 22864008}
 --- !u!4 &576224041
 Transform:
   m_ObjectHideFlags: 0
@@ -27255,7 +27263,7 @@ PrefabInstance:
     - target: {fileID: 3544215231128075422, guid: 5235c017257924282aba27f8dba2fb1f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3544215231128268772, guid: 5235c017257924282aba27f8dba2fb1f,
         type: 3}
@@ -27320,7 +27328,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 593705012}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 593705016}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
@@ -27335,6 +27343,12 @@ AudioSource:
 --- !u!198 &593705015 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3419257107092565244, guid: 5235c017257924282aba27f8dba2fb1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 593705012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &593705016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3544215231128075422, guid: 5235c017257924282aba27f8dba2fb1f,
     type: 3}
   m_PrefabInstance: {fileID: 593705012}
   m_PrefabAsset: {fileID: 0}

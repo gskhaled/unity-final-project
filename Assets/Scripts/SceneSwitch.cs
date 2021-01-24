@@ -14,8 +14,18 @@ public class SceneSwitch : MonoBehaviour
             mainMenuCanvas.transform.GetChild(4).gameObject.SetActive(true);
         }
     }
-    public void GoToLevel1()
+
+    public void ResetCredits()
     {
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            PlayerPrefs.SetString("Credits", "No");
+        }
+    }
+
+    public void GoToLevel1(string companionName)
+    {
+        PlayerPrefs.SetString("Companion", companionName);
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
