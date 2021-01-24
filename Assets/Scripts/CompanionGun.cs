@@ -7,6 +7,7 @@ public class CompanionGun : MonoBehaviour
 {
     public float fireRate = 1f;
     public int clipCapacity = 15;
+    private int currentClip;
     public Camera camera;
     public ThirdPersonCharacter gunHolder;
     public List<GameObject> currHitObjects = new List<GameObject>();
@@ -24,8 +25,12 @@ public class CompanionGun : MonoBehaviour
     private bool shooting = false;
     private float lastPlayed_shoot = 0f;
     public int maxClips = 3;
-    private int clips = 1;
+    private int clips = 0;
     private int gunAmmo = 0;
+    private void Start()
+    {
+        currentClip = clipCapacity;
+    }
     void Update()
     {
         //healthComponent.setRageMultiplier(int multiplier)
@@ -45,6 +50,11 @@ public class CompanionGun : MonoBehaviour
             currentHitDistance = maxDistance;
             currHitObjects.Clear();
             RaycastHit[] hits = Physics.SphereCastAll(origin, sphereRadius, direction, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
+            if(hits.Length==0)
+            {
+                shooting = !shooting;
+                gunHolder.GetComponent<AICharacterControl>().SetTarget(camera.transform);
+            }
             foreach (RaycastHit hit in hits)
             {
                 if (hit.transform.gameObject.GetComponent<NormalLogic>() != null ||
@@ -130,11 +140,22 @@ public class CompanionGun : MonoBehaviour
 
     void Shoot(GameObject inf,string type)
     {
-
-        if (Time.time - lastPlayed_shoot >= 1/fireRate && (gunAmmo< clipCapacity*clips || healthComponent.isRaging()))
+        bool isRaging = healthComponent.isRaging();
+        if (currentClip==0 && clips > 0 && !isRaging)
         {
-            if(!healthComponent.isRaging())
-                gunAmmo += 1;
+            currentClip = clipCapacity;
+            clips -= 1;
+        }
+        if(!isRaging && currentClip==0)
+        {
+                shooting = !shooting;
+                gunHolder.GetComponent<AICharacterControl>().SetTarget(camera.transform);
+        }
+        if (Time.time - lastPlayed_shoot >= 1/fireRate && (currentClip>0 || isRaging))
+        {
+            if(!isRaging)
+                currentClip -= 1;
+            
             shootingSound.Play();
             muzzleFlash.Play();
             if(type.Equals("Hunter"))
@@ -153,18 +174,19 @@ public class CompanionGun : MonoBehaviour
     }
     void clipsCheck()
     {
-        if (healthComponent.getTotalKilled() - (increasedClips * 10) >= 10)
+        if (healthComponent.getTotalKilled() - (increasedClips * 10) >= 10 && clips<maxClips)
         {
             increasedClips += 1;
             clips += 1;
         }
+
     }
     void Shoot()
     {
 
-        if (Time.time - lastPlayed_shoot >= .1f && gunAmmo < 50 * clips)
+        if (Time.time - lastPlayed_shoot >= .1f && gunAmmo < clipCapacity * clips)
         {
-            gunAmmo += 1;
+            //gunAmmo += 1;
             shootingSound.Play();
             muzzleFlash.Play();
             
@@ -175,12 +197,12 @@ public class CompanionGun : MonoBehaviour
     public int getAmmoCount()
     {
         if (!healthComponent.isRaging())
-            return (clips * clipCapacity) - gunAmmo;
+            return currentClip;
         else
             return 1000;
     }
     public int getMaxAmmo()
     {
-        return (maxClips * clipCapacity);
+        return (clips * clipCapacity);
     }
 }

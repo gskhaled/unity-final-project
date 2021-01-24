@@ -1146,6 +1146,11 @@ PrefabInstance:
       propertyPath: maxClips
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3168542926021124912, guid: 7f89233c7e508428aaea48587e109b98,
+        type: 3}
+      propertyPath: clipCapacity
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4533900392670075345, guid: 7f89233c7e508428aaea48587e109b98,
         type: 3}
       propertyPath: m_Name
