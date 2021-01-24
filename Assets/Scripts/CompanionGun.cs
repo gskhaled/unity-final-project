@@ -141,7 +141,7 @@ public class CompanionGun : MonoBehaviour
     void Shoot()
     {
 
-        if (Time.time - lastPlayed_shoot >= 1f && gunAmmo < 15 * clips)
+        if (Time.time - lastPlayed_shoot >= .1f && gunAmmo < 50 * clips)
         {
             gunAmmo += 1;
             shootingSound.Play();
@@ -151,7 +151,7 @@ public class CompanionGun : MonoBehaviour
         }
 
     }
-    public void getAmmoCount()
+    public int getAmmoCount()
     {
         return (clips * 15) - gunAmmo;
     }
