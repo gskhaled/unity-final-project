@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class CompanionGun : MonoBehaviour
 {
+    public Camera camera;
+    public ThirdPersonCharacter gunHolder;
     public List<GameObject> currHitObjects = new List<GameObject>();
-
+    public int damage = 36;
     public float sphereRadius;
     public float maxDistance;
     public LayerMask layerMask;
@@ -21,13 +24,15 @@ public class CompanionGun : MonoBehaviour
     private float lastPlayed_shoot = 0f;
     private int maxClips = 3;
     private int clips = 1;
-
+    private int gunAmmo = 0;
     void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
             shooting = !shooting;
+            gunHolder.GetComponent<AICharacterControl>().SetTarget(camera.transform);
+
         }
 
         if (shooting)
@@ -43,7 +48,7 @@ public class CompanionGun : MonoBehaviour
                    hit.transform.gameObject.GetComponent<HunterLogic>() != null ||
                    hit.transform.gameObject.GetComponent<ChargerLogic>() != null ||
                    hit.transform.gameObject.GetComponent<TankLogic>() != null 
-/*                   || hit.transform.gameObject.name == "Cube"*/
+                   || hit.transform.gameObject.name == "Cube"
                    )
                 {
                     currHitObjects.Add(hit.transform.gameObject);
@@ -53,16 +58,41 @@ public class CompanionGun : MonoBehaviour
                 {
                     if (infected.GetComponent<HunterLogic>() != null)
                     {
-                        //infected.GetComponent<HunterLogic>().TakeDamage();
                         
-                        Shoot();
+                        gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
+                        Shoot(infected);
                         break;
                     }
-/*                    if (infected.name == "Cube")
+                    else if (infected.GetComponent<ChargerLogic>() != null)
                     {
-                        Shoot();
+
+                        gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
+                        Shoot(infected);
                         break;
-                    }*/
+                    }
+                    else if (infected.GetComponent<TankLogic>() != null)
+                    {
+
+                        gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
+                        Shoot(infected);
+                        break;
+                    }
+                    else if (infected.GetComponent<NormalLogic>() != null)
+                    {
+
+                        gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
+                        Shoot(infected);
+                        break;
+                    }
+                    else if (infected.name == "Cube")
+                    {
+
+                        gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
+                        //gunHolder.GetComponent<Animation>().Play("Shooting");
+                        Shoot(); 
+                        //Debug.Log(count);
+                        break;
+                    }
 
                 }
 
@@ -80,7 +110,7 @@ public class CompanionGun : MonoBehaviour
         }
 
         //cheat
-        if (Input.GetKeyDown(KeyCode.F11))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             clips += 1;
         }
@@ -95,15 +125,34 @@ public class CompanionGun : MonoBehaviour
         Gizmos.DrawWireSphere(origin + direction * currentHitDistance, sphereRadius);
     }
 
-    void Shoot()
+    void Shoot(GameObject inf)
     {
 
-        if (Time.time - lastPlayed_shoot >= 1f)
+        if (Time.time - lastPlayed_shoot >= 1f && gunAmmo< 5*clips)
         {
+            gunAmmo += 1;
             shootingSound.Play();
             muzzleFlash.Play();
+            inf.GetComponent<HunterLogic>().TakeDamage(damage);
             lastPlayed_shoot = Time.time;
         }
 
+    }
+    void Shoot()
+    {
+
+        if (Time.time - lastPlayed_shoot >= .1f && gunAmmo < 50 * clips)
+        {
+            gunAmmo += 1;
+            shootingSound.Play();
+            muzzleFlash.Play();
+            
+            lastPlayed_shoot = Time.time;
+        }
+
+    }
+    public int getAmmoCount()
+    {
+        return (clips * 15) - gunAmmo;
     }
 }

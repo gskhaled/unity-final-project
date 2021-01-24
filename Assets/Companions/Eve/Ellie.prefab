@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a05ddb1ce34d6e97ba30491f997ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  gunHolder: {fileID: 3544215231117259184}
   currHitObjects: []
+  damage: 26
   sphereRadius: 6
   maxDistance: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   muzzleFlash: {fileID: 3419257107092565244}
-  shootingSound: {fileID: 6831180562221737269}
+  shootingSound: {fileID: 0}
   killedSoFar: 0
 --- !u!1 &3544215231128075422
 GameObject:
@@ -332,12 +335,6 @@ GameObject:
 --- !u!198 &3419257107092565244 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3340397808870599229, guid: b942692f04a944440afb12a56755ab71,
-    type: 3}
-  m_PrefabInstance: {fileID: 83560834638464705}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &6831180562221737269 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6910180604315526132, guid: b942692f04a944440afb12a56755ab71,
     type: 3}
   m_PrefabInstance: {fileID: 83560834638464705}
   m_PrefabAsset: {fileID: 0}
