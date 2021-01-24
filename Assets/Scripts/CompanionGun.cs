@@ -133,7 +133,8 @@ public class CompanionGun : MonoBehaviour
 
         if (Time.time - lastPlayed_shoot >= 1/fireRate && (gunAmmo< clipCapacity*clips || healthComponent.isRaging()))
         {
-            gunAmmo += 1;
+            if(!healthComponent.isRaging())
+                gunAmmo += 1;
             shootingSound.Play();
             muzzleFlash.Play();
             if(type.Equals("Hunter"))
