@@ -185,7 +185,7 @@ public class CollectingItems : MonoBehaviour
             }
             else if (tag.Equals("Bike"))
             {
-                managerScript.removeBike();
+                managerScript.CollectBike();
                 Destroy(hit.transform.gameObject);
 
             }
