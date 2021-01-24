@@ -19,7 +19,7 @@ public class playerHealth : MonoBehaviour
     public AudioSource dyingSound;
 
     public AudioSource companionFire;
-
+    
 
 
     public GameObject healthText;
@@ -30,7 +30,7 @@ public class playerHealth : MonoBehaviour
 
 
 
-
+    int killedInfected;
     float lastRageAddition;
 
     int health;
@@ -62,7 +62,7 @@ public class playerHealth : MonoBehaviour
     void Start()
 
     {
-
+        killedInfected = 0;
         health = 300;
 
         collected = 0;
@@ -575,8 +575,14 @@ public class playerHealth : MonoBehaviour
         animator.SetBool("pick", true);
 
     }
-
-
+    public void infectedIsKilled()
+    {
+        killedInfected += 1;
+    }
+    public int getTotalKilled()
+    {
+        return killedInfected;
+    }
 
 
 

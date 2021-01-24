@@ -297,6 +297,8 @@ public class NormalLogic : MonoBehaviour
             animator.SetTrigger("dying");
             Destroy(gameObject, 2);
             healthComponent.rageMeterAdd(10);
+            healthComponent.infectedIsKilled();
+
         }
     }
 

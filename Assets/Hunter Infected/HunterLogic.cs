@@ -396,6 +396,7 @@ public class HunterLogic : MonoBehaviour
             firstTime = true;
             //PIN DOWN JOEL !!!
             healthComponent.pinDownHold();
+            healthComponent.infectedIsKilled();
 
             InvokeRepeating(nameof(ApplyDamage), 0, 1);
             AttackPlayer();

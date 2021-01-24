@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a05ddb1ce34d6e97ba30491f997ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  gunHolder: {fileID: 3544215231117259184}
   currHitObjects: []
+  damage: 26
   sphereRadius: 6
   maxDistance: 0
   layerMask:
