@@ -82,13 +82,13 @@ public class Manager : MonoBehaviour
 
                 if (companionRescued)
                 {
-                    /*if (CountInfected() == 0)
+                    if (CountInfected() == 0)
                     {
-                        creditsCanvas.gameObject.SetActive(true);
+                        PlayerPrefs.SetString("Credits", "Yes");
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
-                        Time.timeScale = 0;
-                    }*/
+                        SceneManager.LoadScene(0);
+                    }
                 }
             }
         }

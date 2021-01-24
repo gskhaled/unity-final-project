@@ -141,88 +141,101 @@ public class Gun : MonoBehaviour
                 string tag = obj.tag;
                 switch (tag)
                 {
-                    case "Target":
-                        {
-                            Target target = obj.GetComponent<Target>();
-                            if (target != null)
-                            {
-                                target.TakeDamage((int)damage);
-                            }
-                            if (target.GetComponent<Rigidbody>() != null)
-                            {
-                                hit.rigidbody.AddForce(-hit.normal * impactForce);
-                            }
-                            break;
-                        }
                     case "Normal":
+                    {
+                        NormalLogic target = obj.GetComponent<NormalLogic>();
+                        if (target != null)
                         {
-                            NormalLogic target = obj.GetComponent<NormalLogic>();
-                            if (target != null)
-                            {
-                                target.TakeDamage((int)damage);
-                            }
-                            if (target.GetComponent<Rigidbody>() != null)
-                            {
-                                hit.rigidbody.AddForce(-hit.normal * impactForce);
-                            }
-                            break;
+                            target.TakeDamage((int)damage);
                         }
+                        if (target.GetComponent<Rigidbody>() != null)
+                        {
+                            hit.rigidbody.AddForce(-hit.normal * impactForce);
+                        }
+                        break;
+                    }
                     case "Charger":
+                    {
+                        ChargerLogic target = obj.GetComponent<ChargerLogic>();
+                        if (target != null)
                         {
-                            ChargerLogic target = obj.GetComponent<ChargerLogic>();
-                            if (target != null)
-                            {
-                                target.TakeDamage((int)damage);
-                            }
-                            if (target.GetComponent<Rigidbody>() != null)
-                            {
-                                hit.rigidbody.AddForce(-hit.normal * impactForce);
-                            }
-                            break;
+                            target.TakeDamage((int)damage);
                         }
+                        if (target.GetComponent<Rigidbody>() != null)
+                        {
+                            hit.rigidbody.AddForce(-hit.normal * impactForce);
+                        }
+                        break;
+                    }
                     case "Tank":
+                    {
+                        TankLogic target = obj.GetComponent<TankLogic>();
+                        if (target != null)
                         {
-                            TankLogic target = obj.GetComponent<TankLogic>();
-                            if (target != null)
-                            {
-                                target.TakeDamage((int)damage);
-                            }
-                            if (target.GetComponent<Rigidbody>() != null)
-                            {
-                                hit.rigidbody.AddForce(-hit.normal * impactForce);
-                            }
-                            break;
+                            target.TakeDamage((int)damage);
                         }
+                        if (target.GetComponent<Rigidbody>() != null)
+                        {
+                            hit.rigidbody.AddForce(-hit.normal * impactForce);
+                        }
+                        break;
+                    }
                     case "Hunter":
+                    {
+                        HunterLogic target = obj.GetComponent<HunterLogic>();
+                        if (target != null)
                         {
-                            HunterLogic target = obj.GetComponent<HunterLogic>();
-                            if (target != null)
-                            {
-                                target.TakeDamage((int)damage);
-                            }
-                            if (target.GetComponent<Rigidbody>() != null)
-                            {
-                                hit.rigidbody.AddForce(-hit.normal * impactForce);
-                            }
-                            break;
+                            target.TakeDamage((int)damage);
                         }
+                        if (target.GetComponent<Rigidbody>() != null)
+                        {
+                            hit.rigidbody.AddForce(-hit.normal * impactForce);
+                        }
+                        break;
+                    }
                     case "Spitter":
+                    {
+                        SpitterLogic target = obj.GetComponent<SpitterLogic>();
+                        if (target != null)
                         {
-                            SpitterLogic target = obj.GetComponent<SpitterLogic>();
-                            if (target != null)
-                            {
-                                target.TakeDamage((int)damage);
-                            }
-                            if (target.GetComponent<Rigidbody>() != null)
-                            {
-                                hit.rigidbody.AddForce(-hit.normal * impactForce);
-                            }
-                            break;
+                            target.TakeDamage((int)damage);
                         }
+                        if (target.GetComponent<Rigidbody>() != null)
+                        {
+                            hit.rigidbody.AddForce(-hit.normal * impactForce);
+                        }
+                        break;
+                    }
+                    case "Target":
+                    {
+                        Target target = obj.GetComponent<Target>();
+                        if (target != null)
+                        {
+                            target.TakeDamage((int)damage);
+                        }
+                        if (target.GetComponent<Rigidbody>() != null)
+                        {
+                            hit.rigidbody.AddForce(-hit.normal * impactForce);
+                        }
+                        break;
+                    }
+                    case "Cage door":
+                    {
+                        Target target = obj.GetComponent<Target>();
+                        if (target != null)
+                        {
+                            target.TakeDamage((int)damage);
+                        }
+                        if (target.GetComponent<Rigidbody>() != null)
+                        {
+                            hit.rigidbody.AddForce(-hit.normal * impactForce);
+                        }
+                        break;
+                    }
                     default:
-                        {
-                            break;
-                        }
+                    {
+                        break;
+                    }
                 }
             }
             GameObject impactObj = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -246,88 +259,101 @@ public class Gun : MonoBehaviour
                     string tag = obj.tag;
                     switch (tag)
                     {
-                        case "Target":
-                            {
-                                Target target = obj.GetComponent<Target>();
-                                if (target != null)
-                                {
-                                    target.TakeDamage((int)damage / pellets);
-                                }
-                                if (target.GetComponent<Rigidbody>() != null)
-                                {
-                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
-                                }
-                                break;
-                            }
                         case "Normal":
+                        {
+                            NormalLogic target = obj.GetComponent<NormalLogic>();
+                            if (target != null)
                             {
-                                NormalLogic target = obj.GetComponent<NormalLogic>();
-                                if (target != null)
-                                {
-                                    target.TakeDamage((int)damage / pellets);
-                                }
-                                if (target.GetComponent<Rigidbody>() != null)
-                                {
-                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
-                                }
-                                break;
+                                target.TakeDamage((int)damage / pellets);
                             }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
                         case "Charger":
+                        {
+                            ChargerLogic target = obj.GetComponent<ChargerLogic>();
+                            if (target != null)
                             {
-                                ChargerLogic target = obj.GetComponent<ChargerLogic>();
-                                if (target != null)
-                                {
-                                    target.TakeDamage((int)damage / pellets);
-                                }
-                                if (target.GetComponent<Rigidbody>() != null)
-                                {
-                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
-                                }
-                                break;
+                                target.TakeDamage((int)damage / pellets);
                             }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
                         case "Tank":
+                        {
+                            TankLogic target = obj.GetComponent<TankLogic>();
+                            if (target != null)
                             {
-                                TankLogic target = obj.GetComponent<TankLogic>();
-                                if (target != null)
-                                {
-                                    target.TakeDamage((int)damage / pellets);
-                                }
-                                if (target.GetComponent<Rigidbody>() != null)
-                                {
-                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
-                                }
-                                break;
+                                target.TakeDamage((int)damage / pellets);
                             }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
                         case "Hunter":
+                        {
+                            HunterLogic target = obj.GetComponent<HunterLogic>();
+                            if (target != null)
                             {
-                                HunterLogic target = obj.GetComponent<HunterLogic>();
-                                if (target != null)
-                                {
-                                    target.TakeDamage((int)damage / pellets);
-                                }
-                                if (target.GetComponent<Rigidbody>() != null)
-                                {
-                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
-                                }
-                                break;
+                                target.TakeDamage((int)damage / pellets);
                             }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
                         case "Spitter":
+                        {
+                            SpitterLogic target = obj.GetComponent<SpitterLogic>();
+                            if (target != null)
                             {
-                                SpitterLogic target = obj.GetComponent<SpitterLogic>();
-                                if (target != null)
-                                {
-                                    target.TakeDamage((int)damage / pellets);
-                                }
-                                if (target.GetComponent<Rigidbody>() != null)
-                                {
-                                    hit.rigidbody.AddForce(-hit.normal * impactForce);
-                                }
-                                break;
+                                target.TakeDamage((int)damage / pellets);
                             }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
+                        case "Target":
+                        {
+                            Target target = obj.GetComponent<Target>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage / pellets);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
+                        case "Cage door":
+                        {
+                            Target target = obj.GetComponent<Target>();
+                            if (target != null)
+                            {
+                                target.TakeDamage((int)damage / pellets);
+                            }
+                            if (target.GetComponent<Rigidbody>() != null)
+                            {
+                                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            }
+                            break;
+                        }
                         default:
-                            {
-                                break;
-                            }
+                        {
+                            break;
+                        }
                     }
                 }
                 GameObject impactObj = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

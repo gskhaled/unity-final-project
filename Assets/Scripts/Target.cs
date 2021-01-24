@@ -10,6 +10,8 @@ public class Target : MonoBehaviour
         if(health <= 0)
         {
             Die();
+            if (gameObject.tag.Equals("Cage door"))
+                FindObjectOfType<Manager>().CompanionRescued();
         }
     }
     void Die()

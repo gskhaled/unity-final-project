@@ -5,10 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
+    private void Start()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 0 && PlayerPrefs.GetString("Credits") != null && PlayerPrefs.GetString("Credits").Equals("Yes"))
+        {
+            GameObject mainMenuCanvas = GameObject.Find("Main Menu Canvas");
+            //mainMenuCanvas.transform.GetChild(0).gameObject.SetActive(false);
+            mainMenuCanvas.transform.GetChild(4).gameObject.SetActive(true);
+        }
+    }
     public void GoToLevel1()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(1); // rescue level
+        SceneManager.LoadScene(1);
     }
 
     public void GoToNextLevel()
