@@ -380,84 +380,86 @@ public class playerHealth : MonoBehaviour
     {
 
         //add health
-
-        if (Input.GetKeyDown(KeyCode.H))
-
+        if (Input.GetKey(KeyCode.LeftAlt))
         {
-
-            health += 50;
-
-            if (health > 300)
+            if (Input.GetKeyDown(KeyCode.H))
 
             {
 
-                health = 300;
+                health += 50;
+
+                if (health > 300)
+
+                {
+
+                    health = 300;
+
+                }
 
             }
 
-        }
+            //add 10 pts rage
 
-        //add 10 pts rage
-
-        if (Input.GetKeyDown(KeyCode.M))
-
-        {
-
-            rageMeterAdd(10);
-
-        }
-
-        //toggle rage
-
-        if (Input.GetKeyDown(KeyCode.Y))
-
-        {
-
-            if (!raging)
+            if (Input.GetKeyDown(KeyCode.M))
 
             {
 
-                this.GetComponent<playerMovement>().speed = 2f * this.GetComponent<playerMovement>().speed;
-
-                rageTimer = 0;
-
-                raging = true;
-
-                rageAvailable = false;
-
-                rageMeter = 0;
-
-                collText.GetComponent<Text>().text = "RAGINGGG!!";
-                rageSound.enabled = true;
-                rageSound.PlayOneShot(rageSound.clip);
-                /*AudioClip rageSound = GameObject.Find("rageSound").GetComponent<AudioSource>().clip;
-
-                this.GetComponent<AudioSource>().PlayOneShot(rageSound);*/
+                rageMeterAdd(10);
 
             }
 
-        }
+            //toggle rage
 
-        if (Input.GetKeyDown(KeyCode.N))
-
-        {
-
-            if (raging)
+            if (Input.GetKeyDown(KeyCode.Y))
 
             {
 
-                raging = false;
+                if (!raging)
 
-                this.GetComponent<playerMovement>().speed = this.GetComponent<playerMovement>().speed / 2f;
+                {
 
-                ragingMeterTimer = 0;
+                    this.GetComponent<playerMovement>().speed = 2f * this.GetComponent<playerMovement>().speed;
 
-                //rageMeter = 0;
+                    rageTimer = 0;
 
-                collText.GetComponent<Text>().text = "Rage Meter:" + rageMeter;
+                    raging = true;
+
+                    rageAvailable = false;
+
+                    rageMeter = 0;
+
+                    collText.GetComponent<Text>().text = "RAGINGGG!!";
+                    rageSound.enabled = true;
+                    rageSound.PlayOneShot(rageSound.clip);
+                    /*AudioClip rageSound = GameObject.Find("rageSound").GetComponent<AudioSource>().clip;
+
+                    this.GetComponent<AudioSource>().PlayOneShot(rageSound);*/
+
+                }
 
             }
 
+            if (Input.GetKeyDown(KeyCode.N))
+
+            {
+
+                if (raging)
+
+                {
+
+                    raging = false;
+
+                    this.GetComponent<playerMovement>().speed = this.GetComponent<playerMovement>().speed / 2f;
+
+                    ragingMeterTimer = 0;
+
+                    //rageMeter = 0;
+
+                    collText.GetComponent<Text>().text = "Rage Meter:" + rageMeter;
+
+                }
+
+            }
         }
 
     }
