@@ -2193,7 +2193,7 @@ RectTransform:
   m_Father: {fileID: 112287161}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.4188606}
+  m_AnchorMin: {x: 0, y: 0.8268}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -3333,7 +3333,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 912078796}
   m_HandleRect: {fileID: 912078795}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4512,8 +4512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.6297, y: -372.54398}
-  m_SizeDelta: {x: -21.259521, y: 745.088}
+  m_AnchoredPosition: {x: 0, y: -1249.9999}
+  m_SizeDelta: {x: -84.04437, y: 2500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463406244
 MonoBehaviour:
@@ -4548,21 +4548,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits:
-
-
-    3D Models: mixamo.com
-
-    Scenes: Unity Asset Store SNAPS
-    & devassets.com
-
-    Weapon Models: devassets.com
-
-    Collectables: sketchfab.com,
-    renderhub.com, turbosquid.com & 3dmdb.com
-
-    Music: Left 4 Dead Official, The
-    Last of Us 2 Official & soundbible.com'
+  m_Text: "\nCredits:\n\nThank you for playing our game!\n\nThis game was developed
+    by the game studio \"U Left Us Dead\". The game was fully developed using the
+    Unity game engine, as part of the CSEN903 ACML university course.\n\n\tMembers:\n\t\tGasser
+    Khaled,\n\t\tIslam Nasr,\n\t\tKariman Hossam,\n\t\tHana Kamal,\n\t\tMarwan Sadat,\n\t\t&
+    Yasser.\n\nCharacter Models + Animations: mixamo.com\nScenes: Unity Asset Store
+    SNAPS & devassets.com\nWeapon Models: devassets.com\nCollectables: sketchfab.com,
+    renderhub.com, turbosquid.com & 3dmdb.com\nMusic: Left 4 Dead Official, The Last
+    of Us 2 Official, soundbible.com & freesound.org\nScripts and Prefabs: Unity
+    Asset Store Standard Assets\nSkyboxes: Unity Asset Store sky5X\nIcons: flaticons.com\n\n&
+    finally, special thanks to the unity forums and stackoverflow, as well as unity
+    learn, for having our back in all the self learning we had to do <3!"
 --- !u!222 &463406245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9109,8 +9105,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2115643474}
   m_HandleRect: {fileID: 2115643473}
   m_Direction: 2
-  m_Value: 1.0000005
-  m_Size: 0.07216666
+  m_Value: 0.999981
+  m_Size: 0.073065266
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13776,7 +13772,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 270019781}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5811394
+  m_Size: 0.1732
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22576,8 +22572,8 @@ RectTransform:
   m_Father: {fileID: 901667160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.9278333}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.92691714}
+  m_AnchorMax: {x: 1, y: 0.9999824}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22772,9 +22768,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: -3000.0027}
-  m_SizeDelta: {x: -21.259521, y: 6000}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -2963}
+  m_SizeDelta: {x: -86.2572, y: 5926.209}
+  m_Pivot: {x: 0.49999994, y: 0.49999997}
 --- !u!114 &2134910445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22797,10 +22793,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -22808,27 +22804,39 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "How to play:\n\nThe game contains 3 levels:\n\t1) Rescue Level\n\t2) Stealth
-    Level\n\t3) Fighting Level\n\nControls:\n\tPlayer Movement: \n\t\tW: to move
-    forward\n\t\tS: to move backward\n\t\tA: to move left\n\t\tD: to move right\n\t\tL.
-    Shift: to run + movement key\n\t\tL. Ctrl: to evade + movement key\n\t\tSpace:
-    to jump\n\tPlayer Controls:\n\t\tE: to pick up item\n\t\tC: to switch weapons\n\t\tZ:
-    to switch grenade/bomb\n\t\tL. Mouse: to fire current weapon\n\t\tR. Mouse: to
-    throw current grenade\n\t\tR: to reload weapon\n\t\tQ: to fire companion weapon\n\t\tF:
-    to activate rage mode\n\tCheats:\n\tCheats are to activated only if the left
-    Alt button is pressed SIMULTANEOUSLY. Objects spawn at the location currently
-    aimed at, but must be only 10 meters away.\n\t\tNumPad 1: Spawn normal infected\n\t\tNumPad
-    2: Spawn special infected 1\n\t\tNumPad 3: Spawn special infected 2\n\t\tNumPad
-    4: Spawn special infected 3\n\t\tNumPad 5: Spawn special infected 4\n\t\tNumPad
-    +: Spawn horde of 20 infected\n\t\tNumPad  -: Kill all infected\n\t\tNumPad .:
-    Damage all infected with 10 points\n\t\tNumPad 6: Add all grenade types to Joel\n\t\tNumPad
-    7: Spawn ammo pack\n\t\tNumPad 8: Spawn health pack\n\t\tNumPad 9: MAX ammo current
-    weapon\n\t\tH: Add 50 health points to Joel\n\t\tM: Add 10 rage points to Joel\n\t\tY:
-    Toggle rage on\n\t\tN: Toggle rage off\n\t\nThe player first selects a companion
-    to accompany the player throught the game. Each companion has different abilities
-    that can be used throughout the gameplay. In the first level, the player has
-    to go rescue the companion, as soon as he/she is freed, they will follow the
-    player at all times, even in the rest of the levels."
+  m_Text: "\nHow to play:\r\n\r\nThe game contains 3 levels:\r\n\t1) Fighting Level\r\n\t2)
+    Stealth Level\r\n\t3) Rescue Level\r\n\r\nControls:\r\n\tPlayer Movement: \r\n\t\tW:
+    to move forward\r\n\t\tS: to move backward\r\n\t\tA: to move left\r\n\t\tD: to
+    move right\r\n\t\tL. Shift: to run + movement key\r\n\t\tL. Ctrl: to evade +
+    movement key\r\n\t\tSpace: to jump\r\n\tPlayer Controls:\r\n\t\tE: to pick up
+    item (you are close to and aiming at)\r\n\t\tC: to switch weapons\r\n\t\tZ: to
+    switch grenade/bomb\r\n\t\tL. Mouse: to fire current weapon\r\n\t\tR. Mouse:
+    to throw current grenade\r\n\t\tR: to reload weapon\r\n\t\tQ: to fire companion
+    weapon\r\n\t\tF: to activate rage mode\r\n\tCheats:\r\n\tCheats are to activated
+    only if the LEFT ALT button is pressed SIMULTANEOUSLY. Objects spawn at the location
+    currently aimed at, but must be only 10 meters away.\r\n\t\tNumPad 1: Spawn normal
+    infected\r\n\t\tNumPad 2: Spawn special infected 1\r\n\t\tNumPad 3: Spawn special
+    infected 2\r\n\t\tNumPad 4: Spawn special infected 3\r\n\t\tNumPad 5: Spawn special
+    infected 4\r\n\t\tNumPad 6: Add all grenade types to Joel\r\n\t\tNumPad 7: Spawn
+    ammo pack\r\n\t\tNumPad 8: Spawn health pack\r\n\t\tNumPad 9: MAX ammo current
+    weapon\r\n\t\tNumPad +: Spawn horde of 20 infected\r\n\t\tNumPad -: Kill all
+    infected\r\n\t\tNumPad .: Damage all infected with 10 points\r\n\t\tNumPad *:
+    Pause/Unpause timer in rescue level\r\n\t\tNumPad /: Skip to next level (scene)\r\n\t\tH:
+    Add 50 health points to Joel\r\n\t\tM: Add 10 rage points to Joel\r\n\t\tY: Toggle
+    rage on\r\n\t\tN: Toggle rage off\r\n\t\t,: Add an ammo clip to companion's weapon\r\n\t\r\nThe
+    player first selects a companion to accompany the player throught the game. Each
+    companion adds a different ability to Joel throughout the gameplay. Choose your
+    companion wisely!\r\nIn the first level, Desert, you are supposed to kill all
+    infected in order to proceed to the next level.\r\nIn the second level, Stealth,
+    you are supposed to collect 20 of the bicylces scattered around the map in order
+    to finish the level. You can collect a bike by approaching it and pressing E,
+    just like you would with any collectable. P.S: Try not to get detected by any
+    of the infected! You can navigate through them unnoticed, be careful ;)\r\nIn
+    the third and final level, Rescue, your companion has been kidnapped. You must
+    navigate through the map and rescue your companion before the timer runs out!
+    You can free your companion by breaking the cage door (by shooting it) that they
+    are trapped in. You will then have to kill all the infected in the level in order
+    to win.\r\n"
 --- !u!222 &2134910446
 CanvasRenderer:
   m_ObjectHideFlags: 0
