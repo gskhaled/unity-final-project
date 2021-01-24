@@ -35,15 +35,18 @@ public class HudScript : MonoBehaviour
     { 
         healthBar.size = 1.0f;
         healthBarMaterial.color = new Color(1, 0, 0, 1);
-        CompanionGunScript = FindObjectOfType<CompanionGun>();
-        if(PlayerPrefs.GetString("Companion").Equals("Ellie"))
+        GameObject companion = null;
+        if (PlayerPrefs.GetString("Companion").Equals("Ellie"))
         {
             EllieAmmoCount.SetActive(true);
-        }  
+            companion = GameObject.Find("Ellie");
+        }
         if (PlayerPrefs.GetString("Companion").Equals("Louis"))
         {
             LouisAmmoCount.SetActive(true);
+            companion = GameObject.Find("Louis");
         }
+        CompanionGunScript = companion.GetComponentInChildren<CompanionGun>();
     }
     
     void Update()
