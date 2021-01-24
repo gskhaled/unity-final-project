@@ -5,6 +5,8 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class CompanionGun : MonoBehaviour
 {
+    public float fireRate = 1f;
+    public int clipCapacity = 15;
     public Camera camera;
     public ThirdPersonCharacter gunHolder;
     public List<GameObject> currHitObjects = new List<GameObject>();
@@ -14,20 +16,19 @@ public class CompanionGun : MonoBehaviour
     public LayerMask layerMask;
     public ParticleSystem muzzleFlash;
     public AudioSource shootingSound;
-
-    public int killedSoFar = 0;
-
+    public playerHealth healthComponent;
+    private int increasedClips=0;
     private Vector3 origin;
     private Vector3 direction;
     private float currentHitDistance;
     private bool shooting = false;
     private float lastPlayed_shoot = 0f;
-    private int maxClips = 3;
+    public int maxClips = 3;
     private int clips = 1;
     private int gunAmmo = 0;
     void Update()
     {
-
+        clipsCheck();
         if (Input.GetKeyDown(KeyCode.Q))
         {
             shooting = !shooting;
@@ -60,28 +61,35 @@ public class CompanionGun : MonoBehaviour
                     {
                         
                         gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
-                        Shoot(infected);
+                        Shoot(infected,"Hunter");
                         break;
                     }
                     else if (infected.GetComponent<ChargerLogic>() != null)
                     {
 
                         gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
-                        Shoot(infected);
+                        Shoot(infected,"Charger");
                         break;
                     }
                     else if (infected.GetComponent<TankLogic>() != null)
                     {
 
                         gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
-                        Shoot(infected);
+                        Shoot(infected,"Tank");
+                        break;
+                    }
+                    else if (infected.GetComponent<SpitterLogic>() != null)
+                    {
+
+                        gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
+                        Shoot(infected, "Spitter");
                         break;
                     }
                     else if (infected.GetComponent<NormalLogic>() != null)
                     {
 
                         gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
-                        Shoot(infected);
+                        Shoot(infected,"Normal");
                         break;
                     }
                     else if (infected.name == "Cube")
@@ -100,17 +108,10 @@ public class CompanionGun : MonoBehaviour
             }
         }
 
-        if(killedSoFar == 10)
-        {
-            if(clips<maxClips)
-            clips += 1;
-
-            killedSoFar = 0;
-
-        }
+ 
 
         //cheat
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKey(KeyCode.LeftAlt)&& Input.GetKeyDown(KeyCode.Comma))
         {
             clips += 1;
         }
@@ -125,18 +126,35 @@ public class CompanionGun : MonoBehaviour
         Gizmos.DrawWireSphere(origin + direction * currentHitDistance, sphereRadius);
     }
 
-    void Shoot(GameObject inf)
+    void Shoot(GameObject inf,string type)
     {
 
-        if (Time.time - lastPlayed_shoot >= 1f && gunAmmo< 5*clips)
+        if (Time.time - lastPlayed_shoot >= 1/fireRate && (gunAmmo< clipCapacity*clips || healthComponent.isRaging()))
         {
             gunAmmo += 1;
             shootingSound.Play();
             muzzleFlash.Play();
-            inf.GetComponent<HunterLogic>().TakeDamage(damage);
+            if(type.Equals("Hunter"))
+                inf.GetComponent<HunterLogic>().TakeDamage(damage);
+            else if(type.Equals("Tank"))
+                inf.GetComponent<TankLogic>().TakeDamage(damage);
+            else if (type.Equals("Charger"))
+                inf.GetComponent<ChargerLogic>().TakeDamage(damage);
+            else if (type.Equals("Spitter"))
+                inf.GetComponent<SpitterLogic>().TakeDamage(damage);
+            else if (type.Equals("Normal"))
+                inf.GetComponent<NormalLogic>().TakeDamage(damage);
             lastPlayed_shoot = Time.time;
         }
 
+    }
+    void clipsCheck()
+    {
+        if (healthComponent.getTotalKilled() - (increasedClips * 10) >= 10)
+        {
+            increasedClips += 1;
+            clips += 1;
+        }
     }
     void Shoot()
     {
@@ -153,6 +171,13 @@ public class CompanionGun : MonoBehaviour
     }
     public int getAmmoCount()
     {
-        return (clips * 15) - gunAmmo;
+        if (!healthComponent.isRaging())
+            return (clips * clipCapacity) - gunAmmo;
+        else
+            return 1000;
+    }
+    public int getMaxAmmo()
+    {
+        return (maxClips * clipCapacity);
     }
 }
