@@ -2575,6 +2575,7 @@ MonoBehaviour:
   weapon: {fileID: 2628945519211016163}
   ammoPickupSound: {fileID: 8522115168278073495}
   startWithAPistol: 1
+  managerScript: {fileID: 0}
 --- !u!1 &7079469509295145127
 GameObject:
   m_ObjectHideFlags: 0

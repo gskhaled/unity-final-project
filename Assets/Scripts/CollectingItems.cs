@@ -13,6 +13,7 @@ public class CollectingItems : MonoBehaviour
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
     private Dictionary<string, int> bombs = new Dictionary<string, int>();
     private Dictionary<string, bool> weapons = new Dictionary<string, bool>();
+    public Manager managerScript;
     // Start is called before the first frame update
     void Awake()
     {
@@ -180,6 +181,12 @@ public class CollectingItems : MonoBehaviour
                     ammoPickupSound.Play();
                     Debug.Log("Consumable Ammo: Filled");
                 }
+
+            }
+            else if (tag.Equals("Bike"))
+            {
+                managerScript.removeBike();
+                Destroy(hit.transform.gameObject);
 
             }
             else

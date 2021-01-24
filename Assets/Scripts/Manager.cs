@@ -130,4 +130,8 @@ public class Manager : MonoBehaviour
             companionRescued = true;
         }
     }
+    public void removeBike()
+    {
+        bikeCount += 1;
+    }
 }
