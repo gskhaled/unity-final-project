@@ -51,6 +51,7 @@ public class playerHealth : MonoBehaviour
 
     bool pinHold = false;
 
+    int rageMultiplier = 1;
 
 
 
@@ -495,7 +496,7 @@ public class playerHealth : MonoBehaviour
 
     {
         lastRageAddition = Time.time;
-        rageMeter += points;
+        rageMeter += points*rageMultiplier;
 
         collText.GetComponent<Text>().text = "rageMeter:" + rageMeter;
 
@@ -584,6 +585,9 @@ public class playerHealth : MonoBehaviour
         return killedInfected;
     }
 
-
+    public void setRageMultiplier(int multiplier)
+    {
+        rageMultiplier = multiplier;
+    }
 
 }

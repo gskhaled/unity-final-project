@@ -28,6 +28,8 @@ public class CompanionGun : MonoBehaviour
     private int gunAmmo = 0;
     void Update()
     {
+        //healthComponent.setRageMultiplier(int multiplier)
+        //healthComponent.increaseHealth(int add)
         clipsCheck();
         if (Input.GetKeyDown(KeyCode.Q))
         {
