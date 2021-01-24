@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 9135109665545266487}
   - component: {fileID: 8026685747005237967}
   m_Layer: 0
-  m_Name: Normal Infected
+  m_Name: Normal Infected 1
   m_TagString: Normal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3223,7 +3223,8 @@ AudioSource:
   m_GameObject: {fileID: 9135109665050025395}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1163944695426087201, guid: 67a6d18ef9c67d94fa990034d3cd51be,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 832a996da0a667341becb714956023eb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

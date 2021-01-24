@@ -11,14 +11,10 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene(1); // rescue level
     }
 
-    public void GoToLevel2()
+    public void GoToNextLevel()
     {
-        Time.timeScale = 1;
-    }
-
-    public void GoToLevel3()
-    {
-        Time.timeScale = 1;
+        int currSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currSceneIndex == 3? 0: currSceneIndex + 1);
     }
 
     public void GotoMainMenuScene()
