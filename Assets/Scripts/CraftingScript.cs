@@ -12,6 +12,7 @@ public class CraftingScript : MonoBehaviour
     public Text sugarText;
     public Text GPText;
     public Text canText;
+    public Text bileText;
     public Text molotovAmountText;
     public Text pipeAmountText;
     public Text stunAmountText;
@@ -116,6 +117,9 @@ public class CraftingScript : MonoBehaviour
                     break;
                 case "GunPowder":
                     GPText.text = "x" + item.Value;                   
+                    break;
+                case "Bile":
+                    bileText.text = "x" + item.Value;
                     break;
             }
         }

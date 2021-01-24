@@ -11,8 +11,10 @@ public class HudScript : MonoBehaviour
     public Material healthBarMaterial;
     public Text healthText;
     public Text ARCurrAmo, ARAllAmo, HRCurrAmo, HRAllAmo, PistolCurrAmo, SGCurrAmo, SGAllAmo, SMGCurrAmo, SMGAllAmo;
-    public GameObject AR, HR, Pistol, SG, SMG, Grenades;
+    public Text louisAmmo, louisMaxAmmo, ellieAmmo, ellieMaxAmmo;
+    public GameObject AR, HR, Pistol, SG, SMG, Grenades, EllieAmmoCount, LouisAmmoCount;
     public WeaponSwitching WeaponSwitchingScript;
+    private CompanionGun CompanionGunScript;
     public BombThrower BombThrowerScript;
     public Text BombName;
     public Canvas pauseCanvas;
@@ -33,10 +35,24 @@ public class HudScript : MonoBehaviour
     { 
         healthBar.size = 1.0f;
         healthBarMaterial.color = new Color(1, 0, 0, 1);
+        CompanionGunScript = FindObjectOfType<CompanionGun>();
+        if(GameObject.Find("Ellie") != null)
+        {
+            EllieAmmoCount.SetActive(true);
+        }   
+        if (GameObject.Find("Louis") != null)
+        {
+            LouisAmmoCount.SetActive(true);
+        }
     }
     
     void Update()
     {
+        louisAmmo.text = "" + CompanionGunScript.getAmmoCount();
+        ellieAmmo.text = "" + CompanionGunScript.getAmmoCount();
+        louisMaxAmmo.text = "/" + CompanionGunScript.getMaxAmmo();
+        ellieMaxAmmo.text = "/" + CompanionGunScript.getMaxAmmo();
+
         if (WeaponSwitchingScript.getCurrentGun() != null)
         {
             gun = WeaponSwitchingScript.getCurrentGun();
