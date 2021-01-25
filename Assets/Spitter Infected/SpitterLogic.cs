@@ -95,9 +95,12 @@ public class SpitterLogic : MonoBehaviour
             else
                 playerInSightRange = false;
 
-            Gun currWeapon = weaponHolder.getCurrentGun();
-            if (currWeapon != null && currWeapon.isShooting() && isInFiringRange()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                playerIsFiring = true;
+            if (Vector3.Distance(player.position, transform.position) <= firingRange)
+            {
+                Gun currWeapon = weaponHolder.getCurrentGun();
+                if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+                    playerIsFiring = true;
+            }
             else
                 playerIsFiring = false;
 
@@ -124,17 +127,6 @@ public class SpitterLogic : MonoBehaviour
         if (Physics.Raycast(transform.position, direction, out hit, sightRange))
         {
             if (hit.transform == player)
-                return true;
-        }
-        return false;
-
-    }
-    private bool isInFiringRange()
-    {
-        Vector3 direction = player.position - transform.position;
-        float directionRange = Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y + direction.z + direction.z);
-        if (Mathf.Abs(directionRange)<=firingRange)
-        {
                 return true;
         }
         return false;

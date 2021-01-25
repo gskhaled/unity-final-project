@@ -96,11 +96,17 @@ public class ChargerLogic : MonoBehaviour
             }
             else playerInSightRange = false;
 
-            Gun currWeapon = weaponHolder.getCurrentGun();
-            if (currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-                playerIsFiring = true;
-  /*          else
-                  playerIsFiring = false;*/
+            if (Vector3.Distance(player.position, transform.position) <= firingRange)
+            {
+                Gun currWeapon = weaponHolder.getCurrentGun();
+                if (currWeapon != null && currWeapon.isShooting())
+                {
+                    playerIsFiring = true;
+               
+                }
+            }
+           else
+                  playerIsFiring = false;
 
 
             if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !isCharging) ChargeAtPlayer();
