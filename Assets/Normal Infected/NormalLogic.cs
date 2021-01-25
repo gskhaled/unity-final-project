@@ -221,7 +221,7 @@ public class NormalLogic : MonoBehaviour
             // CALL A METHOD TO APPLY DAMAGE TO JOEL !!!
             healthComponent.applyDamage((int)(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * animator.speed * 5));
             // playerScript.applyDamage(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * animator.speed * 5);
-            Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * animator.speed * 5);
+           // Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * animator.speed * 5);
         }
 
     }

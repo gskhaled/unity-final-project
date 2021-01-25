@@ -41,7 +41,7 @@ public class BombThrower : MonoBehaviour
             else
                 currentBomb++;
 
-            Debug.Log("CURRENTLY HOLDING: " + bombNames[currentBomb]);
+          //  Debug.Log("CURRENTLY HOLDING: " + bombNames[currentBomb]);
         }
     }
 

@@ -83,37 +83,37 @@ public class CollectingItems : MonoBehaviour
                 {
                     inventory["Bile"] = inventory["Bile"] + 1;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Bile: " + inventory["Bile"]);
+                   // Debug.Log("Bile: " + inventory["Bile"]);
                 }
                 else if (tag.Equals("Collectable Alcohol"))
                 {
                     inventory["Alcohol"] = inventory["Alcohol"] + 1;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Alcohol: " + inventory["Alcohol"]);
+                  //  Debug.Log("Alcohol: " + inventory["Alcohol"]);
                 }
                 else if (tag.Equals("Collectable Canister"))
                 {
                     inventory["Canister"] = inventory["Canister"] + 1;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Canister: " + inventory["Canister"]);
+                  //  Debug.Log("Canister: " + inventory["Canister"]);
                 }
                 else if (tag.Equals("Collectable Gun Powder"))
                 {
                     inventory["GunPowder"] = inventory["GunPowder"] + 1;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("GunPowder: " + inventory["GunPowder"]);
+                   // Debug.Log("GunPowder: " + inventory["GunPowder"]);
                 }
                 else if (tag.Equals("Collectable Rag"))
                 {
                     inventory["Rag"] = inventory["Rag"] + 1;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Rag: " + inventory["Rag"]);
+                   // Debug.Log("Rag: " + inventory["Rag"]);
                 }
                 else if (tag.Equals("Collectable Sugar"))
                 {
                     inventory["Sugar"] = inventory["Sugar"] + 1;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Sugar: " + inventory["Sugar"]);
+                   // Debug.Log("Sugar: " + inventory["Sugar"]);
                 }
             }
             else if (tag.Contains("Usable"))
@@ -122,17 +122,17 @@ public class CollectingItems : MonoBehaviour
                 if (tag.Equals("Usable Molotov"))
                 {
                     AddBomb("Molotov", hit.transform);
-                    Debug.Log("Molotov: " + bombs["Molotov"]);
+                   // Debug.Log("Molotov: " + bombs["Molotov"]);
                 }
                 else if (tag.Equals("Usable Pipe Bomb"))
                 {
                     AddBomb("PipeBomb", hit.transform);
-                    Debug.Log("PipeBomb: " + bombs["PipeBomb"]);
+                   // Debug.Log("PipeBomb: " + bombs["PipeBomb"]);
                 }
                 else if (tag.Equals("Usable Stun Grenade"))
                 {
                     AddBomb("StunGrenade", hit.transform);
-                    Debug.Log("StunGrenade: " + bombs["StunGrenade"]);
+                   // Debug.Log("StunGrenade: " + bombs["StunGrenade"]);
                 }
             }
             else if (tag.Contains("Weapon"))
@@ -141,31 +141,31 @@ public class CollectingItems : MonoBehaviour
                 {
                     weapons["AR"] = true;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("AR: " + weapons["AR"]);
+                   // Debug.Log("AR: " + weapons["AR"]);
                 }
                 else if (tag.Equals("Weapon Hunting Rifle"))
                 {
                     weapons["Hunting Rifle"] = true;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Hunting Rifle: " + weapons["Hunting Rifle"]);
+                   // Debug.Log("Hunting Rifle: " + weapons["Hunting Rifle"]);
                 }
                 else if (tag.Equals("Weapon Pistol"))
                 {
                     weapons["Pistol"] = true;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Pistol: " + weapons["Pistol"]);
+                   // Debug.Log("Pistol: " + weapons["Pistol"]);
                 }
                 else if (tag.Equals("Weapon SMG"))
                 {
                     weapons["SMG"] = true;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("SMG: " + weapons["SMG"]);
+                  //  Debug.Log("SMG: " + weapons["SMG"]);
                 }
                 else if (tag.Equals("Weapon Shotgun"))
                 {
                     weapons["Shotgun"] = true;
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("Shotgun: " + weapons["Shotgun"]);
+                   // Debug.Log("Shotgun: " + weapons["Shotgun"]);
                 }
             }else if (tag.Contains("Consumable"))
             {
@@ -179,7 +179,7 @@ public class CollectingItems : MonoBehaviour
                         weapon.GetComponent<WeaponSwitching>().AddAmmmunition();
                     Destroy(hit.transform.gameObject);
                     ammoPickupSound.Play();
-                    Debug.Log("Consumable Ammo: Filled");
+                  //  Debug.Log("Consumable Ammo: Filled");
                 }
 
             }
@@ -210,7 +210,7 @@ public class CollectingItems : MonoBehaviour
             if (name.Equals("Molotov") && bombs["Molotov"] < 3)
             {
                 bombs["Molotov"] = bombs["Molotov"] + 1;
-                Debug.Log("Added Molotov: " + bombs["Molotov"]);
+               // Debug.Log("Added Molotov: " + bombs["Molotov"]);
                 if (t != null)
                     Destroy(t.gameObject);
                 else
@@ -220,7 +220,7 @@ public class CollectingItems : MonoBehaviour
             else if (name.Equals("PipeBomb") && bombs["PipeBomb"] < 2)
             {
                 bombs["PipeBomb"] = bombs["PipeBomb"] + 1;
-                Debug.Log("Added PipeBomb: " + bombs["PipeBomb"]);
+               // Debug.Log("Added PipeBomb: " + bombs["PipeBomb"]);
                 if (t != null)
                     Destroy(t.gameObject);
                 else
@@ -230,7 +230,7 @@ public class CollectingItems : MonoBehaviour
             else if (name.Equals("StunGrenade") && bombs["StunGrenade"] < 2)
             {
                 bombs["StunGrenade"] = bombs["StunGrenade"] + 1;
-                Debug.Log("Added StunGrenade: " + bombs["StunGrenade"]);
+               // Debug.Log("Added StunGrenade: " + bombs["StunGrenade"]);
                 if (t != null)
                     Destroy(t.gameObject);
                 else
@@ -241,7 +241,7 @@ public class CollectingItems : MonoBehaviour
             {
                 // Call method for Consuming Health Pack
                 gameObject.GetComponent<playerHealth>().increaseHealth(50);
-                Debug.Log("Added and consumed Health Pack");
+               // Debug.Log("Added and consumed Health Pack");
                 if (t != null)
                     Destroy(t.gameObject);
                 else
@@ -250,12 +250,12 @@ public class CollectingItems : MonoBehaviour
             }
             else
             {
-                Debug.Log("Item " + name + " cannot be abdded to the inventory.");
+              //  Debug.Log("Item " + name + " cannot be abdded to the inventory.");
             }
         }
         catch
         {
-            Debug.Log("Error, item " + name + " cannot be abdded to the inventory.");
+           // Debug.Log("Error, item " + name + " cannot be abdded to the inventory.");
         }
     }
 
@@ -283,13 +283,13 @@ public class CollectingItems : MonoBehaviour
                     inventory["Rag"] = inventory["Rag"] - 2;
                     break;
                 default:
-                    Debug.Log("Item " + name + " is not available in recipe.");
+                  //  Debug.Log("Item " + name + " is not available in recipe.");
                     break;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Debug.LogError("Got error while checking for recipe" + e.Message);
+           // Debug.LogError("Got error while checking for recipe" + e.Message);
         }
     }
 }

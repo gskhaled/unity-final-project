@@ -12,7 +12,7 @@ public class HunterLogic : MonoBehaviour
     Transform head;
     Transform distractPos;
     Animator animator;
-    Rigidbody rb;
+  //  Rigidbody rb;
     Laser laser;
     AudioSource leapClip;
     AudioSource dieClip;
@@ -53,7 +53,7 @@ public class HunterLogic : MonoBehaviour
     {
         randomDirection = Random.Range(0, 2);
         agent = GetComponent<NavMeshAgent>();
-        rb = transform.gameObject.GetComponent<Rigidbody>();
+        //rb = transform.gameObject.GetComponent<Rigidbody>();
         GameObject joel = GameObject.FindGameObjectWithTag("Joel");
         player = joel.transform;
         healthComponent = joel.GetComponent<playerHealth>();

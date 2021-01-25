@@ -217,7 +217,7 @@ public class CraftingScript : MonoBehaviour
 
     public void addGrenades(string Name)
     {
-        Debug.Log("Adding..... " + Name);
+       // Debug.Log("Adding..... " + Name);
         switch (Name)
         {
             case "Molotov":

@@ -26,13 +26,33 @@ public class CompanionGun : MonoBehaviour
     private float lastPlayed_shoot = 0f;
     public int maxClips = 3;
     private int clips = 0;
-    private int gunAmmo = 0;
+    //private int gunAmmo = 0;
+    private bool companionEllie = false;
+    float timer;
     private void Start()
     {
         currentClip = clipCapacity;
+        companionEllie = PlayerPrefs.GetString("Companion").Equals("Ellie");
+        if (companionEllie)
+            healthComponent.setRageMultiplier(2);
+        else
+            timer = 1.0f;
+
     }
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+        if (!companionEllie)
+            if (timer - Time.deltaTime <= 0)
+            {
+                timer = 1.0f;
+                healthComponent.increaseHealth(1);
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
         //healthComponent.setRageMultiplier(int multiplier)
         //healthComponent.increaseHealth(int add)
         clipsCheck();
@@ -104,7 +124,7 @@ public class CompanionGun : MonoBehaviour
                         Shoot(infected,"Normal");
                         break;
                     }
-                    else if (infected.name == "Cube")
+/*                    else if (infected.name == "Cube")
                     {
 
                         gunHolder.GetComponent<AICharacterControl>().SetTarget(infected.transform);
@@ -112,7 +132,7 @@ public class CompanionGun : MonoBehaviour
                         Shoot(); 
                         //Debug.Log(count);
                         break;
-                    }
+                    }*/
 
                 }
 
@@ -181,7 +201,7 @@ public class CompanionGun : MonoBehaviour
         }
 
     }
-    void Shoot()
+/*    void Shoot()
     {
 
         if (Time.time - lastPlayed_shoot >= .1f && gunAmmo < clipCapacity * clips)
@@ -193,7 +213,7 @@ public class CompanionGun : MonoBehaviour
             lastPlayed_shoot = Time.time;
         }
 
-    }
+    }*/
     public int getAmmoCount()
     {
         if (!healthComponent.isRaging())

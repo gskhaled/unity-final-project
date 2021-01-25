@@ -29,7 +29,7 @@ public class PipeBomb : MonoBehaviour
         foreach (Collider obj in nearBy)
         {
             string tag = obj.tag;
-            Debug.Log(tag);
+           // Debug.Log(tag);
             switch (tag)
             {
                 case "Normal":

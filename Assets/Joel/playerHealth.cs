@@ -24,7 +24,7 @@ public class playerHealth : MonoBehaviour
 
     public GameObject healthText;
 
-    public GameObject collText;
+    //public GameObject collText;
 
     public Animator animator;
 
@@ -35,7 +35,7 @@ public class playerHealth : MonoBehaviour
 
     int health;
 
-    int collected = 0;
+   // int collected = 0;
 
     int rageMeter = 0;
 
@@ -64,13 +64,13 @@ public class playerHealth : MonoBehaviour
 
     {
         killedInfected = 0;
-        health = 300;
+        health = 200;
 
-        collected = 0;
+       // collected = 0;
 
         dead = false;
 
-        bool rageAvailable = false;
+       // bool rageAvailable = false;
 
     }
 
@@ -81,7 +81,8 @@ public class playerHealth : MonoBehaviour
     void Update()
 
     {
-
+        if (Time.timeScale == 0)
+            return;
         if (!animator.GetCurrentAnimatorStateInfo(3).IsName("dying"))
 
         {
@@ -176,6 +177,7 @@ public class playerHealth : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
 
             {
+
                 //AudioClip companionFire = GameObject.Find("fireOrder").GetComponent<AudioSource>().clip;
                 companionFire.enabled = true;
                 companionFire.PlayOneShot(companionFire.clip);
@@ -212,15 +214,16 @@ public class playerHealth : MonoBehaviour
 
 
 
+
     //checking collectibles
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+/*    private void OnControllerColliderHit(ControllerColliderHit hit)
 
     {
 
         if (Input.GetKey(KeyCode.E))
 
-        {/*
+        {*//*
 
             if (hit.gameObject.tag == "coll")
 
@@ -263,13 +266,13 @@ public class playerHealth : MonoBehaviour
                 Destroy(hit.gameObject);
 
             }
-*/
+*//*
         }
 
 
 
     }
-
+*/
 
 
     void rage()
@@ -312,7 +315,7 @@ public class playerHealth : MonoBehaviour
 
                 ragingMeterTimer = 0;
 
-                collText.GetComponent<Text>().text = "RageMeter:" + rageMeter;
+             //   collText.GetComponent<Text>().text = "RageMeter:" + rageMeter;
 
             }
 
@@ -336,7 +339,7 @@ public class playerHealth : MonoBehaviour
 
             rageMeter = 0;
 
-            collText.GetComponent<Text>().text = "Rage Meter:" + rageMeter;
+          //  collText.GetComponent<Text>().text = "Rage Meter:" + rageMeter;
 
         }
 
@@ -365,7 +368,7 @@ public class playerHealth : MonoBehaviour
 
                 rageMeter = 0;
 
-                collText.GetComponent<Text>().text = "RAGINGGG!!";
+               // collText.GetComponent<Text>().text = "RAGINGGG!!";
 
 
 
@@ -428,7 +431,7 @@ public class playerHealth : MonoBehaviour
 
                     rageMeter = 0;
 
-                    collText.GetComponent<Text>().text = "RAGINGGG!!";
+                   // collText.GetComponent<Text>().text = "RAGINGGG!!";
                     rageSound.enabled = true;
                     rageSound.PlayOneShot(rageSound.clip);
                     /*AudioClip rageSound = GameObject.Find("rageSound").GetComponent<AudioSource>().clip;
@@ -455,7 +458,7 @@ public class playerHealth : MonoBehaviour
 
                     //rageMeter = 0;
 
-                    collText.GetComponent<Text>().text = "Rage Meter:" + rageMeter;
+                   // collText.GetComponent<Text>().text = "Rage Meter:" + rageMeter;
 
                 }
 
@@ -475,6 +478,8 @@ public class playerHealth : MonoBehaviour
     public void applyDamage(int damage)
 
     {
+        if (Time.timeScale == 0)
+            return;
 
         if (!animator.GetCurrentAnimatorStateInfo(1).IsName("dodging"))
 
@@ -486,7 +491,7 @@ public class playerHealth : MonoBehaviour
 
             health -= damage;
 
-            healthText.GetComponent<Text>().text = "Health:" + health;
+           // healthText.GetComponent<Text>().text = "Health:" + health;
 
             animator.SetBool("hit", true);
 
@@ -500,7 +505,7 @@ public class playerHealth : MonoBehaviour
         lastRageAddition = Time.time;
         rageMeter += points*rageMultiplier;
 
-        collText.GetComponent<Text>().text = "rageMeter:" + rageMeter;
+      //  collText.GetComponent<Text>().text = "rageMeter:" + rageMeter;
 
     }
 
@@ -558,16 +563,10 @@ public class playerHealth : MonoBehaviour
     public void increaseHealth(int add)
 
     {
-
-        health += add;
-
-        if (health > 300)
-
-        {
-
-            health = 300;
-
-        }
+        if (Time.timeScale == 0)
+            return;
+        if (health < 300)
+            health += add;
 
     }
 

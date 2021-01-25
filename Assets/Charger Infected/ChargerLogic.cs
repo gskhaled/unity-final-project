@@ -8,7 +8,7 @@ public class ChargerLogic : MonoBehaviour
 
     NavMeshAgent agent;
     Transform player;
-    Transform oldPlayer;
+    //Transform oldPlayer;
     playerHealth healthComponent;
     WeaponSwitching weaponHolder;
 
@@ -196,6 +196,10 @@ public class ChargerLogic : MonoBehaviour
         }
        laser.laserHit = player;
        agent.SetDestination(player.position);
+        Gun currWeapon = weaponHolder.getCurrentGun();
+
+        if (!currWeapon.isShooting())
+            playerIsFiring = false;
 
     }
 
