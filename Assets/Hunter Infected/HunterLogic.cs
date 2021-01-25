@@ -114,14 +114,12 @@ public class HunterLogic : MonoBehaviour
             }
 
 
-            //if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-            //{
             Gun currWeapon = weaponHolder.getCurrentGun();
-            if (isInLineOfSight(player,firingRange)&& isInFront(player) && currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+            if (isInLineOfSight(player,firingRange) && currWeapon != null && currWeapon.isShooting()){ 
                 playerIsFiring = true;
-        //}
-        //else
-         //   playerIsFiring = false;
+           }
+           else
+             playerIsFiring = false;
 
         if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !collided)
             {
