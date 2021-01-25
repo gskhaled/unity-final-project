@@ -79,7 +79,7 @@ public class HunterLogic : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !healthComponent.isDead())
         {
 
             if (!playerInSightRange && !isDistracted && !isHit && !isLeaping)
@@ -114,14 +114,12 @@ public class HunterLogic : MonoBehaviour
             }
 
 
-            //if (Vector3.Distance(player.position, transform.position) <= firingRange) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
-            //{
             Gun currWeapon = weaponHolder.getCurrentGun();
-            if (isInLineOfSight(player,firingRange)&& isInFront(player) && currWeapon != null && currWeapon.isShooting()) // + CHECK IF JOEL IS CURRENTLY FIRING !!!
+            if (isInLineOfSight(player,firingRange) && currWeapon != null && currWeapon.isShooting()){ 
                 playerIsFiring = true;
-        //}
-        //else
-         //   playerIsFiring = false;
+           }
+           else
+             playerIsFiring = false;
 
         if ((playerInSightRange || playerIsFiring) && !isDistracted && !isHit && !collided)
             {
@@ -200,14 +198,21 @@ public class HunterLogic : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
-        // float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        walkPointTranslation = walkPointTranslation == 5 ? -5 : 5;
+        /*   //Calculate random point in range
+           // float randomZ = Random.Range(-walkPointRange, walkPointRange);
+           walkPointTranslation = walkPointTranslation == 5 ? -5 : 5;
 
-        if (randomDirection == 0)
-            walkPoint = new Vector3(transform.position.x + walkPointTranslation, transform.position.y, transform.position.z);
-        if (randomDirection == 1)
-            walkPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + walkPointTranslation);
+           if (randomDirection == 0)
+               walkPoint = new Vector3(transform.position.x + walkPointTranslation, transform.position.y, transform.position.z);
+           if (randomDirection == 1)
+               walkPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + walkPointTranslation);
+           walkPointSet = true;*/
+
+        Vector3 randomDirection = Random.insideUnitSphere * walkPointTranslation;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, walkPointTranslation, 1);
+        walkPoint = hit.position;
         walkPointSet = true;
     }
 

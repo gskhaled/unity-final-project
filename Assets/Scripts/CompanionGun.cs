@@ -41,7 +41,7 @@ public class CompanionGun : MonoBehaviour
     }
     void Update()
     {
-        if (Time.timeScale == 0)
+        if (healthComponent.isDead())
             return;
         if (!companionEllie)
             if (timer - Time.deltaTime <= 0)

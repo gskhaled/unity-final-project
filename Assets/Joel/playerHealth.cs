@@ -64,7 +64,7 @@ public class playerHealth : MonoBehaviour
 
     {
         killedInfected = 0;
-        health = 200;
+        health = 300;
 
        // collected = 0;
 
@@ -296,7 +296,7 @@ public class playerHealth : MonoBehaviour
             if (rageMeter >= 100)
 
             {
-
+                rageMeter = 100;
                 rageAvailable = true;
 
             }
@@ -307,7 +307,7 @@ public class playerHealth : MonoBehaviour
 
         {
 
-            if (!rageAvailable && !raging)
+            if ( !raging && !rageAvailable)
 
             {
 

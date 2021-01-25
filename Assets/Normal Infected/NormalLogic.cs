@@ -66,7 +66,7 @@ public class NormalLogic : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !healthComponent.isDead())
         {
           
             if (!playerInSightRange && !playerInAttackRange && !isDistracted && !isHit )
@@ -156,16 +156,25 @@ public class NormalLogic : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
-        // float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        walkPointTranslation = walkPointTranslation == 5 ? -5 : 5; 
+
+        Vector3 randomDirection = Random.insideUnitSphere * walkPointTranslation;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, walkPointTranslation, 1);
+        walkPoint = hit.position;
+        walkPointSet = true;
+
+       
+    /*    walkPointTranslation = walkPointTranslation == 5 ? -5 : 5; 
         
         if(randomDirection == 0)
             walkPoint = new Vector3(transform.position.x + walkPointTranslation, transform.position.y, transform.position.z);
         if(randomDirection == 1)
             walkPoint = new Vector3(transform.position.x , transform.position.y, transform.position.z + walkPointTranslation);
-            walkPointSet = true;
+            walkPointSet = true;*/
     }
+
+    
 
     private void ChasePlayer()
     {

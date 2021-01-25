@@ -6,6 +6,10 @@ public class AudioFader : MonoBehaviour
 {
     public AudioSource tenseAudio;
     public AudioSource calmAudio;
+    public GameObject weaponHolder;
+    private bool tense = false;
+    private float tenseOnTime;
+
     private IEnumerator CrossFadeAudio(AudioSource audioSource1, AudioSource audioSource2, float crossFadeTime, float audioSource2VolumeTarget)
     {
         string debugStart = "<b><color=red>ERROR:</color></b> ";
@@ -55,6 +59,25 @@ public class AudioFader : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("TENSE MUSIC"))
         {
+            StartCoroutine(CrossFadeAudio(tenseAudio, calmAudio, 4f, 0.9f));
+        }
+    }
+
+    private void Update()
+    {
+        if (weaponHolder.GetComponent<WeaponSwitching>().getCurrentGun().isShooting())
+        {
+            if (!tense)
+            {
+                tense = true;
+                StartCoroutine(CrossFadeAudio(calmAudio, tenseAudio, 4f, 0.9f));
+            }
+            tenseOnTime = Time.time;
+        }
+
+        if(Time.time - tenseOnTime >= 10 && tense)
+        {
+            tense = false;
             StartCoroutine(CrossFadeAudio(tenseAudio, calmAudio, 4f, 0.9f));
         }
     }

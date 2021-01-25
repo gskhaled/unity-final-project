@@ -96,7 +96,9 @@ If you die at any point during the gameplay, you will have to reset and try agai
  ## Gameplay points to consider:
  
  1. The companion when instructed to shoot their weapon, will prioritize special infected over normal infected. Moreover, it will empty it's weapon's clip in attempt to kill the most infected within it's radius.
- 2. In the levels, the infected are unable to climb stairs. They occupy the ground levels and will not chase the player up any stairs.
- 3. The infected are stupid, they do not follow the shortest path and will get stuck in obstacles.
- 4. The stealth level is hard to pass without being detected, Goodluck! :laughing::laughing:
+ 2. When Joel picks up a weapon/grenade, he has to switch to it by pressing C/Z (meaning, the currently held weapon updates only on command).
+ 3. In the Desert level (fighting), the infected and the companion are designed not to climb buildings.
+ 4. In the Office level (rescue), the infected cannot enter the looting rooms as they are designed to be looting areas for Joel to prepare for the upcoming fights.
+ 5. The music in the game gets tense whenever Joel is fighting by shooting his weapon, it will gradually fade into calmer music once he calms down.
+ 6. The stealth level is hard to pass without being detected, Goodluck! :laughing::laughing:
 
