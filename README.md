@@ -31,14 +31,15 @@ Moreover, there's a crafting gameplay mechanic which enables Joel to create usef
 | Pipe Bomb | 1 Alcohol + 1 Gunpowder + 1 Canister |
 
 Here is a list of the items that can be collected from all over the scene:
-![Alcohol](https://drive.google.com/file/d/1CbTFg-eavG8Kpu9N6QtZ1hxuA2222gcc/view?usp=sharing)
-![Ammo Pack](https://drive.google.com/file/d/1ZC6gbXBkXZIqRU6m3x6vZhgaDeTXDjaH/view?usp=sharing)
-![Canister](https://drive.google.com/file/d/1GylibrhazQJu-eT11QU0dFFH99zCyWfb/view?usp=sharing)
-![Gun Powder](https://drive.google.com/file/d/111P20YmWjtT9Xep--P92fin1yVV9Srtr/view?usp=sharing)
-![Health Pack](https://drive.google.com/file/d/1IRyjuf98HABjVbCCGyp_E50TEoXGjoys/view?usp=sharing)
-![Rags](https://drive.google.com/file/d/15ZNBLSxLaj7tGXyH_o2SYXiLUU6GIPMT/view?usp=sharing)
-![Sugar](https://drive.google.com/file/d/1lJ7bEMg-BUF-A5tZBKmaIheGMsRoPfe-/view?usp=sharing)
-![Bile (only dropped from special infected when they die)](https://drive.google.com/file/d/1GJMwMU8PEe04FsIKGcWpZtczOxcX1c1g/view?usp=sharing)
+|Collectable| Picture |
+|--|--|
+|Alcohol| <img src="Images/Alcohol.png" width="200" height="250">|
+|Ammo Pack|<img src="Images/Ammo.png" width="200" height="250"> |
+|Canister|<img src="Images/Canister.png" width="200" height="250">|
+|Health Pack|<img src="Images/Healthpack.png" width="200" height="250">|
+|Rag|<img src="Images/Rag.png" width="200" height="250">|
+|Sugar|<img src="Images/Sugar.png" width="200" height="250">|
+|Bile|<img src="Images/Bile.png" width="200" height="250">|
 
 #### The game has 3 levels, these are:
 
