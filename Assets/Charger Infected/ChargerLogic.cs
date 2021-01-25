@@ -169,7 +169,7 @@ public class ChargerLogic : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
+        /*//Calculate random point in range
         // float randomZ = Random.Range(-walkPointRange, walkPointRange);
         walkPointTranslation = walkPointTranslation == 5 ? -5 : 5;
 
@@ -177,6 +177,13 @@ public class ChargerLogic : MonoBehaviour
             walkPoint = new Vector3(transform.position.x + walkPointTranslation, transform.position.y, transform.position.z);
         else
             walkPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + walkPointTranslation);
+        walkPointSet = true;*/
+
+        Vector3 randomDirection = Random.insideUnitSphere * walkPointTranslation;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, walkPointTranslation, 1);
+        walkPoint = hit.position;
         walkPointSet = true;
     }
 

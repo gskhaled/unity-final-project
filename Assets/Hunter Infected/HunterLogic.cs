@@ -198,14 +198,21 @@ public class HunterLogic : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
-        // float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        walkPointTranslation = walkPointTranslation == 5 ? -5 : 5;
+        /*   //Calculate random point in range
+           // float randomZ = Random.Range(-walkPointRange, walkPointRange);
+           walkPointTranslation = walkPointTranslation == 5 ? -5 : 5;
 
-        if (randomDirection == 0)
-            walkPoint = new Vector3(transform.position.x + walkPointTranslation, transform.position.y, transform.position.z);
-        if (randomDirection == 1)
-            walkPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + walkPointTranslation);
+           if (randomDirection == 0)
+               walkPoint = new Vector3(transform.position.x + walkPointTranslation, transform.position.y, transform.position.z);
+           if (randomDirection == 1)
+               walkPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + walkPointTranslation);
+           walkPointSet = true;*/
+
+        Vector3 randomDirection = Random.insideUnitSphere * walkPointTranslation;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, walkPointTranslation, 1);
+        walkPoint = hit.position;
         walkPointSet = true;
     }
 
