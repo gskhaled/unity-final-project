@@ -307,7 +307,7 @@ public class playerHealth : MonoBehaviour
 
         {
 
-            if ( !raging)
+            if ( !raging && !rageAvailable)
 
             {
 
