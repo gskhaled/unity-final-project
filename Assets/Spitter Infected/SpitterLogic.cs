@@ -70,7 +70,7 @@ public class SpitterLogic : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !healthComponent.isDead())
         {
 
             if (((!playerInSightRange && !isSpitting && !isDistracted) || waiting || isDistracted)  && !isHit)

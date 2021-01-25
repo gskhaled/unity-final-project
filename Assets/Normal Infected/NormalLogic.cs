@@ -66,7 +66,7 @@ public class NormalLogic : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !healthComponent.isDead())
         {
           
             if (!playerInSightRange && !playerInAttackRange && !isDistracted && !isHit )

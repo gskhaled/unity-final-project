@@ -79,7 +79,7 @@ public class HunterLogic : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !healthComponent.isDead())
         {
 
             if (!playerInSightRange && !isDistracted && !isHit && !isLeaping)

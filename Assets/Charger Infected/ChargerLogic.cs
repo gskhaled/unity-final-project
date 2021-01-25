@@ -72,7 +72,7 @@ public class ChargerLogic : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !healthComponent.isDead())
         {
 
             if (!playerInSightRange && !isDistracted && !isHit && !isCharging)

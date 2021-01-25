@@ -64,7 +64,7 @@ public class playerHealth : MonoBehaviour
 
     {
         killedInfected = 0;
-        health = 200;
+        health = 300;
 
        // collected = 0;
 
